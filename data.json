@@ -1,0 +1,31 @@
+data = {
+  goals = [
+    {
+        "completed": true,
+        "description": "description here",
+        "id": 1,
+        "name": "First Task",
+        "timestamp": "2021-12-08T12:27:27.304982Z",
+        "updated": "2021-12-08T12:27:27.305009Z",
+        "user": 1
+    },
+    {
+        "completed": false,
+        "description": "description here",
+        "id": 2,
+        "name": "Second Task",
+        "timestamp": "2021-12-08T12:27:27.304982Z",
+        "updated": "2021-12-08T12:27:27.305009Z",
+        "user": 1
+    },
+    {
+        "completed": true,
+        "description": "description here",
+        "id": 3,
+        "name": "Third Task",
+        "timestamp": "2021-12-08T12:27:27.304982Z",
+        "updated": "2021-12-08T12:27:27.305009Z",
+        "user": 1
+    }
+  ]
+}

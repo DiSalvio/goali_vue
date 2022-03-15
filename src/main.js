@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const goaliApp = createApp(App)
+
+goaliApp.mount('#app')
