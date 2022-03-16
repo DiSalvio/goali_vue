@@ -1,6 +1,9 @@
 <template>
   <div>
-    {{goals}}
+    <div v-for="goal in goals" :key="goal.id">
+      <h1>{{goal.name}}</h1>
+      <p>{{goal.description}}</p>
+    </div>
   </div>
 </template>
 
@@ -11,6 +14,6 @@ export default {
     return {
       goals: sourceData.goals
     }
-  }
+  },
 }
 </script>
