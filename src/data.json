@@ -2,30 +2,274 @@
   "goals": [
     {
         "completed": true,
-        "description": "description here",
+        "description": "1 description here",
         "id": 1,
-        "name": "First Task",
+        "name": "First Goal",
         "timestamp": "2021-12-08T12:27:27.304982Z",
         "updated": "2021-12-08T12:27:27.305009Z",
         "user": 1
     },
     {
         "completed": false,
-        "description": "description here",
+        "description": "2 description here",
         "id": 2,
-        "name": "Second Task",
+        "name": "Second Goal",
         "timestamp": "2021-12-08T12:27:27.304982Z",
         "updated": "2021-12-08T12:27:27.305009Z",
         "user": 1
     },
     {
         "completed": true,
-        "description": "description here",
+        "description": "3 description here",
         "id": 3,
-        "name": "Third Task",
+        "name": "Third Goal",
         "timestamp": "2021-12-08T12:27:27.304982Z",
         "updated": "2021-12-08T12:27:27.305009Z",
         "user": 1
+    }
+  ],
+  "tasks": [
+    {
+      "completed": true,
+      "description": "1 task description",
+      "id": 1,
+      "name": "First Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 1
+    },
+    {
+      "completed": true,
+      "description": "2 task description",
+      "id": 2,
+      "name": "Second Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 1
+    },
+    {
+      "completed": true,
+      "description": "3 task description",
+      "id": 3,
+      "name": "3rd Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 1
+    },
+    {
+      "completed": false,
+      "description": "4 task description",
+      "id": 4,
+      "name": "4th Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 2
+    },
+    {
+      "completed": true,
+      "description": "5 task description",
+      "id": 5,
+      "name": "5th Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 3
+    },
+    {
+      "completed": true,
+      "description": "6 task description",
+      "id": 6,
+      "name": "6th Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 2
+    },
+    {
+      "completed": true,
+      "description": "7 task description",
+      "id": 7,
+      "name": "7th Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "goal": 3
+    }
+  ],
+  "sub_tasks": [
+    {
+      "completed": true,
+      "description": "1 subtask description",
+      "id": 1,
+      "name": "1st sub task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 1
+    },
+    {
+      "completed": true,
+      "description": "2 subtask description",
+      "id": 2,
+      "name": "2nd sub task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 1
+    },
+    {
+      "completed": true,
+      "description": "3 subtask description",
+      "id": 3,
+      "name": "3rd subtask",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 1
+    },
+    {
+      "completed": true,
+      "description": "4 subtask description",
+      "id": 4,
+      "name": "4th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 1
+    },
+    {
+      "completed": true,
+      "description": "5 subtask description",
+      "id": 5,
+      "name": "5th Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 2
+    },
+    {
+      "completed": true,
+      "description": "6 subtask description",
+      "id": 6,
+      "name": "6th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 3
+    },
+    {
+      "completed": true,
+      "description": "7 subtask description",
+      "id": 7,
+      "name": "7th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 2
+    },
+    {
+      "completed": true,
+      "description": "8 subtask description",
+      "id": 8,
+      "name": "8th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 3
+    },
+    {
+      "completed": true,
+      "description": "9 subtask description",
+      "id": 9,
+      "name": "9th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 4
+    },
+    {
+      "completed": true,
+      "description": "10 subtask description",
+      "id": 10,
+      "name": "10th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 5
+    },
+    {
+      "completed": true,
+      "description": "11 subtask description",
+      "id": 11,
+      "name": "11th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 6
+    },
+    {
+      "completed": true,
+      "description": "12 subtask description",
+      "id": 12,
+      "name": "12th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 7
+    },
+    {
+      "completed": true,
+      "description": "13 subtask description",
+      "id": 13,
+      "name": "13th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 7
+    },
+    {
+      "completed": true,
+      "description": "14 subtask description",
+      "id": 14,
+      "name": "14th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 7
+    },
+    {
+      "completed": true,
+      "description": "15 subtask description",
+      "id": 15,
+      "name": "15th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 7
+    },
+    {
+      "completed": true,
+      "description": "16 subtask description",
+      "id": 16,
+      "name": "16th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 7
+    },
+    {
+      "completed": true,
+      "description": "17 subtask description",
+      "id": 17,
+      "name": "17th sub Task",
+      "timestamp": "2021-12-08T12:27:27.304982Z",
+      "updated": "2021-12-08T12:27:27.305009Z",
+      "user": 1,
+      "task": 6
     }
   ]
 }

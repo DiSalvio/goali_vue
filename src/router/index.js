@@ -1,4 +1,4 @@
-import Home from '@/views/Home.vue'
+import PageHome from '@/views/PageHome.vue'
 import PageGoalShow from '@/views/PageGoalShow.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -7,8 +7,8 @@ import sourceData from '@/data.json'
 const routes = [ 
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'PageHome',
+    component: PageHome
   },
   {
     path: '/goal/:id',
