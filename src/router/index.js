@@ -1,5 +1,6 @@
 import PageHome from '@/views/PageHome.vue'
 import PageGoalShow from '@/views/PageGoalShow.vue'
+import PageTaskShow from '@/views/PageTaskShow.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import sourceData from '@/data.json'
@@ -11,18 +12,39 @@ const routes = [
     component: PageHome
   },
   {
-    path: '/goal/:id',
+    path: '/goal/:goalId',
     name: 'PageGoalShow',
     component: PageGoalShow,
     props: true,
     beforeEnter (to, from, next){
-      const goalExists = sourceData.goals.find(goal => goal.id === parseInt(to.params.id))
+      const goalExists = sourceData.goals.find(goal => goal.id === parseInt(to.params.goalId))
       if (goalExists) {
         next()
       } else {
         next({
           name: 'PageNotFound',
           params: { resource: 'goal', pathMatch: to.path.substring(1).split('/') },
+          query: to.query,
+          hash: to.hash
+        })
+      }
+    }
+  },
+  {
+    path: '/goal/:goalId/task/:taskId',
+    name: 'PageTaskShow',
+    component: PageTaskShow,
+    props: true,
+    beforeEnter (to, from, next){
+      const taskExists = sourceData.tasks
+        .filter(task => task.goal === parseInt(to.params.goalId))
+        .find(task => task.id === parseInt(to.params.taskId))
+      if (taskExists) {
+        next()
+      } else {
+        next({
+          name: 'PageNotFound',
+          params: { resource: 'task', pathMatch: to.path.substring(1).split('/') },
           query: to.query,
           hash: to.hash
         })
