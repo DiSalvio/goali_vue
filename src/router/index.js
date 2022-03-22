@@ -1,6 +1,7 @@
 import PageHome from '@/views/PageHome.vue'
 import PageGoalShow from '@/views/PageGoalShow.vue'
 import PageTaskShow from '@/views/PageTaskShow.vue'
+import PageSubTaskShow from '@/views/PageSubTaskShow.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import sourceData from '@/data.json'
@@ -45,6 +46,28 @@ const routes = [
         next({
           name: 'PageNotFound',
           params: { resource: 'task', pathMatch: to.path.substring(1).split('/') },
+          query: to.query,
+          hash: to.hash
+        })
+      }
+    }
+  },
+  {
+    path: '/goal/:goalId/task/:taskId/subtask/:subTaskId',
+    name: 'PageSubTaskShow',
+    component: PageSubTaskShow,
+    props: true,
+    beforeEnter (to, from, next){
+      const subTaskExists = sourceData.subTasks
+        .filter(subTask => subTask.goal === parseInt(to.params.goalId))
+        .filter(subTask => subTask.task === parseInt(to.params.taskId))
+        .find(subTask => subTask.id === parseInt(to.params.subTaskId))
+      if (subTaskExists) {
+        next()
+      } else {
+        next({
+          name: 'PageNotFound',
+          params: { resource: 'sub-task', pathMatch: to.path.substring(1).split('/') },
           query: to.query,
           hash: to.hash
         })

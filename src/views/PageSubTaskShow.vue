@@ -1,29 +1,27 @@
 <template>
   <div class="list-group-item">
     <div class="list-group-item-heading d-flex justify-content-between align-items-center">
-      <h2>{{task.name}}</h2>
-      <span v-if="task.completed" class="badge badge-secondary badge-pill">Done</span>
+      <h4>{{subTask.name}}</h4>
+      <span v-if="subTask.completed" class="badge badge-secondary badge-pill">Done</span>
       <span v-else class="badge badge-warning badge-pill">In Progress</span>
     </div>
-    <p class="list-group-item-light list-group-item-secondary">{{task.description}}</p>
-    <SubTaskList :subTasks="taskSubTasks"/>
+    <p class="list-group-item-light list-group-item-secondary">{{subTask.description}}</p>
   </div>
 </template> 
 
 <script>
 import sourceData from '@/data.json'
-import SubTaskList from '@/components/SubTaskList.vue'
 export default {
-  components: {
-    SubTaskList
-  },
   data () {
     return {
-      tasks: sourceData.tasks,
       subTasks: sourceData.subTasks
     }
   },
   props: {
+    subTaskId: {
+      required: true,
+      type: String
+    },
     taskId: {
       required: true,
       type: String
@@ -34,11 +32,8 @@ export default {
     }
   },
   computed: {
-    task () {
-      return this.tasks.find(task => task.id === parseInt(this.taskId))
-    },
-    taskSubTasks () {
-      return this.subTasks.filter(subTask => subTask.task === parseInt(this.taskId))
+    subTask () {
+      return this.subTasks.find(subTask => subTask.id === parseInt(this.subTaskId))
     }
   }
 }

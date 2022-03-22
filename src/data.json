@@ -100,7 +100,7 @@
       "goal": 3
     }
   ],
-  "sub_tasks": [
+  "subTasks": [
     {
       "completed": true,
       "description": "1 subtask description",
@@ -109,7 +109,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 1
+      "task": 1,
+      "goal": 1
     },
     {
       "completed": true,
@@ -119,7 +120,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 1
+      "task": 1,
+      "goal": 1
     },
     {
       "completed": true,
@@ -129,7 +131,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 1
+      "task": 1,
+      "goal": 1
     },
     {
       "completed": true,
@@ -139,7 +142,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 1
+      "task": 1,
+      "goal": 1
     },
     {
       "completed": true,
@@ -149,7 +153,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 2
+      "task": 2,
+      "goal": 1
     },
     {
       "completed": true,
@@ -159,7 +164,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 3
+      "task": 3,
+      "goal": 1
     },
     {
       "completed": true,
@@ -169,7 +175,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 2
+      "task": 2,
+      "goal": 1
     },
     {
       "completed": true,
@@ -179,7 +186,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 3
+      "task": 3,
+      "goal": 1
     },
     {
       "completed": true,
@@ -189,7 +197,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 4
+      "task": 4,
+      "goal": 2
     },
     {
       "completed": true,
@@ -199,7 +208,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 5
+      "task": 5,
+      "goal": 3
     },
     {
       "completed": true,
@@ -209,7 +219,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 6
+      "task": 6,
+      "goal": 2
     },
     {
       "completed": true,
@@ -219,7 +230,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 7
+      "task": 7,
+      "goal": 3
     },
     {
       "completed": true,
@@ -229,7 +241,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 7
+      "task": 7,
+      "goal": 3
     },
     {
       "completed": true,
@@ -239,7 +252,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 7
+      "task": 7,
+      "goal": 3
     },
     {
       "completed": true,
@@ -249,7 +263,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 7
+      "task": 7,
+      "goal": 3
     },
     {
       "completed": true,
@@ -259,7 +274,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 7
+      "task": 7,
+      "goal": 3
     },
     {
       "completed": true,
@@ -269,7 +285,8 @@
       "timestamp": "2021-12-08T12:27:27.304982Z",
       "updated": "2021-12-08T12:27:27.305009Z",
       "user": 1,
-      "task": 6
+      "task": 6,
+      "goal": 2
     }
   ]
 }
