@@ -1,18 +1,16 @@
 <template>
   <div class="list-group-item">
-    <h5 class="text-muted">Add a new goal</h5>
-    <form @submit.prevent="saveGoal">
+    <h5 class="text-muted">Add a new sub-task</h5>
+    <form @submit.prevent="addSubTask">
       <div class="form-group">
-        <label for="newName">Goal Name</label>
+        <label for="newName">Sub-task Name</label>
         <input v-model="newName" type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label>Goal Description</label>
+        <label for="newDescription">Sub-task Description</label>
         <input v-model="newDescription" type="text" class="form-control">
       </div>
-      <div>
-        <button type="submit" class="btn btn-primary">Add Goal</button>
-      </div>
+      <button type="submit" class="btn btn-primary">Add sub-task</button>
     </form>
   </div>
 </template>
@@ -26,14 +24,12 @@ export default {
     }
   },
   methods: {
-    saveGoal() {
-      const newGoal = {
+    addSubTask () {
+      const newSubTask = {
         name: this.newName,
         description: this.newDescription
       }
-
-      this.$emit('addGoal', { newGoal })
-
+      this.$emit('addSubTask', { newSubTask })
       this.newName = ""
       this.newDescription = ""
     }

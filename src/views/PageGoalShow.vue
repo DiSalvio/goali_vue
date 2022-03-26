@@ -6,16 +6,21 @@
       <span v-else class="badge badge-warning badge-pill">In Progress</span>
     </div>
     <p class="list-group-item-light list-group-item-secondary">{{goal.description}}</p>
-    <TaskList :tasks="goalTasks"/>
+    <div class="container list-group">
+      <TaskList v-if="goalTasks.length != 0" :tasks="goalTasks"/>
+      <TaskAdd @addTask="saveTask"/>
+    </div>
   </div>
 </template> 
 
 <script>
 import sourceData from '@/data.json'
 import TaskList from '@/components/TaskList.vue'
+import TaskAdd from '@/components/TaskAdd.vue'
 export default {
   components: {
-    TaskList
+    TaskList,
+    TaskAdd
   },
   data() {
     return {
@@ -35,6 +40,17 @@ export default {
     },
     goalTasks() {
       return this.tasks.filter(task => task.goal === parseInt(this.goalId))
+    }
+  },
+  methods: {
+    saveTask (eventData) {
+      const newTask = {
+        ...eventData.newTask,
+        completed: false,
+        id: this.tasks[this.tasks.length - 1].id + 1,
+        goal: parseInt(this.goalId)
+      }
+      this.tasks.push(newTask)
     }
   }
 }

@@ -6,16 +6,21 @@
       <span v-else class="badge badge-warning badge-pill">In Progress</span>
     </div>
     <p class="list-group-item-light list-group-item-secondary">{{task.description}}</p>
-    <SubTaskList :subTasks="taskSubTasks"/>
+    <div class="container list-group">
+      <SubTaskList v-if="taskSubTasks.length != 0" :subTasks="taskSubTasks"/>
+      <SubTaskAdd @addSubTask="saveSubTask"/>
+    </div>
   </div>
 </template> 
 
 <script>
 import sourceData from '@/data.json'
 import SubTaskList from '@/components/SubTaskList.vue'
+import SubTaskAdd from '@/components/SubTaskAdd.vue'
 export default {
   components: {
-    SubTaskList
+    SubTaskList,
+    SubTaskAdd
   },
   data () {
     return {
@@ -39,6 +44,18 @@ export default {
     },
     taskSubTasks () {
       return this.subTasks.filter(subTask => subTask.task === parseInt(this.taskId))
+    }
+  },
+  methods: {
+    saveSubTask (eventData) {
+      const newSubTask = {
+        ...eventData.newSubTask,
+        completed: false,
+        id: this.subTasks[this.subTasks.length - 1].id + 1,
+        goal: parseInt(this.goalId),
+        task: parseInt(this.taskId)
+      }
+      this.subTasks.push(newSubTask)
     }
   }
 }

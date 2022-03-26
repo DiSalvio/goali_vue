@@ -1,6 +1,6 @@
 <template>
   <div class="container list-group">
-    <GoalList :goals="goals"/>
+    <GoalList v-if="goals.length != 0" :goals="goals"/>
     <GoalAdd @addGoal="saveGoal"/>
   </div>
 </template>
