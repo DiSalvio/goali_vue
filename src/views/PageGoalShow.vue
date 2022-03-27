@@ -1,12 +1,17 @@
 <template>
   <div class="list-group-item">
-    <div class="list-group-item-heading d-flex justify-content-between align-items-center">
-      <h2>{{goal.name}}</h2>
-      <span v-if="goal.completed" class="badge badge-secondary badge-pill">Done</span>
-      <span v-else class="badge badge-warning badge-pill">In Progress</span>
+    <div class="list-group-item-heading">
+      <div class="d-flex w-100 justify-content-between align-items-center">
+        <h2 class="mb-1">{{goal.name}}</h2>
+        <span v-if="goal.completed" class="badge badge-secondary badge-pill">Done</span>
+        <span v-else class="badge badge-warning badge-pill">In Progress</span>
+      </div>
+      <div class="align-items-end d-flex w-100 justify-content-between">
+        <p class="my-2 list-group-item-light list-group-item-secondary">{{goal.description}}</p>
+        <AppDate :timestamp="goal.updated" class="badge badge-light badge-pill pull-right"/>
+      </div>
     </div>
-    <p class="list-group-item-light list-group-item-secondary">{{goal.description}}</p>
-    <div class="container list-group">
+    <div class="pt-3 container list-group">
       <TaskList v-if="goalTasks.length != 0" :tasks="goalTasks"/>
       <TaskAdd @addTask="saveTask"/>
     </div>

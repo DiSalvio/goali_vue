@@ -7,8 +7,8 @@
         <input v-model="newName" type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label>Goal Description</label>
-        <input v-model="newDescription" type="text" class="form-control">
+        <label for="newDescription">Goal Description</label>
+        <textarea @keyup.enter.prevent="saveGoal" v-model="newDescription" cols="30" rows="5" class="form-control"/>
       </div>
       <div>
         <button type="submit" class="btn btn-primary">Add Goal</button>
