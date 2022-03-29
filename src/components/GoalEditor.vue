@@ -34,7 +34,7 @@ export default {
   },
   emits: [
     "saveEditedGoal",
-    "finishEdit"
+    "finishEditingGoal"
   ],
   methods: {
     saveGoal () {
@@ -48,7 +48,7 @@ export default {
       }
 
       this.$emit('saveEditedGoal', { editedGoal })
-      this.$emit('finishEdit', {})
+      this.$emit('finishEditingGoal', {})
     }
   }
 }

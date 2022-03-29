@@ -35,7 +35,11 @@ export default {
         ...eventData.editedGoal,
         updated: new Date(Date.now()).toISOString()
       }
-      this.goals[this.goals.indexOf(this.goals.find(goal => goal.id === editedGoal.id))] = editedGoal
+      this.goals[
+        this.goals.indexOf(
+          this.goals.find(goal => goal.id === editedGoal.id)
+        )
+      ] = editedGoal
     }
   }
 }

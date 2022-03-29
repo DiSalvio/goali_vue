@@ -12,8 +12,12 @@
         </h2>
         <div class="flex-column text-right">
           <div>
-            <button @click="editGoal(goal.id)" class="badge badge-pill"><font-awesome-icon icon="user-pen"/></button>
-            <button class="badge badge-pill"><font-awesome-icon icon="trash"/></button>
+            <button @click="editGoal(goal.id)" class="badge badge-pill">
+              <font-awesome-icon icon="user-pen"/>
+            </button>
+            <button class="badge badge-pill">
+              <font-awesome-icon icon="trash"/>
+            </button>
           </div>
           <span v-if="goal.completed" class="badge badge-secondary badge-pill">Done</span>
           <span v-else class="badge badge-warning badge-pill">In Progress</span>
@@ -25,7 +29,7 @@
       </div>
     </div>
     <div v-else>
-      <GoalEditor :goal="goal" @finishEdit="finishEdit" @saveEditedGoal="saveEditedGoal"/>
+      <GoalEditor :goal="goal" @finishEditingGoal="finishEditingGoal" @saveEditedGoal="saveEditedGoal"/>
     </div>
   </div>
 </template>
@@ -55,7 +59,7 @@ export default {
     editGoal (goalId) {
       this.editingGoalId = goalId
     },
-    finishEdit () {
+    finishEditingGoal () {
       this.editingGoalId = null
     },
     saveEditedGoal (eventData) {

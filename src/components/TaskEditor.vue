@@ -1,0 +1,56 @@
+<template>
+  <form @submit.prevent="saveTask" class="p-2">
+    <div class="form-group">
+      <div class="d-flex w-100">
+        <label for="editName" class="mr-auto">Task Name</label>
+        <button type="submit" class="badge badge-pill mb-1"><font-awesome-icon icon="floppy-disk"/></button>
+        <button class="badge badge-pill mb-1"><font-awesome-icon icon="trash"/></button>
+      </div>
+      <input v-model="editName" v-focus type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="editDescription">Task Description</label>
+      <textarea @keyup.enter.prevent="saveTask" v-model="editDescription" cols="30" rows="5" class="form-control"/>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Save Task</button>
+    </div>
+  </form>
+</template>
+
+<script>
+export default {
+  props: {
+    task: {
+      required: true,
+      type: Object
+    }
+  },
+  data () {
+    return {
+      editName: this.task.name,
+      editDescription: this.task.description
+    }
+  },
+  emits: [
+    "saveEditedTask",
+    "finishEditingTask"
+  ],
+  methods: {
+    saveTask () {
+      const editedTask = {
+        name: this.editName,
+        description: this.editDescription,
+        completed: this.task.completed,
+        id: this.task.id,
+        goal: this.task.goal,
+        user: this.task.user,
+        timestamp: this.task.timestamp
+      }
+
+      this.$emit('saveEditedTask', { editedTask })
+      this.$emit('finishEditingTask', {})
+    }
+  }
+}
+</script>
