@@ -1,8 +1,8 @@
 <template>
   <div class="container list-group">
     <GoalList
-      v-if="goals.length != 0"
-      :goals="goals"
+      v-if="activeGoals.length != 0"
+      :goals="activeGoals"
       @saveEditedGoal="saveGoal"
       @updateGoalCompletion="updateGoalCompletion"
     />
@@ -24,6 +24,11 @@ export default {
       goals: sourceData.goals
     }
   },
+  computed: {
+    activeGoals () {
+      return this.goals.filter(goal => goal.removed === false)
+    }
+  },
   methods: {
     addGoal (eventData) {
       const goal = {
@@ -32,7 +37,8 @@ export default {
         id: this.goals[this.goals.length - 1].id + 1,
         user: 1,
         updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString()
+        timestamp: new Date(Date.now()).toISOString(),
+        removed: false
       }
       this.goals.push(goal)
     },
@@ -47,16 +53,16 @@ export default {
         )
       ] = editedGoal
     },
-  updateGoalCompletion (eventData) {
-    const updatedGoal = {
-      ...eventData.updatedGoal
+    updateGoalCompletion (eventData) {
+      const updatedGoal = {
+        ...eventData.updatedGoal
+      }
+      this.goals[
+        this.goals.indexOf(
+          this.goals.find(goal => goal.id === updatedGoal.id)
+        )
+      ] = updatedGoal
     }
-    this.goals[
-      this.goals.indexOf(
-        this.goals.find(goal => goal.id === updatedGoal.id)
-      )
-    ] = updatedGoal
-  }
   }
 }
 </script>

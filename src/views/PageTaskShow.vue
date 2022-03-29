@@ -44,8 +44,8 @@
     </div>
     <div class="pt-3 container list-group">
       <SubTaskList
-        v-if="taskSubTasks.length != 0"
-        :subTasks="taskSubTasks"
+        v-if="activeTaskSubTasks.length != 0"
+        :subTasks="activeTaskSubTasks"
         @saveEditedSubTask="saveEditedSubTask"
         @updateSubTaskCompletion="updateSubTaskCompletion"
       />
@@ -88,6 +88,9 @@ export default {
     },
     taskSubTasks () {
       return this.subTasks.filter(subTask => subTask.task === parseInt(this.taskId))
+    },
+    activeTaskSubTasks () {
+      return this.taskSubTasks.filter(subTask => subTask.removed === false)
     }
   },
   methods: {
@@ -115,7 +118,8 @@ export default {
         id: this.subTasks[this.subTasks.length - 1].id + 1,
         goal: parseInt(this.goalId),
         task: parseInt(this.taskId),
-        user: this.task.user
+        user: this.task.user,
+        removed: false
       }
       this.subTasks.push(newSubTask)
     },

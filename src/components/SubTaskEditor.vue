@@ -39,14 +39,9 @@ export default {
   methods: {
     saveSubTask () {
       const editedSubTask = {
+        ...this.subTask,
         name: this.editName,
-        description: this.editDescription,
-        completed: this.subTask.completed,
-        id: this.subTask.id,
-        goal: this.subTask.goal,
-        task: this.subTask.task,
-        user: this.subTask.user,
-        timestamp: this.subTask.timestamp
+        description: this.editDescription
       }
 
       this.$emit('saveEditedSubTask', { editedSubTask })

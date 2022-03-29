@@ -44,8 +44,8 @@
     </div>
     <div class="pt-3 container list-group">
       <TaskList
-        v-if="goalTasks.length != 0"
-        :tasks="goalTasks"
+        v-if="activeGoalTasks.length != 0"
+        :tasks="activeGoalTasks"
         @saveEditedTask="saveEditedTask"
         @updateTaskCompletion="updateTaskCompletion"
       />
@@ -82,8 +82,11 @@ export default {
     goal () {
       return this.goals.find(goal => goal.id === parseInt(this.goalId))
     },
-    goalTasks() {
+    goalTasks () {
       return this.tasks.filter(task => task.goal === parseInt(this.goalId))
+    },
+    activeGoalTasks () {
+      return this.goalTasks.filter(goalTask => goalTask.removed === false)
     }
   },
   methods: {
@@ -112,7 +115,8 @@ export default {
         goal: parseInt(this.goalId),
         user: this.goal.user,
         updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString()
+        timestamp: new Date(Date.now()).toISOString(),
+        removed: false
       }
       this.tasks.push(newTask)
     },

@@ -39,12 +39,9 @@ export default {
   methods: {
     saveGoal () {
       const editedGoal = {
+        ...this.goal,
         name: this.editName,
-        description: this.editDescription,
-        completed: this.goal.completed,
-        id: this.goal.id,
-        user: this.goal.user,
-        timestamp: this.goal.timestamp
+        description: this.editDescription
       }
 
       this.$emit('saveEditedGoal', { editedGoal })
