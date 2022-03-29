@@ -5,6 +5,7 @@
       :goals="activeGoals"
       @saveEditedGoal="saveGoal"
       @updateGoalCompletion="updateGoalCompletion"
+      @updateGoalRemoval="updateGoalRemoval"
     />
     <GoalAdd @addGoal="addGoal"/>
   </div>
@@ -54,6 +55,16 @@ export default {
       ] = editedGoal
     },
     updateGoalCompletion (eventData) {
+      const updatedGoal = {
+        ...eventData.updatedGoal
+      }
+      this.goals[
+        this.goals.indexOf(
+          this.goals.find(goal => goal.id === updatedGoal.id)
+        )
+      ] = updatedGoal
+    },
+    updateGoalRemoval (eventData) {
       const updatedGoal = {
         ...eventData.updatedGoal
       }

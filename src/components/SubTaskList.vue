@@ -18,7 +18,7 @@
                 <font-awesome-icon icon="user-pen"/>
               </button>
               <button class="badge badge-pill">
-                <font-awesome-icon icon="trash"/>
+                <font-awesome-icon @click="removeSubTask(subTask)" icon="trash"/>
               </button>
             </div>
             <button
@@ -72,7 +72,11 @@ export default {
       editingSubTaskId: null
     }
   },
-  emits: [ "saveEditedSubTask", "updateSubTaskCompletion" ],
+  emits: [
+    "saveEditedSubTask",
+    "updateSubTaskCompletion",
+    "updateSubTaskRemoval"
+  ],
   methods: {
     editingThisSubTask (subTaskId) {
       return this.editingSubTaskId === subTaskId
@@ -92,6 +96,13 @@ export default {
         completed: !subTask.completed
       }
       this.$emit('updateSubTaskCompletion', { updatedSubTask })
+    },
+    removeSubTask (subTask) {
+      const updatedSubTask = {
+        ...subTask,
+        removed: true
+      }
+      this.$emit('updateSubTaskRemoval', { updatedSubTask })
     }
   }
 }

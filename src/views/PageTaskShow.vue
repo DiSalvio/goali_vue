@@ -48,6 +48,7 @@
         :subTasks="activeTaskSubTasks"
         @saveEditedSubTask="saveEditedSubTask"
         @updateSubTaskCompletion="updateSubTaskCompletion"
+        @updateSubTaskRemoval="updateSubTaskRemoval"
       />
       <SubTaskAdd @addSubTask="addSubTask"/>
     </div>
@@ -119,6 +120,8 @@ export default {
         goal: parseInt(this.goalId),
         task: parseInt(this.taskId),
         user: this.task.user,
+        timestamp: new Date(Date.now()).toISOString(),
+        updated: new Date(Date.now()).toISOString(),
         removed: false
       }
       this.subTasks.push(newSubTask)
@@ -138,6 +141,16 @@ export default {
       this.task.completed = !this.task.completed
     },
     updateSubTaskCompletion (eventData) {
+      const updatedSubTask = {
+        ...eventData.updatedSubTask
+      }
+      this.subTasks[
+        this.subTasks.indexOf(
+          this.subTasks.find(subTask => subTask.id === updatedSubTask.id)
+        )
+      ] = updatedSubTask
+    },
+    updateSubTaskRemoval (eventData) {
       const updatedSubTask = {
         ...eventData.updatedSubTask
       }

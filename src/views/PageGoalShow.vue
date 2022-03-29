@@ -48,6 +48,7 @@
         :tasks="activeGoalTasks"
         @saveEditedTask="saveEditedTask"
         @updateTaskCompletion="updateTaskCompletion"
+        @updateTaskRemoval="updateTaskRemoval"
       />
       <TaskAdd @addTask="addTask"/>
     </div>
@@ -135,6 +136,16 @@ export default {
       this.goal.completed = !this.goal.completed
     },
     updateTaskCompletion (eventData) {
+      const updatedTask = {
+        ...eventData.updatedTask
+      }
+      this.tasks[
+        this.tasks.indexOf(
+          this.tasks.find(task => task.id === updatedTask.id)
+        )
+      ] = updatedTask
+    },
+    updateTaskRemoval (eventData) {
       const updatedTask = {
         ...eventData.updatedTask
       }

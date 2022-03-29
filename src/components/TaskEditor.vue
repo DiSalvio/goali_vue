@@ -39,7 +39,7 @@ export default {
   methods: {
     saveTask () {
       const editedTask = {
-        ...this.Task,
+        ...this.task,
         name: this.editName,
         description: this.editDescription
       }

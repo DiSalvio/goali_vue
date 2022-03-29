@@ -15,7 +15,7 @@
             <button @click="editGoal(goal.id)" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button class="badge badge-pill">
+            <button @click="removeGoal(goal)" class="badge badge-pill">
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
@@ -51,7 +51,11 @@ export default {
       editingGoalId: null
     }
   },
-  emits: [ "saveEditedGoal", "updateGoalCompletion" ],
+  emits: [ 
+    "saveEditedGoal",
+    "updateGoalCompletion",
+    "updateGoalRemoval"
+  ],
   methods: {
     editingThisGoal (goalId) {
       return this.editingGoalId === goalId
@@ -71,6 +75,13 @@ export default {
         completed: !goal.completed
       }
       this.$emit('updateGoalCompletion', { updatedGoal })
+    },
+    removeGoal (goal) {
+      const updatedGoal = {
+        ...goal,
+        removed: true
+      }
+      this.$emit('updateGoalRemoval', { updatedGoal })
     }
   }
 }

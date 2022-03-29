@@ -16,7 +16,7 @@
               <button @click="editTask(task.id)" class="badge badge-pill">
                 <font-awesome-icon icon="user-pen"/>
               </button>
-              <button class="badge badge-pill">
+              <button @click="removeTask(task)" class="badge badge-pill">
                 <font-awesome-icon icon="trash"/>
               </button>
             </div>
@@ -71,7 +71,11 @@ export default {
       editingTaskId: null
     }
   },
-  emits: [ "saveEditedTask", "updateTaskCompletion" ],
+  emits: [
+    "saveEditedTask",
+    "updateTaskCompletion",
+    "updateTaskRemoval"
+  ],
   methods: {
     editingThisTask (taskId) {
       return this.editingTaskId === taskId
@@ -91,6 +95,13 @@ export default {
         completed: !task.completed
       }
       this.$emit('updateTaskCompletion', { updatedTask })
+    },
+    removeTask (task) {
+      const updatedTask = {
+        ...task,
+        removed: true
+      }
+      this.$emit('updateTaskRemoval', { updatedTask })
     }
   }
 }
