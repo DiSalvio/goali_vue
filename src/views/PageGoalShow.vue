@@ -17,15 +17,25 @@
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="p-2 my-2 list-group-item-light list-group-item-secondary">{{goal.description}}</p>
+        <p class="p-2 my-2 list-group-item-light list-group-item-secondary">
+          {{goal.description}}
+        </p>
         <AppDate :timestamp="goal.updated" class="badge badge-light badge-pill pull-right"/>
       </div>
     </div>
     <div v-else>
-      <GoalEditor :goal="goal" @finishEditingGoal="finishEditingGoal" @saveEditedGoal="saveEditedGoal"/>
+      <GoalEditor
+        :goal="goal"
+        @finishEditingGoal="finishEditingGoal"
+        @saveEditedGoal="saveEditedGoal"
+      />
     </div>
     <div class="pt-3 container list-group">
-      <TaskList v-if="goalTasks.length != 0" :tasks="goalTasks" @saveEditedTask="saveEditedTask"/>
+      <TaskList
+        v-if="goalTasks.length != 0"
+        :tasks="goalTasks"
+        @saveEditedTask="saveEditedTask"
+      />
       <TaskAdd @addTask="addTask"/>
     </div>
   </div>
@@ -87,6 +97,7 @@ export default {
         completed: false,
         id: this.tasks[this.tasks.length - 1].id + 1,
         goal: parseInt(this.goalId),
+        user: this.goal.user,
         updated: new Date(Date.now()).toISOString(),
         timestamp: new Date(Date.now()).toISOString()
       }

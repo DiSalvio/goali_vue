@@ -1,19 +1,42 @@
 <template>
   <div class="list-group-item">
-    <div class="list-group-item-heading">
+    <div v-if="!editingTask" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h2 class="mb-1">{{task.name}}</h2>
-        <span v-if="task.completed" class="badge badge-secondary badge-pill">Done</span>
-        <span v-else class="badge badge-warning badge-pill">In Progress</span>
+        <h2 class="mb-1 mr-auto p-2">{{task.name}}</h2>
+        <div class="flex-column text-right">
+          <div>
+            <button @click="editTask()" class="badge badge-pill">
+              <font-awesome-icon icon="user-pen"/>
+            </button>
+            <button class="badge badge-pill">
+              <font-awesome-icon icon="trash"/>
+            </button>
+          </div>
+          <span v-if="task.completed" class="badge badge-secondary badge-pill">Done</span>
+          <span v-else class="badge badge-warning badge-pill">In Progress</span>
+        </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="my-2 list-group-item-light list-group-item-secondary">{{task.description}}</p>
+        <p class="p-2 my-2 list-group-item-light list-group-item-secondary">
+          {{task.description}}
+        </p>
         <AppDate :timestamp="task.updated" class="badge badge-light badge-pill pull-right"/>
       </div>
     </div>
+    <div v-else>
+      <TaskEditor
+        :task="task"
+        @finishEditingTask="finishEditingTask"
+        @saveEditedTask="saveEditedTask"
+      />
+    </div>
     <div class="pt-3 container list-group">
-      <SubTaskList v-if="taskSubTasks.length != 0" :subTasks="taskSubTasks"/>
-      <SubTaskAdd @addSubTask="saveSubTask"/>
+      <SubTaskList
+        v-if="taskSubTasks.length != 0"
+        :subTasks="taskSubTasks"
+        @saveEditedSubTask="saveEditedSubTask"
+      />
+      <SubTaskAdd @addSubTask="addSubTask"/>
     </div>
   </div>
 </template> 
@@ -22,15 +45,18 @@
 import sourceData from '@/data.json'
 import SubTaskList from '@/components/SubTaskList.vue'
 import SubTaskAdd from '@/components/SubTaskAdd.vue'
+import TaskEditor from '@/components/TaskEditor.vue'
 export default {
   components: {
     SubTaskList,
-    SubTaskAdd
+    SubTaskAdd,
+    TaskEditor
   },
   data () {
     return {
       tasks: sourceData.tasks,
-      subTasks: sourceData.subTasks
+      subTasks: sourceData.subTasks,
+      editingTask: false
     }
   },
   props: {
@@ -52,15 +78,44 @@ export default {
     }
   },
   methods: {
-    saveSubTask (eventData) {
+    editTask () {
+      return this.editingTask = true
+    },
+    finishEditingTask () {
+      return this.editingTask = false
+    },
+    saveEditedTask (eventData) {
+      const editedTask = {
+        ...eventData.editedTask,
+        updated: new Date(Date.now()).toISOString()
+      }
+      this.tasks[
+        this.tasks.indexOf(
+          this.tasks.find(task => task.id === editedTask.id)
+        )
+      ] = editedTask
+    },
+    addSubTask (eventData) {
       const newSubTask = {
         ...eventData.newSubTask,
         completed: false,
         id: this.subTasks[this.subTasks.length - 1].id + 1,
         goal: parseInt(this.goalId),
-        task: parseInt(this.taskId)
+        task: parseInt(this.taskId),
+        user: this.task.user
       }
       this.subTasks.push(newSubTask)
+    },
+    saveEditedSubTask (eventData) {
+      const editedSubTask = {
+        ...eventData.editedSubTask,
+        updated: new Date(Date.now()).toISOString()
+      }
+      this.subTasks[
+        this.subTasks.indexOf(
+          this.subTasks.find(subTask => subTask.id === editedSubTask.id)
+        )
+      ] = editedSubTask
     }
   }
 }

@@ -25,6 +25,7 @@ export default {
         ...eventData.newGoal,
         completed: false,
         id: this.goals[this.goals.length - 1].id + 1,
+        user: 1,
         updated: new Date(Date.now()).toISOString(),
         timestamp: new Date(Date.now()).toISOString()
       }
