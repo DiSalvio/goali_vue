@@ -12,8 +12,20 @@
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
-          <span v-if="goal.completed" class="badge badge-secondary badge-pill">Done</span>
-          <span v-else class="badge badge-warning badge-pill">In Progress</span>
+          <button
+            v-if="goal.completed"
+            class="badge badge-secondary badge-pill"
+            @click="toggleGoalCompletion()"
+          >
+            Done
+          </button>
+          <button
+            v-else
+            class="badge badge-warning badge-pill"
+            @click="toggleGoalCompletion()"
+          >
+            In Progress
+          </button>
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
@@ -35,6 +47,7 @@
         v-if="goalTasks.length != 0"
         :tasks="goalTasks"
         @saveEditedTask="saveEditedTask"
+        @updateTaskCompletion="updateTaskCompletion"
       />
       <TaskAdd @addTask="addTask"/>
     </div>
@@ -113,6 +126,19 @@ export default {
           this.tasks.find(task => task.id === editedTask.id)
         )
       ] = editedTask
+    },
+    toggleGoalCompletion () {
+      this.goal.completed = !this.goal.completed
+    },
+    updateTaskCompletion (eventData) {
+      const updatedTask = {
+        ...eventData.updatedTask
+      }
+      this.tasks[
+        this.tasks.indexOf(
+          this.tasks.find(task => task.id === updatedTask.id)
+        )
+      ] = updatedTask
     }
   }
 }

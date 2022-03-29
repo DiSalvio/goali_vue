@@ -19,8 +19,8 @@
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
-          <span v-if="goal.completed" class="badge badge-secondary badge-pill">Done</span>
-          <span v-else class="badge badge-warning badge-pill">In Progress</span>
+          <button v-if="goal.completed" @click="toggleGoalCompletion(goal)" class="badge badge-secondary badge-pill">Done</button>
+          <button v-else @click="toggleGoalCompletion(goal)" class="badge badge-warning badge-pill">In Progress</button>
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
@@ -51,7 +51,7 @@ export default {
       editingGoalId: null
     }
   },
-  emits: [ "saveEditedGoal" ],
+  emits: [ "saveEditedGoal", "updateGoalCompletion" ],
   methods: {
     editingThisGoal (goalId) {
       return this.editingGoalId === goalId
@@ -64,6 +64,13 @@ export default {
     },
     saveEditedGoal (eventData) {
       this.$emit('saveEditedGoal', eventData)
+    },
+    toggleGoalCompletion (goal) {
+      const updatedGoal = {
+        ...goal,
+        completed: !goal.completed
+      }
+      this.$emit('updateGoalCompletion', { updatedGoal })
     }
   }
 }

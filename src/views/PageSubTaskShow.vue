@@ -12,8 +12,20 @@
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
-          <span v-if="subTask.completed" class="badge badge-secondary badge-pill">Done</span>
-          <span v-else class="badge badge-warning badge-pill">In Progress</span>
+          <button
+            v-if="subTask.completed"
+            class="badge badge-secondary badge-pill"
+            @click="toggleSubTaskCompletion()"
+          >
+            Done
+          </button>
+          <button
+            v-else
+            class="badge badge-warning badge-pill"
+            @click="toggleSubTaskCompletion"
+          >
+            In Progress
+          </button>
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
@@ -82,6 +94,9 @@ export default {
           this.subTasks.find(subTask => subTask.id === editedSubTask.id)
         )
       ] = editedSubTask
+    },
+    toggleSubTaskCompletion() {
+      this.subTask.completed = !this.subTask.completed
     }
   }
 }

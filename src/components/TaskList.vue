@@ -20,8 +20,20 @@
                 <font-awesome-icon icon="trash"/>
               </button>
             </div>
-            <span v-if="task.completed" class="badge badge-secondary badge-pill">Done</span>
-            <span v-else class="badge badge-warning badge-pill">In Progress</span>
+            <button
+              v-if="task.completed"
+              class="badge badge-secondary badge-pill"
+              @click="toggleTaskCompletion(task)"
+            >
+              Done
+            </button>
+            <button
+              v-else
+              class="badge badge-warning badge-pill"
+              @click="toggleTaskCompletion(task)"
+            >
+              In Progress
+            </button>
           </div>
         </div>
         <div class="align-items-end d-flex w-100100 justify-content-between">
@@ -59,7 +71,7 @@ export default {
       editingTaskId: null
     }
   },
-  emits: [ "saveEditedTask" ],
+  emits: [ "saveEditedTask", "updateTaskCompletion" ],
   methods: {
     editingThisTask (taskId) {
       return this.editingTaskId === taskId
@@ -72,6 +84,13 @@ export default {
     },
     saveEditedTask (eventData) {
       this.$emit('saveEditedTask', eventData)
+    },
+    toggleTaskCompletion (task) {
+      const updatedTask = {
+        ...task,
+        completed: !task.completed
+      }
+      this.$emit('updateTaskCompletion', { updatedTask })
     }
   }
 }

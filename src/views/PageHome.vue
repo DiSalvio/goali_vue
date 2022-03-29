@@ -1,6 +1,11 @@
 <template>
   <div class="container list-group">
-    <GoalList v-if="goals.length != 0" :goals="goals" @saveEditedGoal="saveGoal"/>
+    <GoalList
+      v-if="goals.length != 0"
+      :goals="goals"
+      @saveEditedGoal="saveGoal"
+      @updateGoalCompletion="updateGoalCompletion"
+    />
     <GoalAdd @addGoal="addGoal"/>
   </div>
 </template>
@@ -41,7 +46,17 @@ export default {
           this.goals.find(goal => goal.id === editedGoal.id)
         )
       ] = editedGoal
+    },
+  updateGoalCompletion (eventData) {
+    const updatedGoal = {
+      ...eventData.updatedGoal
     }
+    this.goals[
+      this.goals.indexOf(
+        this.goals.find(goal => goal.id === updatedGoal.id)
+      )
+    ] = updatedGoal
+  }
   }
 }
 </script>

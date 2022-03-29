@@ -21,8 +21,20 @@
                 <font-awesome-icon icon="trash"/>
               </button>
             </div>
-            <span v-if="subTask.completed" class="badge badge-secondary badge-pill">Done</span>
-            <span v-else class="badge badge-warning badge-pill">In Progress</span>
+            <button
+              v-if="subTask.completed"
+              class="badge badge-secondary badge-pill"
+              @click="toggleSubTaskCompletion(subTask)"
+            >
+              Done
+            </button>
+            <button
+              v-else
+              class="badge badge-warning badge-pill"
+              @click="toggleSubTaskCompletion(subTask)"
+            >
+              In Progress
+            </button>
           </div>
         </div>
         <div class="align-items-end d-flex w-100 justify-content-between">
@@ -60,7 +72,7 @@ export default {
       editingSubTaskId: null
     }
   },
-  emits: [ "saveEditedSubTask" ],
+  emits: [ "saveEditedSubTask", "updateSubTaskCompletion" ],
   methods: {
     editingThisSubTask (subTaskId) {
       return this.editingSubTaskId === subTaskId
@@ -73,6 +85,13 @@ export default {
     },
     saveEditedSubTask (eventData) {
       this.$emit('saveEditedSubTask', eventData)
+    },
+    toggleSubTaskCompletion (subTask) {
+      const updatedSubTask = {
+        ...subTask,
+        completed: !subTask.completed
+      }
+      this.$emit('updateSubTaskCompletion', { updatedSubTask })
     }
   }
 }
