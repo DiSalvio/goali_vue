@@ -8,8 +8,10 @@
             <button @click="editSubTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button class="badge badge-pill">
-              <font-awesome-icon icon="trash"/>
+            <button @click="removeSubTask()" class="badge badge-pill">
+              <router-link class="text-danger" :to="{name: 'PageTaskShow', params: {goalId: goalId, taskId: taskId}}">
+                <font-awesome-icon icon="trash"/>
+              </router-link>
             </button>
           </div>
           <button
@@ -95,8 +97,19 @@ export default {
         )
       ] = editedSubTask
     },
-    toggleSubTaskCompletion() {
+    toggleSubTaskCompletion () {
       this.subTask.completed = !this.subTask.completed
+    },
+    removeSubTask () {
+      const updatedSubTask = {
+        ...this.subTask,
+        removed: true
+      }
+      this.subTasks[
+        this.subTasks.indexOf(
+          this.subTasks.find(subTask => subTask.id === updatedSubTask.id)
+        )
+      ] = updatedSubTask
     }
   }
 }

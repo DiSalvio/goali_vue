@@ -8,8 +8,10 @@
             <button @click="editTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button class="badge badge-pill">
-              <font-awesome-icon icon="trash"/>
+            <button @click="removeTask" class="badge badge-pill">
+              <router-link class="text-danger" :to="{name: 'PageGoalShow', params: {goalId: goalId}}">
+                <font-awesome-icon icon="trash"/>
+              </router-link>
             </button>
           </div>
           <button
@@ -111,6 +113,17 @@ export default {
           this.tasks.find(task => task.id === editedTask.id)
         )
       ] = editedTask
+    },
+    removeTask () {
+      const updatedTask = {
+        ...this.task,
+        removed: true
+      }
+      this.tasks[
+        this.tasks.indexOf(
+          this.tasks.find(task => task.id === updatedTask.id)
+        )
+      ] = updatedTask
     },
     addSubTask (eventData) {
       const newSubTask = {

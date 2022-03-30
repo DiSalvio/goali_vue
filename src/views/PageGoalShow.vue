@@ -5,11 +5,12 @@
         <h2 class="mb-1 mr-auto p-2">{{goal.name}}</h2>
         <div class="flex-column text-right">
           <div>
-            <button @click="editGoal()" class="badge badge-pill">
-              <font-awesome-icon icon="user-pen"/>
+            <button @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>
             </button>
-            <button class="badge badge-pill">
-              <font-awesome-icon icon="trash"/>
+            <button @click="removeGoal" class="badge badge-pill">
+              <router-link class="text-danger" :to="{name: 'PageHome'}">
+                <font-awesome-icon icon="trash"/>
+              </router-link>
             </button>
           </div>
           <button
@@ -154,6 +155,17 @@ export default {
           this.tasks.find(task => task.id === updatedTask.id)
         )
       ] = updatedTask
+    },
+    removeGoal () {
+      const updatedGoal = {
+        ...this.goal,
+        removed: true
+      }
+      this.goals[
+        this.goals.indexOf(
+          this.goals.find(goal => goal.id === updatedGoal.id)
+        )
+      ] = updatedGoal
     }
   }
 }
