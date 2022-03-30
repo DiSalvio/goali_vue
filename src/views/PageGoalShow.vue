@@ -2,7 +2,7 @@
   <div class="list-group-item">
     <div v-if="!editingGoal" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h2 class="mb-1 mr-auto p-2">{{goal.name}}</h2>
+        <h2 class="mb-1 mr-auto p-2" :class="{ 'text-muted': goal.completed }">{{goal.name}}</h2>
         <div class="flex-column text-right">
           <div>
             <button @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>

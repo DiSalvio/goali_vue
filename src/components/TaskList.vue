@@ -2,46 +2,21 @@
   <div class="pl-3">
     <h3 class="text-muted">Tasks</h3>
     <div v-for="task in tasks" :key="task.id" class="list-group-item">
-      <div v-if="!editingThisTask(task.id)" class="list-group-item-heading">
-        <div class="d-flex w-100 justify-content-between align-items-center">
-          <h4 class="mb-1 mr-auto p-2">
-            <router-link
-              :to="{name: 'PageTaskShow', params: {goalId: task.goal, taskId: task.id}}"
-            >
-              {{task.name}}
-            </router-link>
-          </h4>
-          <div class="flex-column text-right">
-            <div>
-              <button @click="editTask(task.id)" class="badge badge-pill">
-                <font-awesome-icon icon="user-pen"/>
-              </button>
-              <button @click="removeTask(task)" class="badge badge-pill text-danger">
-                <font-awesome-icon icon="trash"/>
-              </button>
-            </div>
-            <button
-              v-if="task.completed"
-              class="badge badge-secondary badge-pill"
-              @click="toggleTaskCompletion(task)"
-            >
-              Done
-            </button>
-            <button
-              v-else
-              class="badge badge-warning badge-pill"
-              @click="toggleTaskCompletion(task)"
-            >
-              In Progress
-            </button>
-          </div>
-        </div>
-        <div class="align-items-end d-flex w-100100 justify-content-between">
-          <p class="p-2 my-2 list-group-item-light list-group-item-secondary">
-            {{task.description}}
-          </p>
-          <AppDate :timestamp="task.updated" class="badge badge-light badge-pill pull-right"/>
-        </div>
+      <div v-if="!editingThisTask(task.id)">
+        <TaskCompleted
+          :task="task"
+          v-if="task.completed"
+          @editTask="editTask"
+          @removeTask="removeTask"
+          @toggleTaskCompletion="toggleTaskCompletion"
+        />
+        <TaskInProgress
+          :task="task"
+          v-else
+          @editTask="editTask"
+          @removeTask="removeTask"
+          @toggleTaskCompletion="toggleTaskCompletion"
+        />
       </div>
       <div v-else>
         <TaskEditor
@@ -56,9 +31,13 @@
 
 <script>
 import TaskEditor from "@/components/TaskEditor.vue"
+import TaskCompleted from "@/components/TaskCompleted.vue"
+import TaskInProgress from "@/components/TaskInProgress.vue"
 export default {
   components: {
-    TaskEditor
+    TaskEditor,
+    TaskCompleted,
+    TaskInProgress
   },
   props: {
     tasks: {
@@ -80,8 +59,8 @@ export default {
     editingThisTask (taskId) {
       return this.editingTaskId === taskId
     },
-    editTask (taskId) {
-      this.editingTaskId = taskId
+    editTask (eventData) {
+      this.editingTaskId = eventData.taskId
     },
     finishEditingTask () {
       this.editingTaskId = null
@@ -89,16 +68,16 @@ export default {
     saveEditedTask (eventData) {
       this.$emit('saveEditedTask', eventData)
     },
-    toggleTaskCompletion (task) {
+    toggleTaskCompletion (eventData) {
       const updatedTask = {
-        ...task,
-        completed: !task.completed
+        ...eventData.task,
+        completed: !eventData.task.completed
       }
       this.$emit('updateTaskCompletion', { updatedTask })
     },
-    removeTask (task) {
+    removeTask (eventData) {
       const updatedTask = {
-        ...task,
+        ...eventData.task,
         removed: true
       }
       this.$emit('updateTaskRemoval', { updatedTask })

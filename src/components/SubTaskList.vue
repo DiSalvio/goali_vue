@@ -2,47 +2,21 @@
   <div class="pl-3">
     <h4 class="text-muted">Sub-tasks</h4>
     <div v-for="subTask in subTasks" :key="subTask.id" class="list-group-item">
-      <div v-if="!editingThisSubTask(subTask.id)" class="list-group-item-heading">
-        <div class="d-flex w-100 justify-content-between align-items-center">
-          <h5 class="mb-1 mr-auto p-2">
-            <router-link
-              :to="{name: 'PageSubTaskShow',
-              params: {goalId: subTask.goal, taskId: subTask.task, subTaskId: subTask.id}}"
-            >
-              {{subTask.name}}
-            </router-link>
-          </h5>
-          <div class="flex-column text-right">
-            <div>
-              <button @click="editSubTask(subTask.id)" class="badge badge-pill">
-                <font-awesome-icon icon="user-pen"/>
-              </button>
-              <button class="badge badge-pill text-danger">
-                <font-awesome-icon @click="removeSubTask(subTask)" icon="trash"/>
-              </button>
-            </div>
-            <button
-              v-if="subTask.completed"
-              class="badge badge-secondary badge-pill"
-              @click="toggleSubTaskCompletion(subTask)"
-            >
-              Done
-            </button>
-            <button
-              v-else
-              class="badge badge-warning badge-pill"
-              @click="toggleSubTaskCompletion(subTask)"
-            >
-              In Progress
-            </button>
-          </div>
-        </div>
-        <div class="align-items-end d-flex w-100 justify-content-between">
-          <p class="my-2 list-group-item-light list-group-item-secondary">
-            {{subTask.description}}
-          </p>
-          <AppDate :timestamp="subTask.updated" class="badge badge-light badge-pill pull-right"/>
-        </div>
+      <div v-if="!editingThisSubTask(subTask.id)">
+        <SubTaskCompleted
+          :subTask="subTask"
+          v-if="subTask.completed"
+          @editSubTask="editSubTask"
+          @removeSubTask="removeSubTask"
+          @toggleSubTaskCompletion="toggleSubTaskCompletion"
+        />
+        <SubTaskInProgress
+          :subTask="subTask"
+          v-else
+          @editSubTask="editSubTask"
+          @removeSubTask="removeSubTask"
+          @toggleSubTaskCompletion="toggleSubTaskCompletion"
+        />
       </div>
       <div v-else>
         <SubTaskEditor
@@ -57,9 +31,13 @@
 
 <script>
 import SubTaskEditor from "@/components/SubTaskEditor.vue"
+import SubTaskCompleted from "@/components/SubTaskCompleted.vue"
+import SubTaskInProgress from "@/components/SubTaskInProgress.vue"
 export default {
   components: {
-    SubTaskEditor
+    SubTaskEditor,
+    SubTaskCompleted,
+    SubTaskInProgress
   },
   props: {
     subTasks: {
@@ -81,8 +59,8 @@ export default {
     editingThisSubTask (subTaskId) {
       return this.editingSubTaskId === subTaskId
     },
-    editSubTask (subTaskId) {
-      this.editingSubTaskId = subTaskId
+    editSubTask (eventData) {
+      this.editingSubTaskId = eventData.subTaskId
     },
     finishEditingSubTask () {
       this.editingSubTaskId = null
@@ -90,16 +68,16 @@ export default {
     saveEditedSubTask (eventData) {
       this.$emit('saveEditedSubTask', eventData)
     },
-    toggleSubTaskCompletion (subTask) {
+    toggleSubTaskCompletion (eventData) {
       const updatedSubTask = {
-        ...subTask,
-        completed: !subTask.completed
+        ...eventData.subTask,
+        completed: !eventData.subTask.completed
       }
       this.$emit('updateSubTaskCompletion', { updatedSubTask })
     },
-    removeSubTask (subTask) {
+    removeSubTask (eventData) {
       const updatedSubTask = {
-        ...subTask,
+        ...eventData.subTask,
         removed: true
       }
       this.$emit('updateSubTaskRemoval', { updatedSubTask })

@@ -2,7 +2,7 @@
   <div class="list-group-item">
     <div v-if="!editingTask" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h2 class="mb-1 mr-auto p-2">{{task.name}}</h2>
+        <h2 class="mb-1 mr-auto p-2" :class="{ 'text-muted': task.completed }">{{task.name}}</h2>
         <div class="flex-column text-right">
           <div>
             <button @click="editTask()" class="badge badge-pill">
