@@ -16,7 +16,7 @@
               <button @click="editTask(task.id)" class="badge badge-pill">
                 <font-awesome-icon icon="user-pen"/>
               </button>
-              <button @click="removeTask(task)" class="badge badge-pill">
+              <button @click="removeTask(task)" class="badge badge-pill text-danger">
                 <font-awesome-icon icon="trash"/>
               </button>
             </div>

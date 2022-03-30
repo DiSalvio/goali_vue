@@ -7,6 +7,7 @@
       @updateGoalCompletion="updateGoalCompletion"
       @updateGoalRemoval="updateGoalRemoval"
     />
+    <h1 v-else>No active goals were found, add new goals below</h1>
     <GoalAdd @addGoal="addGoal"/>
   </div>
 </template>

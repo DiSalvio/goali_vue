@@ -17,7 +17,7 @@
               <button @click="editSubTask(subTask.id)" class="badge badge-pill">
                 <font-awesome-icon icon="user-pen"/>
               </button>
-              <button class="badge badge-pill">
+              <button class="badge badge-pill text-danger">
                 <font-awesome-icon @click="removeSubTask(subTask)" icon="trash"/>
               </button>
             </div>

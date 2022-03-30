@@ -15,7 +15,7 @@
             <button @click="editGoal(goal.id)" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeGoal(goal)" class="badge badge-pill">
+            <button @click="removeGoal(goal)" class="badge badge-pill text-danger">
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
