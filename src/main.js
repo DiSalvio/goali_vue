@@ -4,6 +4,7 @@ import router from '@/router/'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faFloppyDisk, faUserPen, faTrash, faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import store from "@/store/index.js"
 
 library.add(faFloppyDisk, faUserPen, faTrash, faRectangleXmark)
 
@@ -26,4 +27,5 @@ goaliApp.directive('focus', {
   }
 })
 
+goaliApp.use(store)
 goaliApp.mount('#app')
