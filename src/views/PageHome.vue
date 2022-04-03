@@ -1,12 +1,20 @@
 <template>
   <div class="container list-group">
-    <GoalList
-      v-if="activeGoals.length != 0"
-      :goals="activeGoals"
-      @saveEditedGoal="saveGoal"
-      @updateGoalCompletion="updateGoalCompletion"
-      @updateGoalRemoval="updateGoalRemoval"
-    />
+    <div v-if="activeGoals.length != 0">
+      <h1 class="text-muted">Goals</h1>
+      <GoalList
+        :goals="activeInProgressGoals"
+        @saveEditedGoal="saveGoal"
+        @updateGoalCompletion="updateGoalCompletion"
+        @updateGoalRemoval="updateGoalRemoval"
+      />
+      <GoalList
+        :goals="activeCompletedGoals"
+        @saveEditedGoal="saveGoal"
+        @updateGoalCompletion="updateGoalCompletion"
+        @updateGoalRemoval="updateGoalRemoval"
+      />
+    </div>
     <h1 v-else>No active goals were found, add new goals below</h1>
     <GoalAdd @addGoal="addGoal"/>
   </div>
@@ -29,6 +37,12 @@ export default {
   computed: {
     activeGoals () {
       return this.goals.filter(goal => goal.removed === false)
+    },
+    activeCompletedGoals () {
+      return this.activeGoals.filter(goal => goal.completed === true)
+    },
+    activeInProgressGoals () {
+      return this.activeGoals.filter(goal => goal.completed === false)
     }
   },
   methods: {

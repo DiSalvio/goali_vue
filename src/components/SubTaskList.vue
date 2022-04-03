@@ -1,6 +1,5 @@
 <template>
   <div class="pl-3">
-    <h4 class="text-muted">Sub-tasks</h4>
     <div v-for="subTask in subTasks" :key="subTask.id" class="list-group-item">
       <div v-if="!editingThisSubTask(subTask.id)">
         <SubTaskCompleted

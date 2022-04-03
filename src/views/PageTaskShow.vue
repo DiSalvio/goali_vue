@@ -45,13 +45,21 @@
       />
     </div>
     <div class="pt-3 container list-group">
-      <SubTaskList
-        v-if="activeTaskSubTasks.length != 0"
-        :subTasks="activeTaskSubTasks"
-        @saveEditedSubTask="saveEditedSubTask"
-        @updateSubTaskCompletion="updateSubTaskCompletion"
-        @updateSubTaskRemoval="updateSubTaskRemoval"
-      />
+      <div v-if="activeTaskSubTasks.length != 0">
+        <h4 class="text-muted">Sub-tasks</h4>
+        <SubTaskList
+          :subTasks="activeInProgressTaskSubTasks"
+          @saveEditedSubTask="saveEditedSubTask"
+          @updateSubTaskCompletion="updateSubTaskCompletion"
+          @updateSubTaskRemoval="updateSubTaskRemoval"
+        />
+        <SubTaskList
+          :subTasks="activeCompletedTaskSubTasks"
+          @saveEditedSubTask="saveEditedSubTask"
+          @updateSubTaskCompletion="updateSubTaskCompletion"
+          @updateSubTaskRemoval="updateSubTaskRemoval"
+        />
+      </div>
       <SubTaskAdd @addSubTask="addSubTask"/>
     </div>
   </div>
@@ -94,6 +102,12 @@ export default {
     },
     activeTaskSubTasks () {
       return this.taskSubTasks.filter(subTask => subTask.removed === false)
+    },
+    activeInProgressTaskSubTasks () {
+      return this.activeTaskSubTasks.filter(subTask => subTask.completed === false)
+    },
+    activeCompletedTaskSubTasks () {
+      return this.activeTaskSubTasks.filter(subTask => subTask.completed === true)
     }
   },
   methods: {

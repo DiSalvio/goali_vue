@@ -1,6 +1,5 @@
 <template>
   <div class="pl-3">
-    <h3 class="text-muted">Tasks</h3>
     <div v-for="task in tasks" :key="task.id" class="list-group-item">
       <div v-if="!editingThisTask(task.id)">
         <TaskCompleted

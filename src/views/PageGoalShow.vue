@@ -44,13 +44,21 @@
       />
     </div>
     <div class="pt-3 container list-group">
-      <TaskList
-        v-if="activeGoalTasks.length != 0"
-        :tasks="activeGoalTasks"
-        @saveEditedTask="saveEditedTask"
-        @updateTaskCompletion="updateTaskCompletion"
-        @updateTaskRemoval="updateTaskRemoval"
-      />
+      <div v-if="activeGoalTasks.length != 0">
+        <h3 class="text-muted">Tasks</h3>
+        <TaskList
+          :tasks="activeInProgressGoalTasks"
+          @saveEditedTask="saveEditedTask"
+          @updateTaskCompletion="updateTaskCompletion"
+          @updateTaskRemoval="updateTaskRemoval"
+        />
+        <TaskList
+          :tasks="activeCompletedGoalTasks"
+          @saveEditedTask="saveEditedTask"
+          @updateTaskCompletion="updateTaskCompletion"
+          @updateTaskRemoval="updateTaskRemoval"
+        />
+      </div>
       <TaskAdd @addTask="addTask"/>
     </div>
   </div>
@@ -89,6 +97,12 @@ export default {
     },
     activeGoalTasks () {
       return this.goalTasks.filter(goalTask => goalTask.removed === false)
+    },
+    activeCompletedGoalTasks () {
+      return this.activeGoalTasks.filter(goalTask => goalTask.completed === true)
+    },
+    activeInProgressGoalTasks () {
+      return this.activeGoalTasks.filter(goalTask => goalTask.completed === false)
     }
   },
   methods: {

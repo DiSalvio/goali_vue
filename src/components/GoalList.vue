@@ -1,5 +1,4 @@
 <template>
-  <h1 class="text-muted">Goals</h1>
   <div v-for="goal in goals" :key="goal.id" class="list-group-item">
     <div v-if="!editingThisGoal(goal.id)">
       <GoalCompleted 
