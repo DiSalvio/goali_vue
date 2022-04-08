@@ -4,13 +4,13 @@
       <h1 class="text-muted">Goals</h1>
       <GoalList
         :goals="activeInProgressGoals"
-        @saveEditedGoal="saveGoal"
+        @saveEditedGoal="saveEditedGoal"
         @updateGoalCompletion="updateGoalCompletion"
         @updateGoalRemoval="updateGoalRemoval"
       />
       <GoalList
         :goals="activeCompletedGoals"
-        @saveEditedGoal="saveGoal"
+        @saveEditedGoal="saveEditedGoal"
         @updateGoalCompletion="updateGoalCompletion"
         @updateGoalRemoval="updateGoalRemoval"
       />
@@ -43,48 +43,16 @@ export default {
     })
   },
   methods: {
-    addGoal (eventData) {
-      const goal = {
-        ...eventData.newGoal,
-        completed: false,
-        id: this.goals[this.goals.length - 1].id + 1,
-        user: 1,
-        updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString(),
-        removed: false
-      }
-      this.goals.push(goal)
+    addGoal ({ newGoal }) {
+      this.$store.dispatch('createGoal', {
+        name: newGoal.name,
+        description: newGoal.description
+      })
     },
-    saveGoal (eventData) {
-      const editedGoal = {
-        ...eventData.editedGoal,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.goals[
-        this.goals.indexOf(
-          this.goals.find(goal => goal.id === editedGoal.id)
-        )
-      ] = editedGoal
-    },
-    updateGoalCompletion (eventData) {
-      const updatedGoal = {
-        ...eventData.updatedGoal
-      }
-      this.goals[
-        this.goals.indexOf(
-          this.goals.find(goal => goal.id === updatedGoal.id)
-        )
-      ] = updatedGoal
-    },
-    updateGoalRemoval (eventData) {
-      const updatedGoal = {
-        ...eventData.updatedGoal
-      }
-      this.goals[
-        this.goals.indexOf(
-          this.goals.find(goal => goal.id === updatedGoal.id)
-        )
-      ] = updatedGoal
+    saveEditedGoal ({ editedGoal }) {
+      this.$store.dispatch('saveEditedGoal', {
+        ...editedGoal
+      })
     }
   }
 }

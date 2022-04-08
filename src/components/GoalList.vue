@@ -62,18 +62,18 @@ export default {
       this.$emit('saveEditedGoal', eventData)
     },
     toggleGoalCompletion (eventData) {
-      const updatedGoal = {
+      const editedGoal = {
         ...eventData.goal,
         completed: !eventData.goal.completed
       }
-      this.$emit('updateGoalCompletion', { updatedGoal })
+      this.$emit('saveEditedGoal', { editedGoal })
     },
     removeGoal (eventData) {
-      const updatedGoal = {
+      const editedGoal = {
         ...eventData.goal,
         removed: true
       }
-      this.$emit('updateGoalRemoval', { updatedGoal })
+      this.$emit('saveEditedGoal', { editedGoal })
     }
   }
 }

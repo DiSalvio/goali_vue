@@ -7,7 +7,7 @@
           <div>
             <button @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeGoal" class="badge badge-pill">
+            <button @click="removeGoal(goal)" class="badge badge-pill">
               <router-link class="text-danger" :to="{name: 'PageHome'}">
                 <font-awesome-icon icon="trash"/>
               </router-link>
@@ -16,14 +16,14 @@
           <button
             v-if="goal.completed"
             class="badge badge-secondary badge-pill"
-            @click="toggleGoalCompletion()"
+            @click="toggleGoalCompletion(goal)"
           >
             Done
           </button>
           <button
             v-else
             class="badge badge-warning badge-pill"
-            @click="toggleGoalCompletion()"
+            @click="toggleGoalCompletion(goal)"
           >
             In Progress
           </button>
@@ -112,16 +112,22 @@ export default {
     finishEditingGoal () {
       return this.editingGoal = false
     },
-    saveEditedGoal (eventData) {
-      const editedGoal = {
-        ...eventData.editedGoal,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.goals[
-        this.goals.indexOf(
-          this.goals.find(goal => goal.id === editedGoal.id)
-        )
-      ] = editedGoal
+    saveEditedGoal ({ editedGoal }) {
+      this.$store.dispatch('saveEditedGoal', {
+        ...editedGoal
+      })
+    },
+    toggleGoalCompletion (goal) {
+      this.$store.dispatch('saveEditedGoal', {
+        ...goal,
+        completed: !this.goal.completed
+      })
+    },
+    removeGoal (goal) {
+      this.$store.dispatch('saveEditedGoal', {
+        ...goal,
+        removed: true
+      })
     },
     addTask (eventData) {
       const newTask = {
@@ -147,9 +153,6 @@ export default {
         )
       ] = editedTask
     },
-    toggleGoalCompletion () {
-      this.goal.completed = !this.goal.completed
-    },
     updateTaskCompletion (eventData) {
       const updatedTask = {
         ...eventData.updatedTask
@@ -169,17 +172,6 @@ export default {
           this.tasks.find(task => task.id === updatedTask.id)
         )
       ] = updatedTask
-    },
-    removeGoal () {
-      const updatedGoal = {
-        ...this.goal,
-        removed: true
-      }
-      this.goals[
-        this.goals.indexOf(
-          this.goals.find(goal => goal.id === updatedGoal.id)
-        )
-      ] = updatedGoal
     }
   }
 }
