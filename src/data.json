@@ -1,4 +1,28 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "is_active": true,
+      "date_joined": "2021-12-08 18:03:25.945844+08",
+      "last_login": "2021-12-09 10:15:08.858044+08",
+      "is_superuser": true,
+      "username": "stephendisalvio",
+      "first_name": "stephen",
+      "last_name": "disalvio",
+      "email": "stephendisalvio@pm.com"
+    },
+    {
+      "id": 2,
+      "is_active": true,
+      "date_joined": "2021-12-08 18:03:25.945844+08",
+      "last_login": "2021-12-09 10:15:08.858044+08",
+      "is_superuser": false,
+      "username": "jesus",
+      "first_name": "jesus",
+      "last_name": "christ",
+      "email": "jesus@christ.co"
+    }
+  ],
   "goals": [
     {
         "completed": true,

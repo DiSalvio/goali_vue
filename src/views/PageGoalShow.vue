@@ -90,19 +90,19 @@ export default {
   },
   computed: {
     goal () {
-      return this.goals.find(goal => goal.id === parseInt(this.goalId))
+      return this.$store.getters.goal(this.goalId)
     },
     goalTasks () {
-      return this.tasks.filter(task => task.goal === parseInt(this.goalId))
+      return this.$store.getters.goalTasks(this.goalId)
     },
     activeGoalTasks () {
-      return this.goalTasks.filter(goalTask => goalTask.removed === false)
+      return this.$store.getters.activeGoalTasks(this.goalTasks)
     },
     activeCompletedGoalTasks () {
-      return this.activeGoalTasks.filter(goalTask => goalTask.completed === true)
+      return this.$store.getters.activeCompletedGoalTasks(this.activeGoalTasks)
     },
     activeInProgressGoalTasks () {
-      return this.activeGoalTasks.filter(goalTask => goalTask.completed === false)
+      return this.$store.getters.activeInProgressGoalTasks(this.activeGoalTasks)
     }
   },
   methods: {

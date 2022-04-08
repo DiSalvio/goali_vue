@@ -24,6 +24,7 @@
 import sourceData from '@/data.json'
 import GoalList from '@/components/GoalList.vue'
 import GoalAdd from '@/components/GoalAdd.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     GoalList,
@@ -35,15 +36,11 @@ export default {
     }
   },
   computed: {
-    activeGoals () {
-      return this.goals.filter(goal => goal.removed === false)
-    },
-    activeCompletedGoals () {
-      return this.activeGoals.filter(goal => goal.completed === true)
-    },
-    activeInProgressGoals () {
-      return this.activeGoals.filter(goal => goal.completed === false)
-    }
+    ...mapGetters({
+      activeGoals: 'activeGoals',
+      activeCompletedGoals: 'activeCompletedGoals',
+      activeInProgressGoals: 'activeInProgressGoals'
+    })
   },
   methods: {
     addGoal (eventData) {

@@ -95,19 +95,19 @@ export default {
   },
   computed: {
     task () {
-      return this.tasks.find(task => task.id === parseInt(this.taskId))
+      return this.$store.getters.task(this.taskId)
     },
     taskSubTasks () {
-      return this.subTasks.filter(subTask => subTask.task === parseInt(this.taskId))
+      return this.$store.getters.taskSubTasks(this.taskId)
     },
     activeTaskSubTasks () {
-      return this.taskSubTasks.filter(subTask => subTask.removed === false)
-    },
-    activeInProgressTaskSubTasks () {
-      return this.activeTaskSubTasks.filter(subTask => subTask.completed === false)
+      return this.$store.getters.activeTaskSubTasks(this.taskSubTasks)
     },
     activeCompletedTaskSubTasks () {
-      return this.activeTaskSubTasks.filter(subTask => subTask.completed === true)
+      return this.$store.getters.activeCompletedTaskSubTasks(this.activeTaskSubTasks)
+    },
+    activeInProgressTaskSubTasks () {
+      return this.$store.getters.activeInProgressTaskSubTasks(this.activeTaskSubTasks)
     }
   },
   methods: {

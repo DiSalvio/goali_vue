@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     subTask () {
-      return this.subTasks.find(subTask => subTask.id === parseInt(this.subTaskId))
+      return this.$store.getters.subTask(this.subTaskId)
     }
   },
   methods: {
