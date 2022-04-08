@@ -48,7 +48,6 @@
 </template> 
 
 <script>
-import sourceData from '@/data.json'
 import SubTaskEditor from '@/components/SubTaskEditor.vue'
 export default {
   components: {
@@ -56,7 +55,6 @@ export default {
   },
   data () {
     return {
-      subTasks: sourceData.subTasks,
       editingSubTask: false
     }
   },

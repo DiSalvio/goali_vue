@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import sourceData from '@/data.json'
 import GoalList from '@/components/GoalList.vue'
 import GoalAdd from '@/components/GoalAdd.vue'
 import { mapGetters } from 'vuex'
@@ -25,11 +24,6 @@ export default {
   components: {
     GoalList,
     GoalAdd
-  },
-  data() {
-    return {
-      goals: sourceData.goals
-    }
   },
   computed: {
     ...mapGetters({

@@ -4,7 +4,8 @@ import PageTaskShow from '@/views/PageTaskShow.vue'
 import PageSubTaskShow from '@/views/PageSubTaskShow.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import sourceData from '@/data.json'
+import store from '@/store/index.js'
+import { findById, filterChildrenById } from '@/helpers/index.js'
 
 const routes = [ 
   {
@@ -18,7 +19,7 @@ const routes = [
     component: PageGoalShow,
     props: true,
     beforeEnter (to, from, next){
-      const goalExists = sourceData.goals.find(goal => goal.id === parseInt(to.params.goalId))
+      const goalExists = findById(store._state.data.goalModule.goals, to.params.goalId)
       if (goalExists) {
         next()
       } else {
@@ -37,9 +38,14 @@ const routes = [
     component: PageTaskShow,
     props: true,
     beforeEnter (to, from, next){
-      const taskExists = sourceData.tasks
-        .filter(task => task.goal === parseInt(to.params.goalId))
-        .find(task => task.id === parseInt(to.params.taskId))
+      const taskExists = findById(
+        filterChildrenById(
+          store._state.data.taskModule.tasks,
+          'goal',
+          to.params.goalId
+        ),
+        to.params.taskId
+      )
       if (taskExists) {
         next()
       } else {
@@ -58,10 +64,17 @@ const routes = [
     component: PageSubTaskShow,
     props: true,
     beforeEnter (to, from, next){
-      const subTaskExists = sourceData.subTasks
-        .filter(subTask => subTask.goal === parseInt(to.params.goalId))
-        .filter(subTask => subTask.task === parseInt(to.params.taskId))
-        .find(subTask => subTask.id === parseInt(to.params.subTaskId))
+      const subTaskExists = findById(
+        filterChildrenById(
+          filterChildrenById(
+            store._state.data.subTaskModule.subTasks,
+            'goal',
+            to.params.goalId),
+          'task',
+          to.params.taskId
+        ),
+        to.params.subTaskId
+      )
       if (subTaskExists) {
         next()
       } else {

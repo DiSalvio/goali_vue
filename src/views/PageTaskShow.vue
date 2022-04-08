@@ -62,7 +62,6 @@
 </template> 
 
 <script>
-import sourceData from '@/data.json'
 import SubTaskList from '@/components/SubTaskList.vue'
 import SubTaskAdd from '@/components/SubTaskAdd.vue'
 import TaskEditor from '@/components/TaskEditor.vue'
@@ -74,8 +73,6 @@ export default {
   },
   data () {
     return {
-      tasks: sourceData.tasks,
-      subTasks: sourceData.subTasks,
       editingTask: false
     }
   },

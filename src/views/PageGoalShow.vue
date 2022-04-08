@@ -61,7 +61,6 @@
 </template> 
 
 <script>
-import sourceData from '@/data.json'
 import TaskList from '@/components/TaskList.vue'
 import TaskAdd from '@/components/TaskAdd.vue'
 import GoalEditor from '@/components/GoalEditor.vue'
@@ -73,8 +72,6 @@ export default {
   },
   data() {
     return {
-      goals: sourceData.goals,
-      tasks: sourceData.tasks,
       editingGoal: false
     }
   },
