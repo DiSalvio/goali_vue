@@ -44,9 +44,7 @@ export default {
     }
   },
   emits: [ 
-    "saveEditedGoal",
-    "updateGoalCompletion",
-    "updateGoalRemoval"
+    "saveEditedGoal"
   ],
   methods: {
     editingThisGoal (goalId) {

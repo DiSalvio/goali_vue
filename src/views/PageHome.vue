@@ -5,14 +5,10 @@
       <GoalList
         :goals="activeInProgressGoals"
         @saveEditedGoal="saveEditedGoal"
-        @updateGoalCompletion="updateGoalCompletion"
-        @updateGoalRemoval="updateGoalRemoval"
       />
       <GoalList
         :goals="activeCompletedGoals"
         @saveEditedGoal="saveEditedGoal"
-        @updateGoalCompletion="updateGoalCompletion"
-        @updateGoalRemoval="updateGoalRemoval"
       />
     </div>
     <h1 v-else>No active goals were found, add new goals below</h1>
