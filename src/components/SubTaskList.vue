@@ -50,9 +50,7 @@ export default {
     }
   },
   emits: [
-    "saveEditedSubTask",
-    "updateSubTaskCompletion",
-    "updateSubTaskRemoval"
+    "saveEditedSubTask"
   ],
   methods: {
     editingThisSubTask (subTaskId) {
@@ -67,19 +65,19 @@ export default {
     saveEditedSubTask (eventData) {
       this.$emit('saveEditedSubTask', eventData)
     },
-    toggleSubTaskCompletion (eventData) {
-      const updatedSubTask = {
-        ...eventData.subTask,
-        completed: !eventData.subTask.completed
+    toggleSubTaskCompletion ({ subTask }) {
+      const editedSubTask = {
+        ...subTask,
+        completed: !subTask.completed
       }
-      this.$emit('updateSubTaskCompletion', { updatedSubTask })
+      this.$emit('saveEditedSubTask', { editedSubTask })
     },
-    removeSubTask (eventData) {
-      const updatedSubTask = {
-        ...eventData.subTask,
+    removeSubTask ({ subTask }) {
+      const editedSubTask = {
+        ...subTask,
         removed: true
       }
-      this.$emit('updateSubTaskRemoval', { updatedSubTask })
+      this.$emit('saveEditedSubTask', { editedSubTask })
     }
   }
 }

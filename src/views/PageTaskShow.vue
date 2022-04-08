@@ -50,14 +50,10 @@
         <SubTaskList
           :subTasks="activeInProgressTaskSubTasks"
           @saveEditedSubTask="saveEditedSubTask"
-          @updateSubTaskCompletion="updateSubTaskCompletion"
-          @updateSubTaskRemoval="updateSubTaskRemoval"
         />
         <SubTaskList
           :subTasks="activeCompletedTaskSubTasks"
           @saveEditedSubTask="saveEditedSubTask"
-          @updateSubTaskCompletion="updateSubTaskCompletion"
-          @updateSubTaskRemoval="updateSubTaskRemoval"
         />
       </div>
       <SubTaskAdd @addSubTask="addSubTask"/>
@@ -134,50 +130,16 @@ export default {
         completed: !task.completed
       })
     },
-    addSubTask (eventData) {
-      const newSubTask = {
-        ...eventData.newSubTask,
-        completed: false,
-        id: this.subTasks[this.subTasks.length - 1].id + 1,
+    addSubTask ({ newSubTask }) {
+      this.$store.dispatch('createSubTask', {
+        ...newSubTask,
         goal: parseInt(this.goalId),
         task: parseInt(this.taskId),
         user: this.task.user,
-        timestamp: new Date(Date.now()).toISOString(),
-        updated: new Date(Date.now()).toISOString(),
-        removed: false
-      }
-      this.subTasks.push(newSubTask)
+      })
     },
-    saveEditedSubTask (eventData) {
-      const editedSubTask = {
-        ...eventData.editedSubTask,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.subTasks[
-        this.subTasks.indexOf(
-          this.subTasks.find(subTask => subTask.id === editedSubTask.id)
-        )
-      ] = editedSubTask
-    },
-    updateSubTaskCompletion (eventData) {
-      const updatedSubTask = {
-        ...eventData.updatedSubTask
-      }
-      this.subTasks[
-        this.subTasks.indexOf(
-          this.subTasks.find(subTask => subTask.id === updatedSubTask.id)
-        )
-      ] = updatedSubTask
-    },
-    updateSubTaskRemoval (eventData) {
-      const updatedSubTask = {
-        ...eventData.updatedSubTask
-      }
-      this.subTasks[
-        this.subTasks.indexOf(
-          this.subTasks.find(subTask => subTask.id === updatedSubTask.id)
-        )
-      ] = updatedSubTask
+    saveEditedSubTask ({ editedSubTask }) {
+      this.$store.dispatch('saveEditedSubTask', editedSubTask) 
     }
   }
 }

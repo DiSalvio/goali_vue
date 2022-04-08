@@ -8,7 +8,7 @@
             <button @click="editSubTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeSubTask()" class="badge badge-pill">
+            <button @click="removeSubTask(subTask)" class="badge badge-pill">
               <router-link class="text-danger" :to="{name: 'PageTaskShow', params: {goalId: goalId, taskId: taskId}}">
                 <font-awesome-icon icon="trash"/>
               </router-link>
@@ -17,14 +17,14 @@
           <button
             v-if="subTask.completed"
             class="badge badge-secondary badge-pill"
-            @click="toggleSubTaskCompletion()"
+            @click="toggleSubTaskCompletion(subTask)"
           >
             Done
           </button>
           <button
             v-else
             class="badge badge-warning badge-pill"
-            @click="toggleSubTaskCompletion"
+            @click="toggleSubTaskCompletion(subTask)"
           >
             In Progress
           </button>
@@ -86,30 +86,22 @@ export default {
     finishEditingSubTask () {
       return this.editingSubTask = false
     },
-    saveEditedSubTask (eventData) {
-      const editedSubTask = {
-        ...eventData.editedSubTask,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.subTasks[
-        this.subTasks.indexOf(
-          this.subTasks.find(subTask => subTask.id === editedSubTask.id)
-        )
-      ] = editedSubTask
+    saveEditedSubTask ({ editedSubTask }) {
+      this.$store.dispatch('saveEditedSubTask', {
+        ...editedSubTask
+      })
     },
-    toggleSubTaskCompletion () {
-      this.subTask.completed = !this.subTask.completed
+    toggleSubTaskCompletion (subTask) {
+      this.$store.dispatch('saveEditedSubTask', {
+        ...subTask,
+        completed: !subTask.completed
+      })
     },
-    removeSubTask () {
-      const updatedSubTask = {
-        ...this.subTask,
+    removeSubTask (subTask) {
+      this.$store.dispatch('saveEditedSubTask', {
+        ...subTask,
         removed: true
-      }
-      this.subTasks[
-        this.subTasks.indexOf(
-          this.subTasks.find(subTask => subTask.id === updatedSubTask.id)
-        )
-      ] = updatedSubTask
+      })
     }
   }
 }
