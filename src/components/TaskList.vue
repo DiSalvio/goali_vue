@@ -67,19 +67,19 @@ export default {
     saveEditedTask (eventData) {
       this.$emit('saveEditedTask', eventData)
     },
-    toggleTaskCompletion (eventData) {
-      const updatedTask = {
-        ...eventData.task,
-        completed: !eventData.task.completed
+    toggleTaskCompletion ({ task }) {
+      const editedTask = {
+        ...task,
+        completed: !task.completed
       }
-      this.$emit('updateTaskCompletion', { updatedTask })
+      this.$emit('saveEditedTask', { editedTask })
     },
-    removeTask (eventData) {
-      const updatedTask = {
-        ...eventData.task,
+    removeTask ({ task }) {
+      const editedTask = {
+        ...task,
         removed: true
       }
-      this.$emit('updateTaskRemoval', { updatedTask })
+      this.$emit('saveEditedTask', { editedTask })
     }
   }
 }

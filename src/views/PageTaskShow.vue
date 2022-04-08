@@ -8,7 +8,7 @@
             <button @click="editTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeTask" class="badge badge-pill">
+            <button @click="removeTask(task)" class="badge badge-pill">
               <router-link class="text-danger" :to="{name: 'PageGoalShow', params: {goalId: goalId}}">
                 <font-awesome-icon icon="trash"/>
               </router-link>
@@ -17,14 +17,14 @@
           <button
             v-if="task.completed"
             class="badge badge-secondary badge-pill"
-            @click="toggleTaskCompletion()"
+            @click="toggleTaskCompletion(task)"
           >
             Done
           </button>
           <button
             v-else
             class="badge badge-warning badge-pill"
-            @click="toggleTaskCompletion()"
+            @click="toggleTaskCompletion(task)"
           >
             In Progress
           </button>
@@ -117,27 +117,22 @@ export default {
     finishEditingTask () {
       return this.editingTask = false
     },
-    saveEditedTask (eventData) {
-      const editedTask = {
-        ...eventData.editedTask,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.tasks[
-        this.tasks.indexOf(
-          this.tasks.find(task => task.id === editedTask.id)
-        )
-      ] = editedTask
+    saveEditedTask ({ editedTask }) {
+      this.$store.dispatch('saveEditedTask', {
+        ...editedTask
+      })
     },
-    removeTask () {
-      const updatedTask = {
-        ...this.task,
+    removeTask (task) {
+      this.$store.dispatch('saveEditedTask', {
+        ...task,
         removed: true
-      }
-      this.tasks[
-        this.tasks.indexOf(
-          this.tasks.find(task => task.id === updatedTask.id)
-        )
-      ] = updatedTask
+      })
+    },
+    toggleTaskCompletion(task) {
+      this.$store.dispatch('saveEditedTask', {
+        ...task,
+        completed: !task.completed
+      })
     },
     addSubTask (eventData) {
       const newSubTask = {
@@ -163,9 +158,6 @@ export default {
           this.subTasks.find(subTask => subTask.id === editedSubTask.id)
         )
       ] = editedSubTask
-    },
-    toggleTaskCompletion() {
-      this.task.completed = !this.task.completed
     },
     updateSubTaskCompletion (eventData) {
       const updatedSubTask = {

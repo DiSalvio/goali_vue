@@ -3,20 +3,23 @@ import {
   filterChildrenById,
   activeOnly,
   completedOnly,
-  inProgressOnly
+  inProgressOnly,
+  updateItemInArray
 } from '@/helpers/index.js'
+import sourceData from '@/data.json'
 
 const taskModule = {
   state () {
     return {
+      tasks: sourceData.tasks
     }
   },
   getters: {
-    task (state, getters, rootState) {
-      return (taskId) => findById(rootState.tasks, taskId)
+    task (state) {
+      return (taskId) => findById(state.tasks, taskId)
     },
-    goalTasks (state, getters, rootState) {
-      return (goalId) => filterChildrenById(rootState.tasks, 'goal', goalId)
+    goalTasks (state) {
+      return (goalId) => filterChildrenById(state.tasks, 'goal', goalId)
     },
     activeGoalTasks () {
       return (goalTasks) => activeOnly(goalTasks)
@@ -29,8 +32,30 @@ const taskModule = {
     }
   },
   actions: {
+    async createTask({ commit, state }, task) {
+      const newTask = {
+        ...task,
+        completed: false,
+        id: state.tasks[state.tasks.length - 1].id + 1,
+        updated: new Date(Date.now()).toISOString(),
+        timestamp: new Date(Date.now()).toISOString(),
+        removed: false
+      }
+      commit('pushTask', newTask)
+    },
+    async saveEditedTask({ commit }, editedTask) {
+      const updatedTask = {
+        ...editedTask,
+        updated: new Date(Date.now()).toISOString()
+      }
+      commit('updateTask', { item: updatedTask })
+    }
   },
   mutations: {
+    pushTask (state, newTask) {
+      state.tasks.push(newTask)
+    },
+    updateTask: updateItemInArray({ resource: 'tasks' })
   }
 }
 

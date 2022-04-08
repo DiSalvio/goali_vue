@@ -49,14 +49,10 @@
         <TaskList
           :tasks="activeInProgressGoalTasks"
           @saveEditedTask="saveEditedTask"
-          @updateTaskCompletion="updateTaskCompletion"
-          @updateTaskRemoval="updateTaskRemoval"
         />
         <TaskList
           :tasks="activeCompletedGoalTasks"
           @saveEditedTask="saveEditedTask"
-          @updateTaskCompletion="updateTaskCompletion"
-          @updateTaskRemoval="updateTaskRemoval"
         />
       </div>
       <TaskAdd @addTask="addTask"/>
@@ -129,49 +125,17 @@ export default {
         removed: true
       })
     },
-    addTask (eventData) {
-      const newTask = {
-        ...eventData.newTask,
-        completed: false,
-        id: this.tasks[this.tasks.length - 1].id + 1,
+    addTask ({ newTask }) {
+      this.$store.dispatch('createTask', {
+        ...newTask,
         goal: parseInt(this.goalId),
-        user: this.goal.user,
-        updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString(),
-        removed: false
-      }
-      this.tasks.push(newTask)
+        user: this.goal.user
+      })
     },
-    saveEditedTask (eventData) {
-      const editedTask = {
-        ...eventData.editedTask,
-        updated: new Date(Date.now()).toISOString()
-      }
-      this.tasks[
-        this.tasks.indexOf(
-          this.tasks.find(task => task.id === editedTask.id)
-        )
-      ] = editedTask
-    },
-    updateTaskCompletion (eventData) {
-      const updatedTask = {
-        ...eventData.updatedTask
-      }
-      this.tasks[
-        this.tasks.indexOf(
-          this.tasks.find(task => task.id === updatedTask.id)
-        )
-      ] = updatedTask
-    },
-    updateTaskRemoval (eventData) {
-      const updatedTask = {
-        ...eventData.updatedTask
-      }
-      this.tasks[
-        this.tasks.indexOf(
-          this.tasks.find(task => task.id === updatedTask.id)
-        )
-      ] = updatedTask
+    saveEditedTask ({ editedTask }) {
+      this.$store.dispatch('saveEditedTask', {
+        ...editedTask,
+      })
     }
   }
 }
