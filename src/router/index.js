@@ -1,3 +1,5 @@
+import PageSignUp from '@/views/PageSignUp.vue'
+import PageLogin from '@/views/PageLogin.vue'
 import PageHome from '@/views/PageHome.vue'
 import PageGoalShow from '@/views/PageGoalShow.vue'
 import PageTaskShow from '@/views/PageTaskShow.vue'
@@ -9,15 +11,32 @@ import { findById, filterChildrenById } from '@/helpers/index.js'
 
 const routes = [ 
   {
+    path: '/login',
+    name: 'PageLogin',
+    component: PageLogin,
+    props: true
+  },
+  {
+    path: '/signup',
+    name: 'PageSignUp',
+    component: PageSignUp
+  },
+  {
     path: '/',
     name: 'PageHome',
-    component: PageHome
+    component: PageHome,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/goal/:goalId',
     name: 'PageGoalShow',
     component: PageGoalShow,
     props: true,
+    meta: {
+      requiresAuth: true
+    },
     beforeEnter (to, from, next){
       const goalExists = findById(store._state.data.goalModule.goals, to.params.goalId)
       if (goalExists) {
@@ -37,6 +56,9 @@ const routes = [
     name: 'PageTaskShow',
     component: PageTaskShow,
     props: true,
+    meta: {
+      requiresAuth: true
+    },
     beforeEnter (to, from, next){
       const taskExists = findById(
         filterChildrenById(
@@ -63,6 +85,9 @@ const routes = [
     name: 'PageSubTaskShow',
     component: PageSubTaskShow,
     props: true,
+    meta: {
+      requiresAuth: true
+    },
     beforeEnter (to, from, next){
       const subTaskExists = findById(
         filterChildrenById(
@@ -95,7 +120,18 @@ const routes = [
   }
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !store.getters.getToken) {
+    return {
+      name: 'PageLogin'
+    }
+  }
+})
+
+
+export default router
