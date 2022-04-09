@@ -31,9 +31,6 @@ const goalModule = {
   },
   actions: {
     async fetchGoals ({ commit }, token) {
-      console.log('fetch')
-      console.log(token)
-      console.log(process.env)
       return await axios.get(process.env.VUE_APP_API_URL + "goals/", {
         headers: {
           'Authorization': 'Token ' + token

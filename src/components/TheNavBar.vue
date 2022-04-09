@@ -14,7 +14,6 @@ export default {
   },
   methods: {
     async logOut () {
-      console.log(this.token)
       const loggedOut = await this.$store.dispatch('logOut', this.token)
       if (loggedOut) {
         this.$router.push({name: 'PageLogin'})

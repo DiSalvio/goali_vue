@@ -69,7 +69,6 @@ export default {
       })
       if (signUpStatus) {
         this.signUpFailed = false
-        console.log(signUpStatus)
         this.$router.push({ name: 'PageLogin', params: { signUpSuccess: true }})
       } else {
         this.signUpFailed = true
