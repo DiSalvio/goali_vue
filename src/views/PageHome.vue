@@ -44,6 +44,9 @@ export default {
         ...editedGoal
       })
     }
+  },
+  created () {
+    this.$store.dispatch('fetchGoals', localStorage.getItem('token'))
   }
 }
 </script>

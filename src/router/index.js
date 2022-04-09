@@ -14,12 +14,18 @@ const routes = [
     path: '/login',
     name: 'PageLogin',
     component: PageLogin,
-    props: true
+    props: true,
+    meta: {
+      noAuthOnly: true
+    }
   },
   {
     path: '/signup',
     name: 'PageSignUp',
-    component: PageSignUp
+    component: PageSignUp,
+    meta: {
+      noAuthOnly: true
+    }
   },
   {
     path: '/',
@@ -126,9 +132,13 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  if (to.meta.requiresAuth && !store.getters.getToken) {
+  if (to.meta.requiresAuth && !localStorage.getItem('token')) {
     return {
       name: 'PageLogin'
+    }
+  } else if (to.meta.noAuthOnly && localStorage.getItem('token')) {
+    return {
+      name: 'PageHome'
     }
   }
 })

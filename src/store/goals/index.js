@@ -6,11 +6,12 @@ import {
   updateItemInArray
 } from '@/helpers/index.js'
 import sourceData from '@/data.json'
+import axios from 'axios'
 
 const goalModule = {
   state () {
     return {
-      goals: sourceData.goals,
+      goals: [],
       tasks: sourceData.tasks
     }
   },
@@ -29,6 +30,22 @@ const goalModule = {
     }
   },
   actions: {
+    async fetchGoals ({ commit }, token) {
+      console.log('fetch')
+      console.log(token)
+      console.log(process.env)
+      return await axios.get(process.env.VUE_APP_API_URL + "goals/", {
+        headers: {
+          'Authorization': 'Token ' + token
+        }
+      })
+        .then((response) => {
+          commit('setGoals', response.data)
+      })
+        .catch((e) => {
+          console.log(e)
+      })
+    },
     async createGoal ({ commit, state }, { name, description }) {
       const newGoal = {
         name,
@@ -51,6 +68,9 @@ const goalModule = {
     }
   },
   mutations: {
+    setGoals (state, goals) {
+      state.goals = goals
+    },
     pushGoal (state, newGoal) {
       state.goals.push(newGoal)
     },
