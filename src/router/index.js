@@ -68,15 +68,12 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    beforeEnter (to, from, next){
-      const taskExists = findById(
-        filterChildrenById(
-          store._state.data.taskModule.tasks,
-          'goal',
-          to.params.goalId
-        ),
-        to.params.taskId
-      )
+    async beforeEnter (to, from, next){
+      const taskExists = await store.dispatch('fetchTask', {
+        goalId: to.params.goalId,
+        taskId: to.params.taskId,
+        token: localStorage.getItem('token')
+      })
       if (taskExists) {
         next()
       } else {

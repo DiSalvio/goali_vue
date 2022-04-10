@@ -1,8 +1,8 @@
 <template>
   <div class="pl-3">
     <div class="list-group-item">
-      <h5 class="text-muted">Add a new sub-task</h5>
-      <form @submit.prevent="saveSubTask">
+      <h5 class="text-muted p-2">Add a new sub-task</h5>
+      <form @submit.prevent="saveSubTask" class="p-2">
         <div class="form-group">
           <label for="newName">Sub-task Name</label>
           <input v-model="newName" type="text" class="form-control">

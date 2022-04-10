@@ -4,14 +4,16 @@ import {
   activeOnly,
   completedOnly,
   inProgressOnly,
-  updateItemInArray
+  updateItemInArray,
+  urlHelper,
+  authHeader
 } from '@/helpers/index.js'
-import sourceData from '@/data.json'
+import axios from 'axios'
 
 const subTaskModule = {
   state () {
     return {
-      subTasks: sourceData.subTasks
+      subTasks: []
     }
   },
   getters: {
@@ -32,26 +34,61 @@ const subTaskModule = {
     }
   },
   actions: {
-    async createSubTask({ commit, state }, subTask) {
-      const newSubTask = {
-        ...subTask,
-        completed: false,
-        id: state.subTasks[state.subTasks.length - 1].id + 1,
-        timestamp: new Date(Date.now()).toISOString(),
-        updated: new Date(Date.now()).toISOString(),
-        removed: false
-      }
-      commit('pushSubTask', newSubTask)
+    async fetchTaskSubTasks({ commit }, { goalId, taskId, token }) {
+      return await axios.get(urlHelper({ resource: 'subtasks', ids: [ goalId, taskId ] }),
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('setSubTasks', response.data)
+          return true
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
     },
-    async saveEditedSubTask({ commit }, editedSubTask) {
-      const updatedSubTask = {
-        ...editedSubTask,
-        updated: new Date(Date.now()).toISOString()
-      }
-      commit('updateSubTask', { item: updatedSubTask })
+    async createSubTask({ commit }, { newSubTask, token }) {
+      return await axios.post(
+        urlHelper({ resource: 'subtasks', ids: [ newSubTask.goal, newSubTask.task ]}),
+        {
+          ...newSubTask,
+          completed: false,
+          timestamp: new Date(Date.now()).toISOString(),
+          updated: new Date(Date.now()).toISOString(),
+          removed: false
+        },
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('pushSubTask', response.data)
+          return true
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    async saveEditedSubTask({ commit }, { editedSubTask, token }) {
+      return await axios.put(
+        urlHelper({ ids: [ editedSubTask.goal, editedSubTask.task, editedSubTask.id ] }),
+        {
+          ...editedSubTask
+        },
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('updateSubTask', { item: response.data })
+          return true
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
     }
   },
   mutations: {
+    setSubTasks (state, subTasks) {
+      state.subTasks = subTasks
+    },
     pushSubTask(state, newSubTask) {
       state.subTasks.push(newSubTask)
     },

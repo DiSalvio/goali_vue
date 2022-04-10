@@ -33,6 +33,19 @@ const taskModule = {
     }
   },
   actions: {
+    async fetchTask ({ dispatch }, { goalId, taskId, token }) {
+      return await axios.get(urlHelper({ ids: [ goalId, taskId ] }),
+        authHeader(token)
+      )
+      .then((response) => {
+        dispatch('upsertTask', response.data)
+        return true
+      })
+      .catch((e) => {
+        console.log(e)
+        return false
+      })
+    },
     async fetchGoalTasks ({ commit }, { goalId, token }) {
       return await axios.get(urlHelper({ resource: 'tasks', ids: [ goalId ] }),
         authHeader(token)
@@ -77,6 +90,13 @@ const taskModule = {
           console.log(error)
           return false
         })
+    },
+    upsertTask ({ state, commit }, task) {
+      if (findById(state.tasks, task)) {
+        commit('updateTask', { item: task })
+      } else {
+        commit('pushTask', task)
+      }
     }
   },
   mutations: {

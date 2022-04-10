@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="align-items-end d-flex w-100 justify-content-between">
-      <p class="my-2 list-group-item-light list-group-item-secondary">
+      <p class="my-2 list-group-item-light list-group-item-secondary p-2">
         {{subTask.description}}
       </p>
       <AppDate :timestamp="subTask.updated" class="badge badge-light badge-pill pull-right"/>
