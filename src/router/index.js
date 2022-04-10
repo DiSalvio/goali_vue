@@ -43,8 +43,11 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    beforeEnter (to, from, next){
-      const goalExists = findById(store._state.data.goalModule.goals, to.params.goalId)
+    async beforeEnter (to, from, next){
+      const goalExists = await store.dispatch('fetchGoal', { 
+        goalId: to.params.goalId,
+        token: localStorage.getItem('token')
+      })
       if (goalExists) {
         next()
       } else {

@@ -1,17 +1,18 @@
 import {
   findById,
-  filterChildrenById,
   activeOnly,
   completedOnly,
   inProgressOnly,
-  updateItemInArray
+  updateItemInArray,
+  urlHelper,
+  authHeader
 } from '@/helpers/index.js'
-import sourceData from '@/data.json'
+import axios from 'axios'
 
 const taskModule = {
   state () {
     return {
-      tasks: sourceData.tasks
+      tasks: []
     }
   },
   getters: {
@@ -19,7 +20,7 @@ const taskModule = {
       return (taskId) => findById(state.tasks, taskId)
     },
     goalTasks (state) {
-      return (goalId) => filterChildrenById(state.tasks, 'goal', goalId)
+      return state.tasks
     },
     activeGoalTasks () {
       return (goalTasks) => activeOnly(goalTasks)
@@ -32,26 +33,56 @@ const taskModule = {
     }
   },
   actions: {
-    async createTask({ commit, state }, task) {
-      const newTask = {
-        ...task,
+    async fetchGoalTasks ({ commit }, { goalId, token }) {
+      return await axios.get(urlHelper({ resource: 'tasks', ids: [ goalId ] }),
+        authHeader(token)
+    )
+      .then((response) => {
+        commit('setTasks', response.data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+    },
+    async createTask ({ commit }, { newTask, token }) {
+      return await axios.post(urlHelper({ resource: 'tasks', ids:  [ newTask.goal ]  }), {
+        ...newTask,
         completed: false,
-        id: state.tasks[state.tasks.length - 1].id + 1,
         updated: new Date(Date.now()).toISOString(),
         timestamp: new Date(Date.now()).toISOString(),
         removed: false
-      }
-      commit('pushTask', newTask)
+      }, 
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('pushTask',  response.data)
+          return response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
-    async saveEditedTask({ commit }, editedTask) {
-      const updatedTask = {
+    async saveEditedTask ({ commit }, { editedTask, token }) {
+      return await axios.put(urlHelper({ ids: [editedTask.goal, editedTask.id] }), {
         ...editedTask,
         updated: new Date(Date.now()).toISOString()
-      }
-      commit('updateTask', { item: updatedTask })
+      },
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('updateTask', { item: response.data })
+          return true
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
     }
   },
   mutations: {
+    setTasks (state, tasks) {
+      state.tasks = tasks
+    },
     pushTask (state, newTask) {
       state.tasks.push(newTask)
     },

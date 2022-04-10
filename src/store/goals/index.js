@@ -17,7 +17,7 @@ const goalModule = {
   },
   getters: {
     goal (state) {
-      return (goalId) => findById(state.goals, goalId) 
+      return (goalId) => findById(state.goals, goalId)
     },
     activeGoals (state) {
       return activeOnly(state.goals)
@@ -37,6 +37,17 @@ const goalModule = {
         })
         .catch((e) => {
           console.log(e)
+        })
+    },
+    async fetchGoal ({ dispatch }, { goalId, token }) {
+      return await axios.get(urlHelper({ ids: [ goalId ]}), authHeader(token))
+        .then((response) => {
+          dispatch('upsertGoal', response.data)
+          return response.data
+        })
+        .catch((e) => {
+          console.log(e)
+          return null
         })
     },
     async createGoal ({ commit }, { name, description, token }) {
@@ -67,10 +78,19 @@ const goalModule = {
       )
         .then((response) => {
           commit('updateGoal', { item: response.data })
+          return true
         })
         .catch((error) => {
           console.log(error)
+          return false
         })
+    },
+    upsertGoal ({ state, commit }, goal) {
+      if (findById(state.goals, goal)) {
+        commit('updateGoal', { item: goal })
+      } else {
+        commit('pushGoal', goal)
+      }
     }
   },
   mutations: {

@@ -7,10 +7,8 @@
           <div>
             <button @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeGoal(goal)" class="badge badge-pill">
-              <router-link class="text-danger" :to="{name: 'PageHome'}">
-                <font-awesome-icon icon="trash"/>
-              </router-link>
+            <button @click="removeGoal(goal)" class="badge badge-pill text-danger">
+              <font-awesome-icon icon="trash"/>
             </button>
           </div>
           <button
@@ -86,7 +84,7 @@ export default {
       return this.$store.getters.goal(this.goalId)
     },
     goalTasks () {
-      return this.$store.getters.goalTasks(this.goalId)
+      return this.$store.getters.goalTasks
     },
     activeGoalTasks () {
       return this.$store.getters.activeGoalTasks(this.goalTasks)
@@ -107,33 +105,54 @@ export default {
     },
     saveEditedGoal ({ editedGoal }) {
       this.$store.dispatch('saveEditedGoal', {
-        ...editedGoal
+        editedGoal,
+        token: localStorage.getItem('token')
       })
     },
-    toggleGoalCompletion (goal) {
+    toggleGoalCompletion (editedGoal) {
       this.$store.dispatch('saveEditedGoal', {
-        ...goal,
-        completed: !this.goal.completed
+        editedGoal: {
+          ...editedGoal,
+          completed: !this.goal.completed
+        },
+        token: localStorage.getItem('token')
       })
     },
-    removeGoal (goal) {
-      this.$store.dispatch('saveEditedGoal', {
-        ...goal,
-        removed: true
+    async removeGoal (editedGoal) {
+      const isRemoved = await this.$store.dispatch('saveEditedGoal', {
+        editedGoal: {
+          ...editedGoal,
+          removed: true
+        },
+        token: localStorage.getItem('token')
       })
+      if (isRemoved) {
+        this.$router.push({ name: 'PageHome' })
+      }
     },
     addTask ({ newTask }) {
       this.$store.dispatch('createTask', {
-        ...newTask,
-        goal: parseInt(this.goalId),
-        user: this.goal.user
+        newTask: {
+          ...newTask,
+          goal: parseInt(this.goalId),
+        },
+        token: localStorage.getItem('token')
       })
     },
     saveEditedTask ({ editedTask }) {
       this.$store.dispatch('saveEditedTask', {
-        ...editedTask,
+        editedTask: {
+          ...editedTask,
+        },
+        token: localStorage.getItem('token')
       })
     }
+  },
+  created () {
+    this.$store.dispatch('fetchGoalTasks', {
+      goalId: this.goalId,
+      token: localStorage.getItem('token')
+    })
   }
 }
 </script>
