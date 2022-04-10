@@ -34,6 +34,19 @@ const subTaskModule = {
     }
   },
   actions: {
+    async fetchSubTask({ dispatch }, { goalId, taskId, subTaskId, token }) {
+      return await axios.get(urlHelper({ ids: [ goalId, taskId, subTaskId ] }),
+        authHeader(token)
+      )
+        .then((response) => {
+          dispatch('upsertSubTask', response.data)
+          return true
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
+    },
     async fetchTaskSubTasks({ commit }, { goalId, taskId, token }) {
       return await axios.get(urlHelper({ resource: 'subtasks', ids: [ goalId, taskId ] }),
         authHeader(token)
@@ -83,6 +96,13 @@ const subTaskModule = {
           console.log(error)
           return false
         })
+    },
+    upsertSubTask ({ state, commit }, subTask) {
+      if (findById(state.subTasks, subTask.id)) {
+        commit('updateSubTask', { item: subTask })
+      } else {
+        commit('pushSubTask', subTask)
+      }
     }
   },
   mutations: {

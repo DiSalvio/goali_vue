@@ -8,10 +8,8 @@
             <button @click="editSubTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeSubTask(subTask)" class="badge badge-pill">
-              <router-link class="text-danger" :to="{name: 'PageTaskShow', params: {goalId: goalId, taskId: taskId}}">
-                <font-awesome-icon icon="trash"/>
-              </router-link>
+            <button @click="removeSubTask(subTask)" class="badge badge-pill text-danger">
+              <font-awesome-icon icon="trash"/>
             </button>
           </div>
           <button
@@ -31,7 +29,7 @@
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="my-2 list-group-item-light list-group-item-secondary">
+        <p class="my-2 list-group-item-light list-group-item-secondary p-2">
           {{subTask.description}}
         </p>
         <AppDate :timestamp="subTask.updated" class="badge badge-light badge-pill pull-right"/>
@@ -86,20 +84,33 @@ export default {
     },
     saveEditedSubTask ({ editedSubTask }) {
       this.$store.dispatch('saveEditedSubTask', {
-        ...editedSubTask
+        editedSubTask: { ...editedSubTask },
+        token: localStorage.getItem('token')
       })
     },
-    toggleSubTaskCompletion (subTask) {
+    toggleSubTaskCompletion (editedSubTask) {
       this.$store.dispatch('saveEditedSubTask', {
-        ...subTask,
-        completed: !subTask.completed
+        editedSubTask: {
+          ...editedSubTask,
+          completed: !editedSubTask.completed
+        },
+        token: localStorage.getItem('token')
       })
     },
-    removeSubTask (subTask) {
-      this.$store.dispatch('saveEditedSubTask', {
-        ...subTask,
-        removed: true
+    async removeSubTask (editedSubTask) {
+      const removed = await this.$store.dispatch('saveEditedSubTask', {
+        editedSubTask: {
+          ...editedSubTask,
+          removed: true
+        },
+        token: localStorage.getItem('token')
       })
+      if (removed) {
+        this.$router.push({
+          name: 'PageTaskShow',
+          params: {goalId: this.goalId, taskId: this.taskId}
+        })
+      }
     }
   }
 }

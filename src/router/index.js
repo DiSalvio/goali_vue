@@ -7,7 +7,6 @@ import PageSubTaskShow from '@/views/PageSubTaskShow.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store/index.js'
-import { findById, filterChildrenById } from '@/helpers/index.js'
 
 const routes = [ 
   {
@@ -94,18 +93,13 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-    beforeEnter (to, from, next){
-      const subTaskExists = findById(
-        filterChildrenById(
-          filterChildrenById(
-            store._state.data.subTaskModule.subTasks,
-            'goal',
-            to.params.goalId),
-          'task',
-          to.params.taskId
-        ),
-        to.params.subTaskId
-      )
+    async beforeEnter (to, from, next){
+      const subTaskExists = await store.dispatch('fetchSubTask', {
+        goalId: to.params.goalId,
+        taskId: to.params.taskId,
+        subTaskId: to.params.subTaskId,
+        token: localStorage.getItem('token')
+      })
       if (subTaskExists) {
         next()
       } else {
