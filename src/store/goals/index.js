@@ -3,16 +3,16 @@ import {
   activeOnly,
   completedOnly,
   inProgressOnly,
-  updateItemInArray
+  updateItemInArray,
+  urlHelper,
+  authHeader
 } from '@/helpers/index.js'
-import sourceData from '@/data.json'
 import axios from 'axios'
 
 const goalModule = {
   state () {
     return {
-      goals: [],
-      tasks: sourceData.tasks
+      goals: []
     }
   },
   getters: {
@@ -31,37 +31,46 @@ const goalModule = {
   },
   actions: {
     async fetchGoals ({ commit }, token) {
-      return await axios.get(process.env.VUE_APP_API_URL + "goals/", {
-        headers: {
-          'Authorization': 'Token ' + token
-        }
-      })
+      return await axios.get(urlHelper({ resource: 'goals' }), authHeader(token))
         .then((response) => {
           commit('setGoals', response.data)
-      })
+        })
         .catch((e) => {
           console.log(e)
-      })
+        })
     },
-    async createGoal ({ commit, state }, { name, description }) {
-      const newGoal = {
+    async createGoal ({ commit }, { name, description, token }) {
+      return await axios.post(urlHelper({ resource: 'goals' }), {
         name,
         description,
-        id: state.goals[state.goals.length - 1].id + 1,
         completed: false,
-        user: 1,
         updated: new Date(Date.now()).toISOString(),
         timestamp: new Date(Date.now()).toISOString(),
         removed: false
-      }
-      commit('pushGoal',  newGoal)
+      }, 
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('pushGoal',  response.data)
+          return response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
-    async saveEditedGoal ({ commit }, editedGoal) {
-      const updatedGoal = {
+    async saveEditedGoal ({ commit }, { editedGoal, token }) {
+      return await axios.put(urlHelper({ ids: [editedGoal.id] }), {
         ...editedGoal,
         updated: new Date(Date.now()).toISOString()
-      }
-      commit('updateGoal', { item: updatedGoal })
+      },
+        authHeader(token)
+      )
+        .then((response) => {
+          commit('updateGoal', { item: response.data })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   },
   mutations: {

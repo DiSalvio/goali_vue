@@ -36,12 +36,14 @@ export default {
     addGoal ({ newGoal }) {
       this.$store.dispatch('createGoal', {
         name: newGoal.name,
-        description: newGoal.description
+        description: newGoal.description,
+        token: localStorage.getItem('token')
       })
     },
     saveEditedGoal ({ editedGoal }) {
       this.$store.dispatch('saveEditedGoal', {
-        ...editedGoal
+        editedGoal,
+        token: localStorage.getItem('token')
       })
     }
   },
