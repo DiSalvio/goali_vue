@@ -1,5 +1,5 @@
 <template>
-  <div v-if="token" id="nav">
+  <div v-if="token" class="navbar p-2 mb-2">
     <router-link :to="{name: 'PageHome'}">Home</router-link>
     <button @click="logOut" class="btn btn-primary">Log Out</button>
   </div>
