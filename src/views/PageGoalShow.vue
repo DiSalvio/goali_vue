@@ -105,8 +105,7 @@ export default {
     },
     saveEditedGoal ({ editedGoal }) {
       this.$store.dispatch('saveEditedGoal', {
-        editedGoal,
-        token: localStorage.getItem('token')
+        editedGoal
       })
     },
     toggleGoalCompletion (editedGoal) {
@@ -114,8 +113,7 @@ export default {
         editedGoal: {
           ...editedGoal,
           completed: !this.goal.completed
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     async removeGoal (editedGoal) {
@@ -123,8 +121,7 @@ export default {
         editedGoal: {
           ...editedGoal,
           removed: true
-        },
-        token: localStorage.getItem('token')
+        }
       })
       if (isRemoved) {
         this.$router.push({ name: 'PageHome' })
@@ -135,23 +132,20 @@ export default {
         newTask: {
           ...newTask,
           goal: parseInt(this.goalId),
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     saveEditedTask ({ editedTask }) {
       this.$store.dispatch('saveEditedTask', {
         editedTask: {
           ...editedTask,
-        },
-        token: localStorage.getItem('token')
+        }
       })
     }
   },
   created () {
     this.$store.dispatch('fetchGoalTasks', {
-      goalId: this.goalId,
-      token: localStorage.getItem('token')
+      goalId: this.goalId
     })
   }
 }

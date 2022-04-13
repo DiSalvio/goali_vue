@@ -34,9 +34,9 @@ const subTaskModule = {
     }
   },
   actions: {
-    async fetchSubTask({ dispatch }, { goalId, taskId, subTaskId, token }) {
+    async fetchSubTask({ dispatch, rootState }, { goalId, taskId, subTaskId }) {
       return await axios.get(urlHelper({ ids: [ goalId, taskId, subTaskId ] }),
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           dispatch('upsertSubTask', response.data)
@@ -47,9 +47,9 @@ const subTaskModule = {
           return false
         })
     },
-    async fetchTaskSubTasks({ commit }, { goalId, taskId, token }) {
+    async fetchTaskSubTasks({ commit, rootState }, { goalId, taskId }) {
       return await axios.get(urlHelper({ resource: 'subtasks', ids: [ goalId, taskId ] }),
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('setSubTasks', response.data)
@@ -60,17 +60,15 @@ const subTaskModule = {
           return false
         })
     },
-    async createSubTask({ commit }, { newSubTask, token }) {
+    async createSubTask({ commit, rootState }, { newSubTask }) {
       return await axios.post(
         urlHelper({ resource: 'subtasks', ids: [ newSubTask.goal, newSubTask.task ]}),
         {
           ...newSubTask,
           completed: false,
-          timestamp: new Date(Date.now()).toISOString(),
-          updated: new Date(Date.now()).toISOString(),
           removed: false
         },
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('pushSubTask', response.data)
@@ -80,13 +78,13 @@ const subTaskModule = {
           console.log(error)
         })
     },
-    async saveEditedSubTask({ commit }, { editedSubTask, token }) {
+    async saveEditedSubTask({ commit, rootState }, { editedSubTask }) {
       return await axios.put(
         urlHelper({ ids: [ editedSubTask.goal, editedSubTask.task, editedSubTask.id ] }),
         {
           ...editedSubTask
         },
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('updateSubTask', { item: response.data })

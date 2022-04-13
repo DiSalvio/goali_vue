@@ -9,7 +9,7 @@
 export default {
   computed: {
     token () {
-      return this.$store.getters.token
+      return this.$store.state.userModule.token
     }
   },
   methods: {
@@ -20,5 +20,8 @@ export default {
       }
     }
   },
+  created () {
+    this.$store.dispatch('refreshTokenState', localStorage.getItem('token'))
+  }
 }
 </script>

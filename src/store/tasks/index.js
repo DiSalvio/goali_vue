@@ -33,9 +33,9 @@ const taskModule = {
     }
   },
   actions: {
-    async fetchTask ({ dispatch }, { goalId, taskId, token }) {
+    async fetchTask ({ dispatch, rootState }, { goalId, taskId }) {
       return await axios.get(urlHelper({ ids: [ goalId, taskId ] }),
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
       .then((response) => {
         dispatch('upsertTask', response.data)
@@ -46,9 +46,9 @@ const taskModule = {
         return false
       })
     },
-    async fetchGoalTasks ({ commit }, { goalId, token }) {
+    async fetchGoalTasks ({ commit, rootState }, { goalId }) {
       return await axios.get(urlHelper({ resource: 'tasks', ids: [ goalId ] }),
-        authHeader(token)
+        authHeader(rootState.userModule.token)
     )
       .then((response) => {
         commit('setTasks', response.data)
@@ -57,15 +57,13 @@ const taskModule = {
         console.log(e)
       })
     },
-    async createTask ({ commit }, { newTask, token }) {
+    async createTask ({ commit, rootState }, { newTask }) {
       return await axios.post(urlHelper({ resource: 'tasks', ids:  [ newTask.goal ]  }), {
         ...newTask,
         completed: false,
-        updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString(),
         removed: false
       }, 
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('pushTask',  response.data)
@@ -75,12 +73,11 @@ const taskModule = {
           console.log(error)
         })
     },
-    async saveEditedTask ({ commit }, { editedTask, token }) {
+    async saveEditedTask ({ commit, rootState }, { editedTask }) {
       return await axios.put(urlHelper({ ids: [editedTask.goal, editedTask.id] }), {
         ...editedTask,
-        updated: new Date(Date.now()).toISOString()
       },
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('updateTask', { item: response.data })

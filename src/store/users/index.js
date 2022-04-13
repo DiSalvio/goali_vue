@@ -1,24 +1,21 @@
+import { urlHelper } from '@/helpers/index.js'
 import axios from 'axios'
 
 const userModule = {
   state () {
     return {
-      token: ''
-    }
-  },
-  getters: {
-    token (state) {
-      return state.token
+      token: null
     }
   },
   actions: {
     async login ({ commit }, { username, password }) {
-      return await axios.post(process.env.VUE_APP_API_URL + "login/", {
+      return await axios.post(urlHelper({ resource: 'login' }), {
         username: username,
         password: password
       })
         .then((response) => {
           commit('setToken', response.data.token)
+          commit('setTokenState', response.data.token)
           return true
       })
         .catch((e) => {
@@ -27,7 +24,7 @@ const userModule = {
       })
     },
     async signUp (context, user) {
-      return await axios.post(process.env.VUE_APP_API_URL + "signup/", {
+      return await axios.post(urlHelper({ resource: 'signup' }), {
         ...user
       })
         .then(() => {
@@ -38,7 +35,7 @@ const userModule = {
       })
     },
     async logOut ({ commit }, token) {
-      return await axios.post(process.env.VUE_APP_API_URL + "logout/", {
+      return await axios.post(urlHelper({ resource: 'logout' }), {
         token
       })
         .then(() => {
@@ -48,11 +45,16 @@ const userModule = {
         .catch(() => {
           return false
         })
+    },
+    refreshTokenState({ commit }, token) {
+      commit('setTokenState', token)
     }
   },
   mutations: {
     setToken (state, token) {
       localStorage.setItem('token', token)
+    },
+    setTokenState (state, token) {
       state.token = token
     },
     removeToken (state) {

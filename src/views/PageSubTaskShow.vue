@@ -84,8 +84,7 @@ export default {
     },
     saveEditedSubTask ({ editedSubTask }) {
       this.$store.dispatch('saveEditedSubTask', {
-        editedSubTask: { ...editedSubTask },
-        token: localStorage.getItem('token')
+        editedSubTask: { ...editedSubTask }
       })
     },
     toggleSubTaskCompletion (editedSubTask) {
@@ -93,8 +92,7 @@ export default {
         editedSubTask: {
           ...editedSubTask,
           completed: !editedSubTask.completed
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     async removeSubTask (editedSubTask) {
@@ -102,8 +100,7 @@ export default {
         editedSubTask: {
           ...editedSubTask,
           removed: true
-        },
-        token: localStorage.getItem('token')
+        }
       })
       if (removed) {
         this.$router.push({

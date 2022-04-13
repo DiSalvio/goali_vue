@@ -45,7 +45,7 @@ const routes = [
     async beforeEnter (to, from, next){
       const goalExists = await store.dispatch('fetchGoal', { 
         goalId: to.params.goalId,
-        token: localStorage.getItem('token')
+        token: store.state.token
       })
       if (goalExists) {
         next()
@@ -71,7 +71,7 @@ const routes = [
       const taskExists = await store.dispatch('fetchTask', {
         goalId: to.params.goalId,
         taskId: to.params.taskId,
-        token: localStorage.getItem('token')
+        token: store.state.token
       })
       if (taskExists) {
         next()
@@ -98,7 +98,7 @@ const routes = [
         goalId: to.params.goalId,
         taskId: to.params.taskId,
         subTaskId: to.params.subTaskId,
-        token: localStorage.getItem('token')
+        token: store.state.token
       })
       if (subTaskExists) {
         next()
@@ -126,11 +126,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  if (to.meta.requiresAuth && !localStorage.getItem('token')) {
+  store.dispatch('refreshTokenState', localStorage.getItem('token'))
+  if (to.meta.requiresAuth && !store.state.userModule.token) {
     return {
       name: 'PageLogin'
     }
-  } else if (to.meta.noAuthOnly && localStorage.getItem('token')) {
+  } else if (to.meta.noAuthOnly && store.state.userModule.token) {
     return {
       name: 'PageHome'
     }

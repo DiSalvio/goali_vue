@@ -30,8 +30,11 @@ const goalModule = {
     }
   },
   actions: {
-    async fetchGoals ({ commit }, token) {
-      return await axios.get(urlHelper({ resource: 'goals' }), authHeader(token))
+    async fetchGoals ({ commit, rootState }) {
+      return await axios.get(
+        urlHelper({ resource: 'goals' }),
+        authHeader(rootState.userModule.token)
+      )
         .then((response) => {
           commit('setGoals', response.data)
         })
@@ -39,8 +42,8 @@ const goalModule = {
           console.log(e)
         })
     },
-    async fetchGoal ({ dispatch }, { goalId, token }) {
-      return await axios.get(urlHelper({ ids: [ goalId ]}), authHeader(token))
+    async fetchGoal ({ dispatch, rootState }, { goalId }) {
+      return await axios.get(urlHelper({ ids: [ goalId ]}), authHeader(rootState.userModule.token))
         .then((response) => {
           dispatch('upsertGoal', response.data)
           return response.data
@@ -50,16 +53,14 @@ const goalModule = {
           return null
         })
     },
-    async createGoal ({ commit }, { name, description, token }) {
+    async createGoal ({ commit, rootState }, { name, description }) {
       return await axios.post(urlHelper({ resource: 'goals' }), {
         name,
         description,
         completed: false,
-        updated: new Date(Date.now()).toISOString(),
-        timestamp: new Date(Date.now()).toISOString(),
         removed: false
       }, 
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('pushGoal',  response.data)
@@ -69,12 +70,11 @@ const goalModule = {
           console.log(error)
         })
     },
-    async saveEditedGoal ({ commit }, { editedGoal, token }) {
+    async saveEditedGoal ({ commit, rootState }, { editedGoal }) {
       return await axios.put(urlHelper({ ids: [editedGoal.id] }), {
-        ...editedGoal,
-        updated: new Date(Date.now()).toISOString()
+        ...editedGoal
       },
-        authHeader(token)
+        authHeader(rootState.userModule.token)
       )
         .then((response) => {
           commit('updateGoal', { item: response.data })

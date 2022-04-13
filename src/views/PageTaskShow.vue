@@ -112,8 +112,7 @@ export default {
       this.$store.dispatch('saveEditedTask', {
         editedTask: {
           ...editedTask
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     async removeTask (editedTask) {
@@ -121,8 +120,7 @@ export default {
         editedTask: {
           ...editedTask,
           removed: true
-        },
-        token: localStorage.getItem('token')
+        }
       })
       if (removed) {
         this.$router.push({name: 'PageGoalShow', params: { goalId: this.goalId }})
@@ -133,8 +131,7 @@ export default {
         editedTask: {
           ...editedTask,
           completed: !editedTask.completed
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     addSubTask ({ newSubTask }) {
@@ -143,22 +140,19 @@ export default {
           ...newSubTask,
           goal: parseInt(this.goalId),
           task: parseInt(this.taskId)
-        },
-        token: localStorage.getItem('token')
+        }
       })
     },
     saveEditedSubTask ({ editedSubTask }) {
       this.$store.dispatch('saveEditedSubTask', {
-        editedSubTask: { ...editedSubTask },
-        token: localStorage.getItem('token')
+        editedSubTask: { ...editedSubTask }
       })
     }
   },
   created () {
     this.$store.dispatch('fetchTaskSubTasks', {
       goalId: this.goalId,
-      taskId: this.taskId,
-      token: localStorage.getItem('token')
+      taskId: this.taskId
     })
   }
 }
