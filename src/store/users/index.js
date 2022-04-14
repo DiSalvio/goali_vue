@@ -46,8 +46,18 @@ const userModule = {
           return false
         })
     },
-    refreshTokenState({ commit }, token) {
-      commit('setTokenState', token)
+    async refreshTokenState({ commit }, token) {
+      return await axios.post(urlHelper({ resource: 'token' }), {
+        token
+      })
+        .then((response) => {
+          commit('setTokenState', token)
+          return response.data.token
+        })
+        .catch(() => {
+          commit('removeToken', token)
+          return false
+        })
     }
   },
   mutations: {

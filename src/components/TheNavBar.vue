@@ -21,7 +21,9 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('refreshTokenState', localStorage.getItem('token'))
+    if (localStorage.getItem('token')) {
+      this.$store.dispatch('refreshTokenState', localStorage.getItem('token'))
+    }
   }
 }
 </script>
