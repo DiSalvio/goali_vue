@@ -1,5 +1,5 @@
 <template>
-  <div class="row h-100 justify-content-center align-items-center">
+  <div class="row h-100 justify-content-center align-items-center mt-5 mb-5">
     <div class="col-10 col-md-8 col-lg-6">
       <div v-if="signUpFailed" class="alert alert-danger" role="alert">
         <h2 class="mb-0">Sign Up Failed</h2>

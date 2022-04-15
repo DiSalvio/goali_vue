@@ -51,7 +51,7 @@ const userModule = {
         token
       })
         .then((response) => {
-          commit('setTokenState', token)
+          commit('setTokenState', response.data.token)
           return response.data.token
         })
         .catch(() => {

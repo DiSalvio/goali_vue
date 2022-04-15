@@ -43,7 +43,8 @@ const goalModule = {
         })
     },
     async fetchGoal ({ dispatch, rootState }, { goalId }) {
-      return await axios.get(urlHelper({ ids: [ goalId ]}), authHeader(rootState.userModule.token))
+      return await axios.get(urlHelper({ ids: [ goalId ]}),
+        authHeader(rootState.userModule.token))
         .then((response) => {
           dispatch('upsertGoal', response.data)
           return response.data

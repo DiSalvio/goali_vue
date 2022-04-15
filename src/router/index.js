@@ -126,18 +126,24 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  if (localStorage.getItem('token')) {
-    store.dispatch('refreshTokenState', localStorage.getItem('token'))
-  }
-  const tokenSet = store.state.userModule.token
-  if (to.meta.requiresAuth && !tokenSet) {
-    return {
-      name: 'PageLogin'
-    }
-  } else if (to.meta.noAuthOnly && tokenSet) {
-    return {
-      name: 'PageHome'
-    }
+  if (to.meta.requiresAuth) {
+    return store.dispatch('refreshTokenState', localStorage.getItem('token'))
+      .then((response) => {
+        if (!response) {
+          return {
+            name: 'PageLogin'
+          }
+        }
+      })
+  } else if (to.meta.noAuthOnly) {
+    return store.dispatch('refreshTokenState', localStorage.getItem('token'))
+      .then((response) => {
+        if (response) {
+          return {
+            name: 'PageHome'
+          }
+        }
+      })
   }
 })
 
