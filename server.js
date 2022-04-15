@@ -1,7 +1,13 @@
 const express = require('express');
-const serveStatic = require("serve-static")
+const cors = require('cors')
 const path = require('path');
-app = express();
-app.use(serveStatic(path.join(__dirname, 'dist')));
-const port = process.env.PORT || 3000;
+
+const app = express();
+app.use(cors);
+app.use(express.static(path.join(__dirname, '/dist')))
+const port = process.env.PORT || 8000;
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './dist/index.html'))
+})
+ 
 app.listen(port);
