@@ -1,5 +1,7 @@
 # goali_vue
 
+See deployed project here: https://goali.netlify.app/
+
 ## Jenkins Unit Tests
 
 [![Build Status](http://167c-94-177-118-63.ngrok.io/buildStatus/icon?job=goali_frontend_unit_tests)](http://167c-94-177-118-63.ngrok.io/job/goali_frontend_unit_tests/)
