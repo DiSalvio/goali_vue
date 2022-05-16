@@ -39,4 +39,21 @@ describe('PageHome.vue', () => {
 
     expect(wrapper).toMatchSnapshot()
   })
+
+  it('dispatches fetchGoals on created', async () => {
+    const wrapper = mount(PageHome, {
+      global: {
+        mocks: {
+          $store: {
+            dispatch: jest.fn(),
+            getters: {
+              'activeGoals': []
+            }
+          }
+        }
+      }
+    })
+
+    expect(wrapper.componentVM.$store.dispatch).toHaveBeenCalledWith('fetchGoals')
+  })
 })
