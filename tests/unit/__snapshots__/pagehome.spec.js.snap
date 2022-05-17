@@ -16,6 +16,7 @@ VueWrapper {
         <div>
           <h1
             class="text-muted"
+            id="yes-goals"
           >
             Goals
           </h1>
@@ -801,6 +802,7 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <h1
                       class="text-muted"
+                      id="yes-goals"
                     >
                       Goals
                     </h1>,
@@ -808,6 +810,7 @@ VueWrapper {
                     "patchFlag": -1,
                     "props": Object {
                       "class": "text-muted",
+                      "id": "yes-goals",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -2817,6 +2820,7 @@ VueWrapper {
                 "el": <div>
                   <h1
                     class="text-muted"
+                    id="yes-goals"
                   >
                     Goals
                   </h1>
@@ -3882,6 +3886,7 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <h1
                       class="text-muted"
+                      id="yes-goals"
                     >
                       Goals
                     </h1>,
@@ -3889,6 +3894,7 @@ VueWrapper {
                     "patchFlag": -1,
                     "props": Object {
                       "class": "text-muted",
+                      "id": "yes-goals",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -5928,6 +5934,7 @@ VueWrapper {
                 "el": <div>
                   <h1
                     class="text-muted"
+                    id="yes-goals"
                   >
                     Goals
                   </h1>
@@ -6988,6 +6995,7 @@ VueWrapper {
               <div>
                 <h1
                   class="text-muted"
+                  id="yes-goals"
                 >
                   Goals
                 </h1>
@@ -7182,6 +7190,7 @@ VueWrapper {
           <div>
             <h1
               class="text-muted"
+              id="yes-goals"
             >
               Goals
             </h1>
@@ -7418,6 +7427,7 @@ VueWrapper {
           <div>
             <h1
               class="text-muted"
+              id="yes-goals"
             >
               Goals
             </h1>
@@ -7601,6 +7611,7 @@ VueWrapper {
     <div>
       <h1
         class="text-muted"
+        id="yes-goals"
       >
         Goals
       </h1>
@@ -7672,7 +7683,9 @@ VueWrapper {
       <div
         class="container list-group"
       >
-        <h1>
+        <h1
+          id="no-goals"
+        >
           No active goals were found, add new goals below
         </h1>
         <div
@@ -8287,12 +8300,15 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": Array [],
                 "dynamicProps": null,
-                "el": <h1>
+                "el": <h1
+                  id="no-goals"
+                >
                   No active goals were found, add new goals below
                 </h1>,
                 "key": 1,
                 "patchFlag": 0,
                 "props": Object {
+                  "id": "no-goals",
                   "key": 1,
                 },
                 "ref": null,
@@ -9273,12 +9289,15 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": Array [],
                 "dynamicProps": null,
-                "el": <h1>
+                "el": <h1
+                  id="no-goals"
+                >
                   No active goals were found, add new goals below
                 </h1>,
                 "key": 1,
                 "patchFlag": 0,
                 "props": Object {
+                  "id": "no-goals",
                   "key": 1,
                 },
                 "ref": null,
@@ -10259,7 +10278,9 @@ VueWrapper {
             "el": <div
               class="container list-group"
             >
-              <h1>
+              <h1
+                id="no-goals"
+              >
                 No active goals were found, add new goals below
               </h1>
               <div
@@ -10443,7 +10464,9 @@ VueWrapper {
         "el": <div
           class="container list-group"
         >
-          <h1>
+          <h1
+            id="no-goals"
+          >
             No active goals were found, add new goals below
           </h1>
           <div
@@ -10669,7 +10692,9 @@ VueWrapper {
         "el": <div
           class="container list-group"
         >
-          <h1>
+          <h1
+            id="no-goals"
+          >
             No active goals were found, add new goals below
           </h1>
           <div
@@ -10811,7 +10836,9 @@ VueWrapper {
   "wrapperElement": <div
     class="container list-group"
   >
-    <h1>
+    <h1
+      id="no-goals"
+    >
       No active goals were found, add new goals below
     </h1>
     <div

@@ -1,7 +1,7 @@
 <template>
   <div class="container list-group">
     <div v-if="activeGoals.length != 0">
-      <h1 class="text-muted">Goals</h1>
+      <h1 id="yes-goals" class="text-muted">Goals</h1>
       <GoalList
         :goals="activeInProgressGoals"
         @saveEditedGoal="saveEditedGoal"
@@ -11,7 +11,7 @@
         @saveEditedGoal="saveEditedGoal"
       />
     </div>
-    <h1 v-else>No active goals were found, add new goals below</h1>
+    <h1 id="no-goals" v-else>No active goals were found, add new goals below</h1>
     <GoalAdd @addGoal="addGoal"/>
   </div>
 </template>

@@ -1,5 +1,5 @@
 import store from '@/store'
-import { mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import PageHome from '@/views/PageHome.vue'
 
 describe('PageHome.vue', () => {
@@ -153,6 +153,132 @@ describe('PageHome.vue', () => {
       expect(vm.$store.dispatch).toHaveBeenCalledWith('saveEditedGoal', {
         editedGoal
       })
+    })
+  })
+
+  describe('DOM', () => {
+    it('shows no active goals message when there are no active goals', () => {
+      const wrapper = mount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': []
+              }
+            }
+          }
+        }
+      })
+      const header = wrapper.find('h1')
+      expect(header.attributes('id')).toBe('no-goals')
+    })
+    it('does not render goal list components if there are no active goals', () => {
+      const wrapper = shallowMount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': []
+              }
+            }
+          }
+        }
+      })
+      expect(wrapper.findAllComponents('goal-list-stub').length).toBe(0)
+    })
+
+    it('shows Goals header when there are active goals', () => {
+      const wrapper = mount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': [{
+                    "id":1,
+                    "name":"goal 1",
+                    "description":"description 1",
+                    "timestamp":"2022-04-15T06:58:03.382281Z",
+                    "completed":true,
+                    "updated":"2022-04-15T07:25:23.269770Z",
+                    "removed":false,
+                    "user":6
+                  }]
+              }
+            }
+          }
+        }
+      })
+      const header = wrapper.find('h1')
+      expect(header.attributes('id')).toBe('yes-goals')
+    })
+
+    it('has GoalList component if there are active goals', () => {
+      const wrapper = shallowMount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': [{
+                    "id":1,
+                    "name":"goal 1",
+                    "description":"description 1",
+                    "timestamp":"2022-04-15T06:58:03.382281Z",
+                    "completed":true,
+                    "updated":"2022-04-15T07:25:23.269770Z",
+                    "removed":false,
+                    "user":6
+                  }]
+              }
+            }
+          }
+        }
+      })
+      expect(wrapper.findAllComponents('goal-list-stub').length).toBe(2)
+    })
+
+    it('shows Goal Add component with active goals', () => {
+      const wrapper = shallowMount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': [{
+                    "id":1,
+                    "name":"goal 1",
+                    "description":"description 1",
+                    "timestamp":"2022-04-15T06:58:03.382281Z",
+                    "completed":true,
+                    "updated":"2022-04-15T07:25:23.269770Z",
+                    "removed":false,
+                    "user":6
+                  }]
+              }
+            }
+          }
+        }
+      })
+      expect(wrapper.findAllComponents('goal-add-stub').length).toBe(1)
+    })
+
+    it('shows Goal Add component without active goals', () => {
+      const wrapper = shallowMount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': []
+              }
+            }
+          }
+        }
+      })
+      expect(wrapper.findAllComponents('goal-add-stub').length).toBe(1)
     })
   })
 })
