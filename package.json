@@ -5,8 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "watch": "jest --watch",
+    "test:unit": "vue-cli-service test:unit --silent",
+    "test:loud": "vue-cli-service test:unit",
+    "watch": "jest --watch --silent",
     "lint": "vue-cli-service lint",
     "start": "node server.js"
   },
