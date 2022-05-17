@@ -87,4 +87,72 @@ describe('PageHome.vue', () => {
       )
     })
   })
+
+
+  describe('methods: ', () => {
+    it('addGoal dispatches createGoal with correct parameters', () => {
+      const { vm } = mount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': []
+              }
+            }
+          }
+        }
+      })
+
+      const newGoal = {
+        "name":"goal 1",
+        "description":"description 1"
+      }
+
+      vm.addGoal({ newGoal })
+
+      expect(vm.$store.dispatch).toHaveBeenCalledWith('createGoal', {
+        "name":"goal 1",
+        "description":"description 1"
+      })
+    })
+
+    it('saveEditedGoal dispatches saveEditedGoal with correct parameters', () => {
+      const { vm } = mount(PageHome, {
+        global: {
+          mocks: {
+            $store: {
+              dispatch: jest.fn(),
+              getters: {
+                'activeGoals': [
+                  {
+                    "id":1,
+                    "name":"goal 1",
+                    "description":"description 1",
+                    "timestamp":"2022-04-15T06:58:03.382281Z",
+                    "completed":true,
+                    "updated":"2022-04-15T07:25:23.269770Z",
+                    "removed":false,
+                    "user":6
+                  }
+                ]
+              }
+            }
+          }
+        }
+      })
+
+      const editedGoal = {
+        "name":"goal 1234",
+        "description":"description 12345",
+        "completed": false
+      }
+
+      vm.saveEditedGoal({ editedGoal })
+
+      expect(vm.$store.dispatch).toHaveBeenCalledWith('saveEditedGoal', {
+        editedGoal
+      })
+    })
+  })
 })
