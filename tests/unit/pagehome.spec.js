@@ -170,7 +170,7 @@ describe('PageHome.vue', () => {
           }
         }
       })
-      const header = wrapper.find('h1')
+      const header = wrapper.find('h3')
       expect(header.attributes('id')).toBe('no-goals')
     })
     it('does not render goal list components if there are no active goals', () => {
@@ -211,7 +211,7 @@ describe('PageHome.vue', () => {
           }
         }
       })
-      const header = wrapper.find('h1')
+      const header = wrapper.find('h3')
       expect(header.attributes('id')).toBe('yes-goals')
     })
 

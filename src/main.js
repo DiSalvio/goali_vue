@@ -2,11 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router/'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFloppyDisk, faUserPen, faTrash, faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk, faUserPen, faTrash, faRectangleXmark, faBackwardStep, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import store from "@/store/index.js"
 
-library.add(faFloppyDisk, faUserPen, faTrash, faRectangleXmark)
+library.add(faFloppyDisk, faUserPen, faTrash, faRectangleXmark, faBackwardStep, faDoorOpen)
 
 const goaliApp = createApp(App)
 const requireComponent = require.context("@/components", true, /App[A-Z]\w+\.vue$/)

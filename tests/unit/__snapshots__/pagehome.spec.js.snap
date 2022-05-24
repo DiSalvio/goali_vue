@@ -11,15 +11,15 @@ VueWrapper {
       data-v-app=""
     >
       <div
-        class="container list-group"
+        class="container list-group pr-0"
       >
         <div>
-          <h1
-            class="text-muted"
+          <h3
+            class="pl-4 py-2 mb-1 text-muted"
             id="yes-goals"
           >
             Goals
-          </h1>
+          </h3>
           
           
           
@@ -800,16 +800,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": null,
                     "dynamicProps": null,
-                    "el": <h1
-                      class="text-muted"
+                    "el": <h3
+                      class="pl-4 py-2 mb-1 text-muted"
                       id="yes-goals"
                     >
                       Goals
-                    </h1>,
+                    </h3>,
                     "key": null,
                     "patchFlag": -1,
                     "props": Object {
-                      "class": "text-muted",
+                      "class": "pl-4 py-2 mb-1 text-muted",
                       "id": "yes-goals",
                     },
                     "ref": null,
@@ -823,7 +823,7 @@ VueWrapper {
                     "target": null,
                     "targetAnchor": null,
                     "transition": null,
-                    "type": "h1",
+                    "type": "h3",
                   },
                   Object {
                     "__v_isVNode": true,
@@ -2818,12 +2818,12 @@ VueWrapper {
                 ],
                 "dynamicProps": null,
                 "el": <div>
-                  <h1
-                    class="text-muted"
+                  <h3
+                    class="pl-4 py-2 mb-1 text-muted"
                     id="yes-goals"
                   >
                     Goals
-                  </h1>
+                  </h3>
                   
                   
                   
@@ -3884,16 +3884,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": null,
                     "dynamicProps": null,
-                    "el": <h1
-                      class="text-muted"
+                    "el": <h3
+                      class="pl-4 py-2 mb-1 text-muted"
                       id="yes-goals"
                     >
                       Goals
-                    </h1>,
+                    </h3>,
                     "key": null,
                     "patchFlag": -1,
                     "props": Object {
-                      "class": "text-muted",
+                      "class": "pl-4 py-2 mb-1 text-muted",
                       "id": "yes-goals",
                     },
                     "ref": null,
@@ -3907,7 +3907,7 @@ VueWrapper {
                     "target": null,
                     "targetAnchor": null,
                     "transition": null,
-                    "type": "h1",
+                    "type": "h3",
                   },
                   Object {
                     "__v_isVNode": true,
@@ -5932,12 +5932,12 @@ VueWrapper {
                 ],
                 "dynamicProps": null,
                 "el": <div>
-                  <h1
-                    class="text-muted"
+                  <h3
+                    class="pl-4 py-2 mb-1 text-muted"
                     id="yes-goals"
                   >
                     Goals
-                  </h1>
+                  </h3>
                   
                   
                   
@@ -6990,15 +6990,15 @@ VueWrapper {
             ],
             "dynamicProps": null,
             "el": <div
-              class="container list-group"
+              class="container list-group pr-0"
             >
               <div>
-                <h1
-                  class="text-muted"
+                <h3
+                  class="pl-4 py-2 mb-1 text-muted"
                   id="yes-goals"
                 >
                   Goals
-                </h1>
+                </h3>
                 
                 
                 
@@ -7054,7 +7054,7 @@ VueWrapper {
             "key": null,
             "patchFlag": 0,
             "props": Object {
-              "class": "container list-group",
+              "class": "container list-group pr-0",
             },
             "ref": null,
             "scopeId": null,
@@ -7185,15 +7185,15 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="container list-group"
+          class="container list-group pr-0"
         >
           <div>
-            <h1
-              class="text-muted"
+            <h3
+              class="pl-4 py-2 mb-1 text-muted"
               id="yes-goals"
             >
               Goals
-            </h1>
+            </h3>
             
             
             
@@ -7422,15 +7422,15 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="container list-group"
+          class="container list-group pr-0"
         >
           <div>
-            <h1
-              class="text-muted"
+            <h3
+              class="pl-4 py-2 mb-1 text-muted"
               id="yes-goals"
             >
               Goals
-            </h1>
+            </h3>
             
             
             
@@ -7606,15 +7606,15 @@ VueWrapper {
     },
   },
   "wrapperElement": <div
-    class="container list-group"
+    class="container list-group pr-0"
   >
     <div>
-      <h1
-        class="text-muted"
+      <h3
+        class="pl-4 py-2 mb-1 text-muted"
         id="yes-goals"
       >
         Goals
-      </h1>
+      </h3>
       
       
       
@@ -7681,13 +7681,13 @@ VueWrapper {
       data-v-app=""
     >
       <div
-        class="container list-group"
+        class="container list-group pr-0"
       >
-        <h1
+        <h3
           id="no-goals"
         >
           No active goals were found, add new goals below
-        </h1>
+        </h3>
         <div
           class="list-group-item"
         >
@@ -8300,11 +8300,11 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": Array [],
                 "dynamicProps": null,
-                "el": <h1
+                "el": <h3
                   id="no-goals"
                 >
                   No active goals were found, add new goals below
-                </h1>,
+                </h3>,
                 "key": 1,
                 "patchFlag": 0,
                 "props": Object {
@@ -8322,7 +8322,7 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "h1",
+                "type": "h3",
               },
               Object {
                 "__v_isVNode": true,
@@ -9289,11 +9289,11 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": Array [],
                 "dynamicProps": null,
-                "el": <h1
+                "el": <h3
                   id="no-goals"
                 >
                   No active goals were found, add new goals below
-                </h1>,
+                </h3>,
                 "key": 1,
                 "patchFlag": 0,
                 "props": Object {
@@ -9311,7 +9311,7 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "h1",
+                "type": "h3",
               },
               Object {
                 "__v_isVNode": true,
@@ -10276,13 +10276,13 @@ VueWrapper {
             ],
             "dynamicProps": null,
             "el": <div
-              class="container list-group"
+              class="container list-group pr-0"
             >
-              <h1
+              <h3
                 id="no-goals"
               >
                 No active goals were found, add new goals below
-              </h1>
+              </h3>
               <div
                 class="list-group-item"
               >
@@ -10333,7 +10333,7 @@ VueWrapper {
             "key": null,
             "patchFlag": 0,
             "props": Object {
-              "class": "container list-group",
+              "class": "container list-group pr-0",
             },
             "ref": null,
             "scopeId": null,
@@ -10462,13 +10462,13 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="container list-group"
+          class="container list-group pr-0"
         >
-          <h1
+          <h3
             id="no-goals"
           >
             No active goals were found, add new goals below
-          </h1>
+          </h3>
           <div
             class="list-group-item"
           >
@@ -10690,13 +10690,13 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="container list-group"
+          class="container list-group pr-0"
         >
-          <h1
+          <h3
             id="no-goals"
           >
             No active goals were found, add new goals below
-          </h1>
+          </h3>
           <div
             class="list-group-item"
           >
@@ -10834,13 +10834,13 @@ VueWrapper {
     },
   },
   "wrapperElement": <div
-    class="container list-group"
+    class="container list-group pr-0"
   >
-    <h1
+    <h3
       id="no-goals"
     >
       No active goals were found, add new goals below
-    </h1>
+    </h3>
     <div
       class="list-group-item"
     >
