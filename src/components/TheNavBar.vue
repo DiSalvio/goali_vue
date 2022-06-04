@@ -1,17 +1,15 @@
 <template>
   <div v-if="token" class="navbar px-0 py-2 mb-3 navbar-border">
-    <button @click="$router.back()" class="btn btn-secondary ml-2">
+    <button id="back-button" @click="$router.back()" class="btn btn-secondary ml-2">
       <font-awesome-icon icon="backward-step" />
       Back
     </button>
-    <router-link class="text-white" :to="{name: 'PageHome'}">
-      <button class="btn btn-success">
-        <img src="../assets/hiking.png">
-        Home
-        <img src="../assets/mission-medium.png">
-      </button>
-    </router-link>
-    <button @click="logOut" class="btn btn-primary mr-2">
+    <button id="home-button" @click="$router.push({name: 'PageHome'})" class="btn btn-success text-white">
+      <img src="../assets/hiking.png">
+      Home
+      <img src="../assets/mission-medium.png">
+    </button>
+    <button id="log-out-button" @click="logOut" class="btn btn-primary mr-2">
       Log Out
       <font-awesome-icon icon="door-open" />
     </button>
@@ -33,9 +31,9 @@ export default {
       }
     }
   },
-  created () {
+  async created () {
     if (localStorage.getItem('token')) {
-      this.$store.dispatch('refreshTokenState', localStorage.getItem('token'))
+      await this.$store.dispatch('refreshTokenState', localStorage.getItem('token'))
     }
   }
 }
