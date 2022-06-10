@@ -4,7 +4,7 @@ See deployed project here: https://goali.netlify.app/
 
 ## Jenkins Unit Tests
 
-[![Build Status](https://7206-94-177-118-69.ngrok.io/buildStatus/icon?job=goali_frontend_unit_tests)](https://7206-94-177-118-69.ngrok.io/job/goali_frontend_unit_tests/)
+[![Build Status](https://156d-94-177-118-4.ngrok.io/buildStatus/icon?job=goali_frontend_unit_tests)](https://156d-94-177-118-4.ngrok.io/job/goali_frontend_unit_tests/)
 
 ## Project setup
 ```

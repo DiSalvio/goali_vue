@@ -25,7 +25,12 @@ const userModule = {
     },
     async signUp (context, user) {
       return await axios.post(urlHelper({ resource: 'signup' }), {
-        ...user
+        email: user.email,
+        username: user.username,
+        password: user.password,
+        confirm_password: user.confirmPassword,
+        first_name: user.firstName,
+        last_name: user.lastName
       })
         .then(() => {
           return true
