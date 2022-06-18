@@ -157,6 +157,7 @@ describe('PageHome.vue', () => {
   })
 
   describe('DOM', () => {
+
     it('shows no active goals message when there are no active goals', () => {
       const wrapper = mount(PageHome, {
         global: {
@@ -173,6 +174,7 @@ describe('PageHome.vue', () => {
       const header = wrapper.find('h3')
       expect(header.attributes('id')).toBe('no-goals')
     })
+
     it('does not render goal list components if there are no active goals', () => {
       const wrapper = shallowMount(PageHome, {
         global: {

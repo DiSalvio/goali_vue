@@ -2,16 +2,17 @@
   <div class="list-group-item">
     <div v-if="!editingGoal" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h2 class="mb-1 mr-auto p-2" :class="{ 'text-muted': goal.completed }">{{goal.name}}</h2>
+        <h2 id="goal-name" class="mb-1 mr-auto p-2" :class="{ 'text-muted': goal.completed }">{{goal.name}}</h2>
         <div class="flex-column text-right">
           <div>
-            <button @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>
+            <button id="edit-goal" @click="editGoal()" class="badge badge-pill"> <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeGoal(goal)" class="badge badge-pill text-danger">
+            <button id="remove-goal" @click="removeGoal(goal)" class="badge badge-pill text-danger">
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
           <button
+            id="toggle-goal-completion-done"
             v-if="goal.completed"
             class="badge badge-secondary badge-pill"
             @click="toggleGoalCompletion(goal)"
@@ -19,6 +20,7 @@
             Done
           </button>
           <button
+            id="toggle-goal-completion-in-progress"
             v-else
             class="badge badge-warning badge-pill"
             @click="toggleGoalCompletion(goal)"
@@ -28,7 +30,7 @@
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="p-2 my-2 list-group-item-light list-group-item-secondary">
+        <p id="goal-description" class="p-2 my-2 list-group-item-light list-group-item-secondary">
           {{goal.description}}
         </p>
         <AppDate :timestamp="goal.updated" class="badge badge-light badge-pill pull-right"/>
@@ -43,7 +45,7 @@
     </div>
     <div class="pt-3 container list-group">
       <div v-if="activeGoalTasks.length != 0">
-        <h3 class="text-muted">Tasks</h3>
+        <h3 id="tasks-header" class="text-muted">Tasks</h3>
         <TaskList
           :tasks="activeInProgressGoalTasks"
           @saveEditedTask="saveEditedTask"
@@ -98,10 +100,10 @@ export default {
   },
   methods: {
     editGoal() {
-      return this.editingGoal = true
+      this.editingGoal = true
     },
     finishEditingGoal () {
-      return this.editingGoal = false
+      this.editingGoal = false
     },
     saveEditedGoal ({ editedGoal }) {
       this.$store.dispatch('saveEditedGoal', {
