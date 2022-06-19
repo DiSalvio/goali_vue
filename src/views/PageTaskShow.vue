@@ -2,17 +2,18 @@
   <div class="list-group-item">
     <div v-if="!editingTask" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h2 class="mb-1 mr-auto p-2" :class="{ 'text-muted': task.completed }">{{task.name}}</h2>
+        <h2 id="task-name" class="mb-1 mr-auto p-2" :class="{ 'text-muted': task.completed }">{{task.name}}</h2>
         <div class="flex-column text-right">
           <div>
-            <button @click="editTask()" class="badge badge-pill">
+            <button id="edit-task" @click="editTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeTask(task)" class="badge badge-pill text-danger">
+            <button id="remove-task" @click="removeTask(task)" class="badge badge-pill text-danger">
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
           <button
+            id="toggle-task-completion-done"
             v-if="task.completed"
             class="badge badge-secondary badge-pill"
             @click="toggleTaskCompletion(task)"
@@ -20,6 +21,7 @@
             Done
           </button>
           <button
+            id="toggle-task-completion-in-progress"
             v-else
             class="badge badge-warning badge-pill"
             @click="toggleTaskCompletion(task)"
@@ -29,7 +31,7 @@
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="p-2 my-2 list-group-item-light list-group-item-secondary">
+        <p id="task-description" class="p-2 my-2 list-group-item-light list-group-item-secondary">
           {{task.description}}
         </p>
         <AppDate :timestamp="task.updated" class="badge badge-light badge-pill pull-right"/>
@@ -44,7 +46,7 @@
     </div>
     <div class="pt-3 container list-group">
       <div v-if="activeTaskSubTasks.length != 0">
-        <h4 class="text-muted p-2">Sub-tasks</h4>
+        <h4 id="sub-tasks-header" class="text-muted p-2">Sub-tasks</h4>
         <SubTaskList
           :subTasks="activeInProgressTaskSubTasks"
           @saveEditedSubTask="saveEditedSubTask"
