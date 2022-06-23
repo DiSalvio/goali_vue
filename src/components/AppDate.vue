@@ -1,5 +1,5 @@
 <template>
-  <span class="text-muted" :title="readableDate()">
+  <span id="last-update-time-date" class="text-muted" :title="readableDate()">
     {{ elapsedTime() }} 
   </span>
 </template>

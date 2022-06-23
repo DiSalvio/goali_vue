@@ -1,17 +1,17 @@
 <template>
   <div class="pl-3">
     <div class="list-group-item">
-      <h5 class="text-muted p-2">Add a new sub-task</h5>
-      <form @submit.prevent="saveSubTask" class="p-2">
+      <h5 id="add-sub-task-header" class="text-muted p-2">Add a new sub-task</h5>
+      <form id="add-sub-task-form" @submit.prevent="saveSubTask" class="p-2">
         <div class="form-group">
           <label for="newName">Sub-task Name</label>
-          <input v-model="newName" type="text" class="form-control">
+          <input id="add-sub-task-name-input" v-model="newName" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label for="newDescription">Sub-task Description</label>
-          <textarea @keyup.enter.prevent="saveSubTask" v-model="newDescription" cols="30" rows="5" class="form-control"/>
+          <textarea id="add-sub-task-description-input" @keyup.enter.prevent="saveSubTask" v-model="newDescription" cols="30" rows="5" class="form-control"/>
         </div>
-        <button type="submit" class="btn btn-primary">Add sub-task</button>
+        <button id="add-sub-task-submit-button" type="submit" class="btn btn-primary">Add sub-task</button>
       </form>
     </div>
   </div>

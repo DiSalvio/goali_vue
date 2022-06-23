@@ -1,7 +1,7 @@
 <template>
   <div class="list-group-item-heading">
     <div class="d-flex w-100 justify-content-between align-items-center">
-      <del class="mb-1 mr-auto p-2">
+      <del id="task-name-completed" class="mb-1 mr-auto p-2">
         <router-link
           :to="{name: 'PageTaskShow', params: {goalId: task.goal, taskId: task.id}}"
           class="text-muted"
@@ -11,15 +11,16 @@
       </del>
       <div class="flex-column text-right">
         <div>
-          <button @click="editTask(task.id)" class="badge badge-pill">
+          <button id="edit-task-completed" @click="editTask(task.id)" class="badge badge-pill">
             <font-awesome-icon icon="user-pen"/>
           </button>
-          <button @click="removeTask(task)" class="badge badge-pill text-danger">
+          <button id="remove-task-completed" @click="removeTask(task)" class="badge badge-pill text-danger">
             <font-awesome-icon icon="trash"/>
           </button>
         </div>
         <div>
           <button
+            id="toggle-task-completion-done"
             class="badge badge-secondary badge-pill"
             @click="toggleTaskCompletion(task)"
           >

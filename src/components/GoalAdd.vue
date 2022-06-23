@@ -1,17 +1,17 @@
 <template>
   <div class="list-group-item">
-    <h5 class="text-muted">Add a new goal</h5>
-    <form @submit.prevent="saveGoal">
+    <h5 id="add-goal-header" class="text-muted">Add a new goal</h5>
+    <form id="add-goal-form" @submit.prevent="saveGoal">
       <div class="form-group">
         <label for="newName">Goal Name</label>
-        <input v-model="newName" type="text" class="form-control">
+        <input id="add-goal-name-input" v-model="newName" type="text" class="form-control">
       </div>
       <div class="form-group">
         <label for="newDescription">Goal Description</label>
-        <textarea @keyup.enter.prevent="saveGoal" v-model="newDescription" cols="30" rows="5" class="form-control"/>
+        <textarea id="add-goal-description-input" @keyup.enter.prevent="saveGoal" v-model="newDescription" cols="30" rows="5" class="form-control"/>
       </div>
       <div>
-        <button type="submit" class="btn btn-primary">Add Goal</button>
+        <button id="add-goal-submit-button" type="submit" class="btn btn-primary">Add Goal</button>
       </div>
     </form>
   </div>

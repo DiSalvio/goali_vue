@@ -1,7 +1,7 @@
 <template>
   <div class="list-group-item-heading">
     <div class="d-flex w-100 justify-content-between align-items-center">
-      <h5 class="mb-1 mr-auto p-2">
+      <h5 id="sub-task-name-in-progress" class="mb-1 mr-auto p-2">
         <router-link
           :to="{name: 'PageSubTaskShow',
           params: {goalId: subTask.goal, taskId: subTask.task, subTaskId: subTask.id}}"
@@ -11,14 +11,15 @@
       </h5>
       <div class="flex-column text-right">
         <div>
-          <button @click="editSubTask(subTask.id)" class="badge badge-pill">
+          <button id="edit-sub-task-in-progress" @click="editSubTask(subTask.id)" class="badge badge-pill">
             <font-awesome-icon icon="user-pen"/>
           </button>
-          <button class="badge badge-pill text-danger">
+          <button id="remove-sub-task-in-progres" class="badge badge-pill text-danger">
             <font-awesome-icon @click="removeSubTask(subTask)" icon="trash"/>
           </button>
         </div>
         <button
+          id="toggle-sub-task-completion-in-progress"
           class="badge badge-warning badge-pill"
           @click="toggleSubTaskCompletion(subTask)"
         >
@@ -27,7 +28,7 @@
       </div>
     </div>
     <div class="align-items-end d-flex w-100 justify-content-between">
-      <p class="my-2 list-group-item-light list-group-item-secondary p-2">
+      <p id="sub-task-description-in-progress" class="my-2 list-group-item-light list-group-item-secondary p-2">
         {{subTask.description}}
       </p>
       <AppDate :timestamp="subTask.updated" class="badge badge-light badge-pill pull-right"/>

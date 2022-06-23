@@ -2,17 +2,18 @@
   <div class="list-group-item">
     <div v-if="!editingSubTask" class="list-group-item-heading">
       <div class="d-flex w-100 justify-content-between align-items-center">
-        <h4 class="mb-1 mr-auto p-2" :class="{ 'text-muted': subTask.completed }">{{subTask.name}}</h4>
+        <h4 id="sub-task-name" class="mb-1 mr-auto p-2" :class="{ 'text-muted': subTask.completed }">{{subTask.name}}</h4>
         <div class="flex-column text-right">
           <div>
-            <button @click="editSubTask()" class="badge badge-pill">
+            <button id="edit-sub-task" @click="editSubTask()" class="badge badge-pill">
               <font-awesome-icon icon="user-pen"/>
             </button>
-            <button @click="removeSubTask(subTask)" class="badge badge-pill text-danger">
+            <button id="remove-sub-task" @click="removeSubTask(subTask)" class="badge badge-pill text-danger">
               <font-awesome-icon icon="trash"/>
             </button>
           </div>
           <button
+            id="toggle-sub-task-completion-done"
             v-if="subTask.completed"
             class="badge badge-secondary badge-pill"
             @click="toggleSubTaskCompletion(subTask)"
@@ -20,6 +21,7 @@
             Done
           </button>
           <button
+            id="toggle-sub-task-completion-in-progress"
             v-else
             class="badge badge-warning badge-pill"
             @click="toggleSubTaskCompletion(subTask)"
@@ -29,7 +31,7 @@
         </div>
       </div>
       <div class="align-items-end d-flex w-100 justify-content-between">
-        <p class="my-2 list-group-item-light list-group-item-secondary p-2">
+        <p id="sub-task-description" class="my-2 list-group-item-light list-group-item-secondary p-2">
           {{subTask.description}}
         </p>
         <AppDate :timestamp="subTask.updated" class="badge badge-light badge-pill pull-right"/>

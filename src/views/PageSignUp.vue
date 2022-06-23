@@ -5,7 +5,7 @@
         <h2 id="sign-up-failed" class="mb-0">Sign Up Failed</h2>
       </div>
       <form  @submit.prevent="signUp">
-        <h1 class="mb-4">Sign Up</h1>
+        <h1 id="sign-up-header" class="mb-4">Sign Up</h1>
         <div class="form-outline mb-4">
           <label for="email">Email</label>
           <input id="email" v-model="email" name="email" type="text" class="form-control">

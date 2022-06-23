@@ -1,19 +1,19 @@
 <template>
-  <form @keyup.esc="cancelEdit" @submit.prevent="saveGoal" class="p-2">
+  <form id="edit-goal-form" @keyup.esc="cancelEdit" @submit.prevent="saveGoal" class="p-2">
     <div class="form-group">
       <div class="d-flex w-100">
         <label for="editName" class="mr-auto">Goal Name</label>
-        <button type="submit" class="badge badge-pill mb-1"><font-awesome-icon icon="floppy-disk"/></button>
-        <button @click="cancelEdit" class="badge badge-pill mb-1 text-danger"><font-awesome-icon icon="rectangle-xmark"/></button>
+        <button id="save-edit-button" type="submit" class="badge badge-pill mb-1"><font-awesome-icon icon="floppy-disk"/></button>
+        <button id="cancel-edit-button" @click="cancelEdit" class="badge badge-pill mb-1 text-danger"><font-awesome-icon icon="rectangle-xmark"/></button>
       </div>
-      <input v-model="editName" v-focus type="text" class="form-control">
+      <input id="edit-goal-name-input" v-model="editName" v-focus type="text" class="form-control">
     </div>
     <div class="form-group">
       <label for="editDescription">Goal Description</label>
-      <textarea @keyup.enter.prevent="saveGoal" v-model="editDescription" cols="30" rows="5" class="form-control"/>
+      <textarea id="edit-goal-description-input" @keyup.enter.prevent="saveGoal" v-model="editDescription" cols="30" rows="5" class="form-control"/>
     </div>
     <div>
-      <button type="submit" class="btn btn-primary">Save Goal</button>
+      <button id="submit-edited-goal-button" type="submit" class="btn btn-primary">Save Goal</button>
     </div>
   </form>
 </template>
