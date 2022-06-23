@@ -11,18 +11,19 @@
         <h2 id="invalid" class="mb-0">Enter username and password</h2>
       </div>
       <form @submit.prevent="login">
-        <h1 class="mb-4">Login</h1>
+        <h1 id="login-header" class="mb-4">Login</h1>
         <div class="form-outline mb-4">
           <label for="username">Username</label>
-          <input v-model="username" name="username" type="text" class="form-control">
+          <input id="username-input" v-model="username" name="username" type="text" class="form-control">
         </div>
         <div class="form-outline mb-4">
           <label for="password">Password</label>
-          <input v-model="password" name="password" type="password" class="form-control">
+          <input id="password-input" v-model="password" name="password" type="password" class="form-control">
         </div>
         <div>
-          <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+          <button id="login-button" type="submit" class="btn btn-primary btn-block mb-4">Login</button>
           <router-link
+            id="sign-up-link"
             :to="{name: 'PageSignUp'}"
             class="btn btn-light btn-block mb-4"
           >

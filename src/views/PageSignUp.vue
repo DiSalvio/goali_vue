@@ -31,10 +31,11 @@
           <input id="confirm-password" v-model="confirmPassword" name="confirmPassword" type="password" class="form-control">
         </div>
         <div>
-          <button class="btn btn-primary btn-block mb-4">Sign Up</button>
+          <button id="sign-up-button" class="btn btn-primary btn-block mb-4">Sign Up</button>
           <router-link
+            id="login-page-link"
             :to="{name: 'PageLogin'}"
-          class="btn btn-light btn-block mb-4"
+            class="btn btn-light btn-block mb-4"
           >
             Login Page
           </router-link>
