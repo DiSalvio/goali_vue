@@ -30,10 +30,13 @@ VueWrapper {
         >
           <h5
             class="text-muted"
+            id="add-goal-header"
           >
             Add a new goal
           </h5>
-          <form>
+          <form
+            id="add-goal-form"
+          >
             <div
               class="form-group"
             >
@@ -44,6 +47,7 @@ VueWrapper {
               </label>
               <input
                 class="form-control"
+                id="add-goal-name-input"
                 type="text"
               />
             </div>
@@ -58,12 +62,14 @@ VueWrapper {
               <textarea
                 class="form-control"
                 cols="30"
+                id="add-goal-description-input"
                 rows="5"
               />
             </div>
             <div>
               <button
                 class="btn btn-primary"
+                id="add-goal-submit-button"
                 type="submit"
               >
                 Add Goal
@@ -3068,6 +3074,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h5
                           class="text-muted"
+                          id="add-goal-header"
                         >
                           Add a new goal
                         </h5>,
@@ -3075,6 +3082,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "text-muted",
+                          "id": "add-goal-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -3192,12 +3200,14 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <input
                                   class="form-control"
+                                  id="add-goal-name-input"
                                   type="text"
                                 />,
                                 "key": null,
                                 "patchFlag": 512,
                                 "props": Object {
                                   "class": "form-control",
+                                  "id": "add-goal-name-input",
                                   "onUpdate:modelValue": [Function],
                                   "type": "text",
                                 },
@@ -3229,6 +3239,7 @@ VueWrapper {
                               </label>
                               <input
                                 class="form-control"
+                                id="add-goal-name-input"
                                 type="text"
                               />
                             </div>,
@@ -3348,6 +3359,7 @@ VueWrapper {
                                 "el": <textarea
                                   class="form-control"
                                   cols="30"
+                                  id="add-goal-description-input"
                                   rows="5"
                                 />,
                                 "key": null,
@@ -3355,6 +3367,7 @@ VueWrapper {
                                 "props": Object {
                                   "class": "form-control",
                                   "cols": "30",
+                                  "id": "add-goal-description-input",
                                   "onKeyup": [Function],
                                   "onUpdate:modelValue": [Function],
                                   "rows": "5",
@@ -3388,6 +3401,7 @@ VueWrapper {
                               <textarea
                                 class="form-control"
                                 cols="30"
+                                id="add-goal-description-input"
                                 rows="5"
                               />
                             </div>,
@@ -3427,6 +3441,7 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <button
                                   class="btn btn-primary"
+                                  id="add-goal-submit-button"
                                   type="submit"
                                 >
                                   Add Goal
@@ -3435,6 +3450,7 @@ VueWrapper {
                                 "patchFlag": 0,
                                 "props": Object {
                                   "class": "btn btn-primary",
+                                  "id": "add-goal-submit-button",
                                   "type": "submit",
                                 },
                                 "ref": null,
@@ -3458,6 +3474,7 @@ VueWrapper {
                             "el": <div>
                               <button
                                 class="btn btn-primary"
+                                id="add-goal-submit-button"
                                 type="submit"
                               >
                                 Add Goal
@@ -3484,7 +3501,9 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <form>
+                        "el": <form
+                          id="add-goal-form"
+                        >
                           <div
                             class="form-group"
                           >
@@ -3495,6 +3514,7 @@ VueWrapper {
                             </label>
                             <input
                               class="form-control"
+                              id="add-goal-name-input"
                               type="text"
                             />
                           </div>
@@ -3509,12 +3529,14 @@ VueWrapper {
                             <textarea
                               class="form-control"
                               cols="30"
+                              id="add-goal-description-input"
                               rows="5"
                             />
                           </div>
                           <div>
                             <button
                               class="btn btn-primary"
+                              id="add-goal-submit-button"
                               type="submit"
                             >
                               Add Goal
@@ -3524,6 +3546,7 @@ VueWrapper {
                         "key": null,
                         "patchFlag": 32,
                         "props": Object {
+                          "id": "add-goal-form",
                           "onSubmit": [Function],
                         },
                         "ref": null,
@@ -3601,12 +3624,14 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <input
                           class="form-control"
+                          id="add-goal-name-input"
                           type="text"
                         />,
                         "key": null,
                         "patchFlag": 512,
                         "props": Object {
                           "class": "form-control",
+                          "id": "add-goal-name-input",
                           "onUpdate:modelValue": [Function],
                           "type": "text",
                         },
@@ -3682,6 +3707,7 @@ VueWrapper {
                         "el": <textarea
                           class="form-control"
                           cols="30"
+                          id="add-goal-description-input"
                           rows="5"
                         />,
                         "key": null,
@@ -3689,6 +3715,7 @@ VueWrapper {
                         "props": Object {
                           "class": "form-control",
                           "cols": "30",
+                          "id": "add-goal-description-input",
                           "onKeyup": [Function],
                           "onUpdate:modelValue": [Function],
                           "rows": "5",
@@ -3713,10 +3740,13 @@ VueWrapper {
                     >
                       <h5
                         class="text-muted"
+                        id="add-goal-header"
                       >
                         Add a new goal
                       </h5>
-                      <form>
+                      <form
+                        id="add-goal-form"
+                      >
                         <div
                           class="form-group"
                         >
@@ -3727,6 +3757,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="add-goal-name-input"
                             type="text"
                           />
                         </div>
@@ -3741,12 +3772,14 @@ VueWrapper {
                           <textarea
                             class="form-control"
                             cols="30"
+                            id="add-goal-description-input"
                             rows="5"
                           />
                         </div>
                         <div>
                           <button
                             class="btn btn-primary"
+                            id="add-goal-submit-button"
                             type="submit"
                           >
                             Add Goal
@@ -3799,10 +3832,13 @@ VueWrapper {
                 >
                   <h5
                     class="text-muted"
+                    id="add-goal-header"
                   >
                     Add a new goal
                   </h5>
-                  <form>
+                  <form
+                    id="add-goal-form"
+                  >
                     <div
                       class="form-group"
                     >
@@ -3813,6 +3849,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="add-goal-name-input"
                         type="text"
                       />
                     </div>
@@ -3827,12 +3864,14 @@ VueWrapper {
                       <textarea
                         class="form-control"
                         cols="30"
+                        id="add-goal-description-input"
                         rows="5"
                       />
                     </div>
                     <div>
                       <button
                         class="btn btn-primary"
+                        id="add-goal-submit-button"
                         type="submit"
                       >
                         Add Goal
@@ -6191,6 +6230,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h5
                           class="text-muted"
+                          id="add-goal-header"
                         >
                           Add a new goal
                         </h5>,
@@ -6198,6 +6238,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "text-muted",
+                          "id": "add-goal-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -6315,12 +6356,14 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <input
                                   class="form-control"
+                                  id="add-goal-name-input"
                                   type="text"
                                 />,
                                 "key": null,
                                 "patchFlag": 512,
                                 "props": Object {
                                   "class": "form-control",
+                                  "id": "add-goal-name-input",
                                   "onUpdate:modelValue": [Function],
                                   "type": "text",
                                 },
@@ -6352,6 +6395,7 @@ VueWrapper {
                               </label>
                               <input
                                 class="form-control"
+                                id="add-goal-name-input"
                                 type="text"
                               />
                             </div>,
@@ -6471,6 +6515,7 @@ VueWrapper {
                                 "el": <textarea
                                   class="form-control"
                                   cols="30"
+                                  id="add-goal-description-input"
                                   rows="5"
                                 />,
                                 "key": null,
@@ -6478,6 +6523,7 @@ VueWrapper {
                                 "props": Object {
                                   "class": "form-control",
                                   "cols": "30",
+                                  "id": "add-goal-description-input",
                                   "onKeyup": [Function],
                                   "onUpdate:modelValue": [Function],
                                   "rows": "5",
@@ -6511,6 +6557,7 @@ VueWrapper {
                               <textarea
                                 class="form-control"
                                 cols="30"
+                                id="add-goal-description-input"
                                 rows="5"
                               />
                             </div>,
@@ -6550,6 +6597,7 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <button
                                   class="btn btn-primary"
+                                  id="add-goal-submit-button"
                                   type="submit"
                                 >
                                   Add Goal
@@ -6558,6 +6606,7 @@ VueWrapper {
                                 "patchFlag": 0,
                                 "props": Object {
                                   "class": "btn btn-primary",
+                                  "id": "add-goal-submit-button",
                                   "type": "submit",
                                 },
                                 "ref": null,
@@ -6581,6 +6630,7 @@ VueWrapper {
                             "el": <div>
                               <button
                                 class="btn btn-primary"
+                                id="add-goal-submit-button"
                                 type="submit"
                               >
                                 Add Goal
@@ -6607,7 +6657,9 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <form>
+                        "el": <form
+                          id="add-goal-form"
+                        >
                           <div
                             class="form-group"
                           >
@@ -6618,6 +6670,7 @@ VueWrapper {
                             </label>
                             <input
                               class="form-control"
+                              id="add-goal-name-input"
                               type="text"
                             />
                           </div>
@@ -6632,12 +6685,14 @@ VueWrapper {
                             <textarea
                               class="form-control"
                               cols="30"
+                              id="add-goal-description-input"
                               rows="5"
                             />
                           </div>
                           <div>
                             <button
                               class="btn btn-primary"
+                              id="add-goal-submit-button"
                               type="submit"
                             >
                               Add Goal
@@ -6647,6 +6702,7 @@ VueWrapper {
                         "key": null,
                         "patchFlag": 32,
                         "props": Object {
+                          "id": "add-goal-form",
                           "onSubmit": [Function],
                         },
                         "ref": null,
@@ -6724,12 +6780,14 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <input
                           class="form-control"
+                          id="add-goal-name-input"
                           type="text"
                         />,
                         "key": null,
                         "patchFlag": 512,
                         "props": Object {
                           "class": "form-control",
+                          "id": "add-goal-name-input",
                           "onUpdate:modelValue": [Function],
                           "type": "text",
                         },
@@ -6805,6 +6863,7 @@ VueWrapper {
                         "el": <textarea
                           class="form-control"
                           cols="30"
+                          id="add-goal-description-input"
                           rows="5"
                         />,
                         "key": null,
@@ -6812,6 +6871,7 @@ VueWrapper {
                         "props": Object {
                           "class": "form-control",
                           "cols": "30",
+                          "id": "add-goal-description-input",
                           "onKeyup": [Function],
                           "onUpdate:modelValue": [Function],
                           "rows": "5",
@@ -6836,10 +6896,13 @@ VueWrapper {
                     >
                       <h5
                         class="text-muted"
+                        id="add-goal-header"
                       >
                         Add a new goal
                       </h5>
-                      <form>
+                      <form
+                        id="add-goal-form"
+                      >
                         <div
                           class="form-group"
                         >
@@ -6850,6 +6913,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="add-goal-name-input"
                             type="text"
                           />
                         </div>
@@ -6864,12 +6928,14 @@ VueWrapper {
                           <textarea
                             class="form-control"
                             cols="30"
+                            id="add-goal-description-input"
                             rows="5"
                           />
                         </div>
                         <div>
                           <button
                             class="btn btn-primary"
+                            id="add-goal-submit-button"
                             type="submit"
                           >
                             Add Goal
@@ -6922,10 +6988,13 @@ VueWrapper {
                 >
                   <h5
                     class="text-muted"
+                    id="add-goal-header"
                   >
                     Add a new goal
                   </h5>
-                  <form>
+                  <form
+                    id="add-goal-form"
+                  >
                     <div
                       class="form-group"
                     >
@@ -6936,6 +7005,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="add-goal-name-input"
                         type="text"
                       />
                     </div>
@@ -6950,12 +7020,14 @@ VueWrapper {
                       <textarea
                         class="form-control"
                         cols="30"
+                        id="add-goal-description-input"
                         rows="5"
                       />
                     </div>
                     <div>
                       <button
                         class="btn btn-primary"
+                        id="add-goal-submit-button"
                         type="submit"
                       >
                         Add Goal
@@ -7009,10 +7081,13 @@ VueWrapper {
               >
                 <h5
                   class="text-muted"
+                  id="add-goal-header"
                 >
                   Add a new goal
                 </h5>
-                <form>
+                <form
+                  id="add-goal-form"
+                >
                   <div
                     class="form-group"
                   >
@@ -7023,6 +7098,7 @@ VueWrapper {
                     </label>
                     <input
                       class="form-control"
+                      id="add-goal-name-input"
                       type="text"
                     />
                   </div>
@@ -7037,12 +7113,14 @@ VueWrapper {
                     <textarea
                       class="form-control"
                       cols="30"
+                      id="add-goal-description-input"
                       rows="5"
                     />
                   </div>
                   <div>
                     <button
                       class="btn btn-primary"
+                      id="add-goal-submit-button"
                       type="submit"
                     >
                       Add Goal
@@ -7204,10 +7282,13 @@ VueWrapper {
           >
             <h5
               class="text-muted"
+              id="add-goal-header"
             >
               Add a new goal
             </h5>
-            <form>
+            <form
+              id="add-goal-form"
+            >
               <div
                 class="form-group"
               >
@@ -7218,6 +7299,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="add-goal-name-input"
                   type="text"
                 />
               </div>
@@ -7232,12 +7314,14 @@ VueWrapper {
                 <textarea
                   class="form-control"
                   cols="30"
+                  id="add-goal-description-input"
                   rows="5"
                 />
               </div>
               <div>
                 <button
                   class="btn btn-primary"
+                  id="add-goal-submit-button"
                   type="submit"
                 >
                   Add Goal
@@ -7441,10 +7525,13 @@ VueWrapper {
           >
             <h5
               class="text-muted"
+              id="add-goal-header"
             >
               Add a new goal
             </h5>
-            <form>
+            <form
+              id="add-goal-form"
+            >
               <div
                 class="form-group"
               >
@@ -7455,6 +7542,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="add-goal-name-input"
                   type="text"
                 />
               </div>
@@ -7469,12 +7557,14 @@ VueWrapper {
                 <textarea
                   class="form-control"
                   cols="30"
+                  id="add-goal-description-input"
                   rows="5"
                 />
               </div>
               <div>
                 <button
                   class="btn btn-primary"
+                  id="add-goal-submit-button"
                   type="submit"
                 >
                   Add Goal
@@ -7625,10 +7715,13 @@ VueWrapper {
     >
       <h5
         class="text-muted"
+        id="add-goal-header"
       >
         Add a new goal
       </h5>
-      <form>
+      <form
+        id="add-goal-form"
+      >
         <div
           class="form-group"
         >
@@ -7639,6 +7732,7 @@ VueWrapper {
           </label>
           <input
             class="form-control"
+            id="add-goal-name-input"
             type="text"
           />
         </div>
@@ -7653,12 +7747,14 @@ VueWrapper {
           <textarea
             class="form-control"
             cols="30"
+            id="add-goal-description-input"
             rows="5"
           />
         </div>
         <div>
           <button
             class="btn btn-primary"
+            id="add-goal-submit-button"
             type="submit"
           >
             Add Goal
@@ -7693,10 +7789,13 @@ VueWrapper {
         >
           <h5
             class="text-muted"
+            id="add-goal-header"
           >
             Add a new goal
           </h5>
-          <form>
+          <form
+            id="add-goal-form"
+          >
             <div
               class="form-group"
             >
@@ -7707,6 +7806,7 @@ VueWrapper {
               </label>
               <input
                 class="form-control"
+                id="add-goal-name-input"
                 type="text"
               />
             </div>
@@ -7721,12 +7821,14 @@ VueWrapper {
               <textarea
                 class="form-control"
                 cols="30"
+                id="add-goal-description-input"
                 rows="5"
               />
             </div>
             <div>
               <button
                 class="btn btn-primary"
+                id="add-goal-submit-button"
                 type="submit"
               >
                 Add Goal
@@ -8523,6 +8625,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h5
                           class="text-muted"
+                          id="add-goal-header"
                         >
                           Add a new goal
                         </h5>,
@@ -8530,6 +8633,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "text-muted",
+                          "id": "add-goal-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -8636,12 +8740,14 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <input
                                   class="form-control"
+                                  id="add-goal-name-input"
                                   type="text"
                                 />,
                                 "key": null,
                                 "patchFlag": 512,
                                 "props": Object {
                                   "class": "form-control",
+                                  "id": "add-goal-name-input",
                                   "onUpdate:modelValue": [Function],
                                   "type": "text",
                                 },
@@ -8673,6 +8779,7 @@ VueWrapper {
                               </label>
                               <input
                                 class="form-control"
+                                id="add-goal-name-input"
                                 type="text"
                               />
                             </div>,
@@ -8781,6 +8888,7 @@ VueWrapper {
                                 "el": <textarea
                                   class="form-control"
                                   cols="30"
+                                  id="add-goal-description-input"
                                   rows="5"
                                 />,
                                 "key": null,
@@ -8788,6 +8896,7 @@ VueWrapper {
                                 "props": Object {
                                   "class": "form-control",
                                   "cols": "30",
+                                  "id": "add-goal-description-input",
                                   "onKeyup": [Function],
                                   "onUpdate:modelValue": [Function],
                                   "rows": "5",
@@ -8821,6 +8930,7 @@ VueWrapper {
                               <textarea
                                 class="form-control"
                                 cols="30"
+                                id="add-goal-description-input"
                                 rows="5"
                               />
                             </div>,
@@ -8860,6 +8970,7 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <button
                                   class="btn btn-primary"
+                                  id="add-goal-submit-button"
                                   type="submit"
                                 >
                                   Add Goal
@@ -8868,6 +8979,7 @@ VueWrapper {
                                 "patchFlag": 0,
                                 "props": Object {
                                   "class": "btn btn-primary",
+                                  "id": "add-goal-submit-button",
                                   "type": "submit",
                                 },
                                 "ref": null,
@@ -8891,6 +9003,7 @@ VueWrapper {
                             "el": <div>
                               <button
                                 class="btn btn-primary"
+                                id="add-goal-submit-button"
                                 type="submit"
                               >
                                 Add Goal
@@ -8917,7 +9030,9 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <form>
+                        "el": <form
+                          id="add-goal-form"
+                        >
                           <div
                             class="form-group"
                           >
@@ -8928,6 +9043,7 @@ VueWrapper {
                             </label>
                             <input
                               class="form-control"
+                              id="add-goal-name-input"
                               type="text"
                             />
                           </div>
@@ -8942,12 +9058,14 @@ VueWrapper {
                             <textarea
                               class="form-control"
                               cols="30"
+                              id="add-goal-description-input"
                               rows="5"
                             />
                           </div>
                           <div>
                             <button
                               class="btn btn-primary"
+                              id="add-goal-submit-button"
                               type="submit"
                             >
                               Add Goal
@@ -8957,6 +9075,7 @@ VueWrapper {
                         "key": null,
                         "patchFlag": 32,
                         "props": Object {
+                          "id": "add-goal-form",
                           "onSubmit": [Function],
                         },
                         "ref": null,
@@ -9023,12 +9142,14 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <input
                           class="form-control"
+                          id="add-goal-name-input"
                           type="text"
                         />,
                         "key": null,
                         "patchFlag": 512,
                         "props": Object {
                           "class": "form-control",
+                          "id": "add-goal-name-input",
                           "onUpdate:modelValue": [Function],
                           "type": "text",
                         },
@@ -9093,6 +9214,7 @@ VueWrapper {
                         "el": <textarea
                           class="form-control"
                           cols="30"
+                          id="add-goal-description-input"
                           rows="5"
                         />,
                         "key": null,
@@ -9100,6 +9222,7 @@ VueWrapper {
                         "props": Object {
                           "class": "form-control",
                           "cols": "30",
+                          "id": "add-goal-description-input",
                           "onKeyup": [Function],
                           "onUpdate:modelValue": [Function],
                           "rows": "5",
@@ -9124,10 +9247,13 @@ VueWrapper {
                     >
                       <h5
                         class="text-muted"
+                        id="add-goal-header"
                       >
                         Add a new goal
                       </h5>
-                      <form>
+                      <form
+                        id="add-goal-form"
+                      >
                         <div
                           class="form-group"
                         >
@@ -9138,6 +9264,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="add-goal-name-input"
                             type="text"
                           />
                         </div>
@@ -9152,12 +9279,14 @@ VueWrapper {
                           <textarea
                             class="form-control"
                             cols="30"
+                            id="add-goal-description-input"
                             rows="5"
                           />
                         </div>
                         <div>
                           <button
                             class="btn btn-primary"
+                            id="add-goal-submit-button"
                             type="submit"
                           >
                             Add Goal
@@ -9210,10 +9339,13 @@ VueWrapper {
                 >
                   <h5
                     class="text-muted"
+                    id="add-goal-header"
                   >
                     Add a new goal
                   </h5>
-                  <form>
+                  <form
+                    id="add-goal-form"
+                  >
                     <div
                       class="form-group"
                     >
@@ -9224,6 +9356,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="add-goal-name-input"
                         type="text"
                       />
                     </div>
@@ -9238,12 +9371,14 @@ VueWrapper {
                       <textarea
                         class="form-control"
                         cols="30"
+                        id="add-goal-description-input"
                         rows="5"
                       />
                     </div>
                     <div>
                       <button
                         class="btn btn-primary"
+                        id="add-goal-submit-button"
                         type="submit"
                       >
                         Add Goal
@@ -9521,6 +9656,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h5
                           class="text-muted"
+                          id="add-goal-header"
                         >
                           Add a new goal
                         </h5>,
@@ -9528,6 +9664,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "text-muted",
+                          "id": "add-goal-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -9634,12 +9771,14 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <input
                                   class="form-control"
+                                  id="add-goal-name-input"
                                   type="text"
                                 />,
                                 "key": null,
                                 "patchFlag": 512,
                                 "props": Object {
                                   "class": "form-control",
+                                  "id": "add-goal-name-input",
                                   "onUpdate:modelValue": [Function],
                                   "type": "text",
                                 },
@@ -9671,6 +9810,7 @@ VueWrapper {
                               </label>
                               <input
                                 class="form-control"
+                                id="add-goal-name-input"
                                 type="text"
                               />
                             </div>,
@@ -9779,6 +9919,7 @@ VueWrapper {
                                 "el": <textarea
                                   class="form-control"
                                   cols="30"
+                                  id="add-goal-description-input"
                                   rows="5"
                                 />,
                                 "key": null,
@@ -9786,6 +9927,7 @@ VueWrapper {
                                 "props": Object {
                                   "class": "form-control",
                                   "cols": "30",
+                                  "id": "add-goal-description-input",
                                   "onKeyup": [Function],
                                   "onUpdate:modelValue": [Function],
                                   "rows": "5",
@@ -9819,6 +9961,7 @@ VueWrapper {
                               <textarea
                                 class="form-control"
                                 cols="30"
+                                id="add-goal-description-input"
                                 rows="5"
                               />
                             </div>,
@@ -9858,6 +10001,7 @@ VueWrapper {
                                 "dynamicProps": null,
                                 "el": <button
                                   class="btn btn-primary"
+                                  id="add-goal-submit-button"
                                   type="submit"
                                 >
                                   Add Goal
@@ -9866,6 +10010,7 @@ VueWrapper {
                                 "patchFlag": 0,
                                 "props": Object {
                                   "class": "btn btn-primary",
+                                  "id": "add-goal-submit-button",
                                   "type": "submit",
                                 },
                                 "ref": null,
@@ -9889,6 +10034,7 @@ VueWrapper {
                             "el": <div>
                               <button
                                 class="btn btn-primary"
+                                id="add-goal-submit-button"
                                 type="submit"
                               >
                                 Add Goal
@@ -9915,7 +10061,9 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <form>
+                        "el": <form
+                          id="add-goal-form"
+                        >
                           <div
                             class="form-group"
                           >
@@ -9926,6 +10074,7 @@ VueWrapper {
                             </label>
                             <input
                               class="form-control"
+                              id="add-goal-name-input"
                               type="text"
                             />
                           </div>
@@ -9940,12 +10089,14 @@ VueWrapper {
                             <textarea
                               class="form-control"
                               cols="30"
+                              id="add-goal-description-input"
                               rows="5"
                             />
                           </div>
                           <div>
                             <button
                               class="btn btn-primary"
+                              id="add-goal-submit-button"
                               type="submit"
                             >
                               Add Goal
@@ -9955,6 +10106,7 @@ VueWrapper {
                         "key": null,
                         "patchFlag": 32,
                         "props": Object {
+                          "id": "add-goal-form",
                           "onSubmit": [Function],
                         },
                         "ref": null,
@@ -10021,12 +10173,14 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <input
                           class="form-control"
+                          id="add-goal-name-input"
                           type="text"
                         />,
                         "key": null,
                         "patchFlag": 512,
                         "props": Object {
                           "class": "form-control",
+                          "id": "add-goal-name-input",
                           "onUpdate:modelValue": [Function],
                           "type": "text",
                         },
@@ -10091,6 +10245,7 @@ VueWrapper {
                         "el": <textarea
                           class="form-control"
                           cols="30"
+                          id="add-goal-description-input"
                           rows="5"
                         />,
                         "key": null,
@@ -10098,6 +10253,7 @@ VueWrapper {
                         "props": Object {
                           "class": "form-control",
                           "cols": "30",
+                          "id": "add-goal-description-input",
                           "onKeyup": [Function],
                           "onUpdate:modelValue": [Function],
                           "rows": "5",
@@ -10122,10 +10278,13 @@ VueWrapper {
                     >
                       <h5
                         class="text-muted"
+                        id="add-goal-header"
                       >
                         Add a new goal
                       </h5>
-                      <form>
+                      <form
+                        id="add-goal-form"
+                      >
                         <div
                           class="form-group"
                         >
@@ -10136,6 +10295,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="add-goal-name-input"
                             type="text"
                           />
                         </div>
@@ -10150,12 +10310,14 @@ VueWrapper {
                           <textarea
                             class="form-control"
                             cols="30"
+                            id="add-goal-description-input"
                             rows="5"
                           />
                         </div>
                         <div>
                           <button
                             class="btn btn-primary"
+                            id="add-goal-submit-button"
                             type="submit"
                           >
                             Add Goal
@@ -10208,10 +10370,13 @@ VueWrapper {
                 >
                   <h5
                     class="text-muted"
+                    id="add-goal-header"
                   >
                     Add a new goal
                   </h5>
-                  <form>
+                  <form
+                    id="add-goal-form"
+                  >
                     <div
                       class="form-group"
                     >
@@ -10222,6 +10387,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="add-goal-name-input"
                         type="text"
                       />
                     </div>
@@ -10236,12 +10402,14 @@ VueWrapper {
                       <textarea
                         class="form-control"
                         cols="30"
+                        id="add-goal-description-input"
                         rows="5"
                       />
                     </div>
                     <div>
                       <button
                         class="btn btn-primary"
+                        id="add-goal-submit-button"
                         type="submit"
                       >
                         Add Goal
@@ -10288,10 +10456,13 @@ VueWrapper {
               >
                 <h5
                   class="text-muted"
+                  id="add-goal-header"
                 >
                   Add a new goal
                 </h5>
-                <form>
+                <form
+                  id="add-goal-form"
+                >
                   <div
                     class="form-group"
                   >
@@ -10302,6 +10473,7 @@ VueWrapper {
                     </label>
                     <input
                       class="form-control"
+                      id="add-goal-name-input"
                       type="text"
                     />
                   </div>
@@ -10316,12 +10488,14 @@ VueWrapper {
                     <textarea
                       class="form-control"
                       cols="30"
+                      id="add-goal-description-input"
                       rows="5"
                     />
                   </div>
                   <div>
                     <button
                       class="btn btn-primary"
+                      id="add-goal-submit-button"
                       type="submit"
                     >
                       Add Goal
@@ -10474,10 +10648,13 @@ VueWrapper {
           >
             <h5
               class="text-muted"
+              id="add-goal-header"
             >
               Add a new goal
             </h5>
-            <form>
+            <form
+              id="add-goal-form"
+            >
               <div
                 class="form-group"
               >
@@ -10488,6 +10665,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="add-goal-name-input"
                   type="text"
                 />
               </div>
@@ -10502,12 +10680,14 @@ VueWrapper {
                 <textarea
                   class="form-control"
                   cols="30"
+                  id="add-goal-description-input"
                   rows="5"
                 />
               </div>
               <div>
                 <button
                   class="btn btn-primary"
+                  id="add-goal-submit-button"
                   type="submit"
                 >
                   Add Goal
@@ -10702,10 +10882,13 @@ VueWrapper {
           >
             <h5
               class="text-muted"
+              id="add-goal-header"
             >
               Add a new goal
             </h5>
-            <form>
+            <form
+              id="add-goal-form"
+            >
               <div
                 class="form-group"
               >
@@ -10716,6 +10899,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="add-goal-name-input"
                   type="text"
                 />
               </div>
@@ -10730,12 +10914,14 @@ VueWrapper {
                 <textarea
                   class="form-control"
                   cols="30"
+                  id="add-goal-description-input"
                   rows="5"
                 />
               </div>
               <div>
                 <button
                   class="btn btn-primary"
+                  id="add-goal-submit-button"
                   type="submit"
                 >
                   Add Goal
@@ -10846,10 +11032,13 @@ VueWrapper {
     >
       <h5
         class="text-muted"
+        id="add-goal-header"
       >
         Add a new goal
       </h5>
-      <form>
+      <form
+        id="add-goal-form"
+      >
         <div
           class="form-group"
         >
@@ -10860,6 +11049,7 @@ VueWrapper {
           </label>
           <input
             class="form-control"
+            id="add-goal-name-input"
             type="text"
           />
         </div>
@@ -10874,12 +11064,14 @@ VueWrapper {
           <textarea
             class="form-control"
             cols="30"
+            id="add-goal-description-input"
             rows="5"
           />
         </div>
         <div>
           <button
             class="btn btn-primary"
+            id="add-goal-submit-button"
             type="submit"
           >
             Add Goal

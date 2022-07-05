@@ -18,7 +18,9 @@ VueWrapper {
         >
           The page you're looking for doesn't exist
         </h1>
-        <h1>
+        <h1
+          id="go-home-link"
+        >
           <router-link
             to="[object Object]"
           >
@@ -437,7 +439,9 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": null,
                 "dynamicProps": null,
-                "el": <h1>
+                "el": <h1
+                  id="go-home-link"
+                >
                   <router-link
                     to="[object Object]"
                   >
@@ -446,7 +450,9 @@ VueWrapper {
                 </h1>,
                 "key": null,
                 "patchFlag": 0,
-                "props": null,
+                "props": Object {
+                  "id": "go-home-link",
+                },
                 "ref": null,
                 "scopeId": null,
                 "shapeFlag": 17,
@@ -507,7 +513,9 @@ VueWrapper {
               >
                 The page you're looking for doesn't exist
               </h1>
-              <h1>
+              <h1
+                id="go-home-link"
+              >
                 <router-link
                   to="[object Object]"
                 >
@@ -565,7 +573,9 @@ VueWrapper {
           >
             The page you're looking for doesn't exist
           </h1>
-          <h1>
+          <h1
+            id="go-home-link"
+          >
             <router-link
               to="[object Object]"
             >
@@ -665,7 +675,9 @@ VueWrapper {
           >
             The page you're looking for doesn't exist
           </h1>
-          <h1>
+          <h1
+            id="go-home-link"
+          >
             <router-link
               to="[object Object]"
             >
@@ -729,7 +741,9 @@ VueWrapper {
     >
       The page you're looking for doesn't exist
     </h1>
-    <h1>
+    <h1
+      id="go-home-link"
+    >
       <router-link
         to="[object Object]"
       >

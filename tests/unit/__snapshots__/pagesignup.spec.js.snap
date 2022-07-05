@@ -20,6 +20,7 @@ VueWrapper {
           <form>
             <h1
               class="mb-4"
+              id="sign-up-header"
             >
               Sign Up
             </h1>
@@ -116,11 +117,13 @@ VueWrapper {
             <div>
               <button
                 class="btn btn-primary btn-block mb-4"
+                id="sign-up-button"
               >
                 Sign Up
               </button>
               <router-link
                 class="btn btn-light btn-block mb-4"
+                id="login-page-link"
                 to="[object Object]"
               >
                  Login Page 
@@ -555,6 +558,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h1
                           class="mb-4"
+                          id="sign-up-header"
                         >
                           Sign Up
                         </h1>,
@@ -562,6 +566,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "mb-4",
+                          "id": "sign-up-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -1422,6 +1427,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <button
                               class="btn btn-primary btn-block mb-4"
+                              id="sign-up-button"
                             >
                               Sign Up
                             </button>,
@@ -1429,6 +1435,7 @@ VueWrapper {
                             "patchFlag": -1,
                             "props": Object {
                               "class": "btn btn-primary btn-block mb-4",
+                              "id": "sign-up-button",
                             },
                             "ref": null,
                             "scopeId": null,
@@ -1483,6 +1490,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <router-link
                               class="btn btn-light btn-block mb-4"
+                              id="login-page-link"
                               to="[object Object]"
                             >
                                Login Page 
@@ -1491,6 +1499,7 @@ VueWrapper {
                             "patchFlag": 0,
                             "props": Object {
                               "class": "btn btn-light btn-block mb-4",
+                              "id": "login-page-link",
                               "to": Object {
                                 "name": "PageLogin",
                               },
@@ -1516,11 +1525,13 @@ VueWrapper {
                         "el": <div>
                           <button
                             class="btn btn-primary btn-block mb-4"
+                            id="sign-up-button"
                           >
                             Sign Up
                           </button>
                           <router-link
                             class="btn btn-light btn-block mb-4"
+                            id="login-page-link"
                             to="[object Object]"
                           >
                              Login Page 
@@ -1550,6 +1561,7 @@ VueWrapper {
                     "el": <form>
                       <h1
                         class="mb-4"
+                        id="sign-up-header"
                       >
                         Sign Up
                       </h1>
@@ -1646,11 +1658,13 @@ VueWrapper {
                       <div>
                         <button
                           class="btn btn-primary btn-block mb-4"
+                          id="sign-up-button"
                         >
                           Sign Up
                         </button>
                         <router-link
                           class="btn btn-light btn-block mb-4"
+                          id="login-page-link"
                           to="[object Object]"
                         >
                            Login Page 
@@ -1687,6 +1701,7 @@ VueWrapper {
                   <form>
                     <h1
                       class="mb-4"
+                      id="sign-up-header"
                     >
                       Sign Up
                     </h1>
@@ -1783,11 +1798,13 @@ VueWrapper {
                     <div>
                       <button
                         class="btn btn-primary btn-block mb-4"
+                        id="sign-up-button"
                       >
                         Sign Up
                       </button>
                       <router-link
                         class="btn btn-light btn-block mb-4"
+                        id="login-page-link"
                         to="[object Object]"
                       >
                          Login Page 
@@ -2222,6 +2239,7 @@ VueWrapper {
                 <form>
                   <h1
                     class="mb-4"
+                    id="sign-up-header"
                   >
                     Sign Up
                   </h1>
@@ -2318,11 +2336,13 @@ VueWrapper {
                   <div>
                     <button
                       class="btn btn-primary btn-block mb-4"
+                      id="sign-up-button"
                     >
                       Sign Up
                     </button>
                     <router-link
                       class="btn btn-light btn-block mb-4"
+                      id="login-page-link"
                       to="[object Object]"
                     >
                        Login Page 
@@ -2784,6 +2804,7 @@ VueWrapper {
             <form>
               <h1
                 class="mb-4"
+                id="sign-up-header"
               >
                 Sign Up
               </h1>
@@ -2880,11 +2901,13 @@ VueWrapper {
               <div>
                 <button
                   class="btn btn-primary btn-block mb-4"
+                  id="sign-up-button"
                 >
                   Sign Up
                 </button>
                 <router-link
                   class="btn btn-light btn-block mb-4"
+                  id="login-page-link"
                   to="[object Object]"
                 >
                    Login Page 
@@ -3388,6 +3411,7 @@ VueWrapper {
             <form>
               <h1
                 class="mb-4"
+                id="sign-up-header"
               >
                 Sign Up
               </h1>
@@ -3484,11 +3508,13 @@ VueWrapper {
               <div>
                 <button
                   class="btn btn-primary btn-block mb-4"
+                  id="sign-up-button"
                 >
                   Sign Up
                 </button>
                 <router-link
                   class="btn btn-light btn-block mb-4"
+                  id="login-page-link"
                   to="[object Object]"
                 >
                    Login Page 
@@ -3562,6 +3588,7 @@ VueWrapper {
       <form>
         <h1
           class="mb-4"
+          id="sign-up-header"
         >
           Sign Up
         </h1>
@@ -3658,11 +3685,13 @@ VueWrapper {
         <div>
           <button
             class="btn btn-primary btn-block mb-4"
+            id="sign-up-button"
           >
             Sign Up
           </button>
           <router-link
             class="btn btn-light btn-block mb-4"
+            id="login-page-link"
             to="[object Object]"
           >
              Login Page 

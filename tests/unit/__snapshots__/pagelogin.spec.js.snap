@@ -22,6 +22,7 @@ VueWrapper {
           <form>
             <h1
               class="mb-4"
+              id="login-header"
             >
               Login
             </h1>
@@ -35,6 +36,7 @@ VueWrapper {
               </label>
               <input
                 class="form-control"
+                id="username-input"
                 name="username"
                 type="text"
               />
@@ -49,6 +51,7 @@ VueWrapper {
               </label>
               <input
                 class="form-control"
+                id="password-input"
                 name="password"
                 type="password"
               />
@@ -56,12 +59,14 @@ VueWrapper {
             <div>
               <button
                 class="btn btn-primary btn-block mb-4"
+                id="login-button"
                 type="submit"
               >
                 Login
               </button>
               <router-link
                 class="btn btn-light btn-block mb-4"
+                id="sign-up-link"
                 to="[object Object]"
               >
                  Sign Up 
@@ -534,6 +539,7 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <h1
                           class="mb-4"
+                          id="login-header"
                         >
                           Login
                         </h1>,
@@ -541,6 +547,7 @@ VueWrapper {
                         "patchFlag": -1,
                         "props": Object {
                           "class": "mb-4",
+                          "id": "login-header",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -627,6 +634,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <input
                               class="form-control"
+                              id="username-input"
                               name="username"
                               type="text"
                             />,
@@ -634,6 +642,7 @@ VueWrapper {
                             "patchFlag": 512,
                             "props": Object {
                               "class": "form-control",
+                              "id": "username-input",
                               "name": "username",
                               "onUpdate:modelValue": [Function],
                               "type": "text",
@@ -666,6 +675,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="username-input"
                             name="username"
                             type="text"
                           />
@@ -760,6 +770,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <input
                               class="form-control"
+                              id="password-input"
                               name="password"
                               type="password"
                             />,
@@ -767,6 +778,7 @@ VueWrapper {
                             "patchFlag": 512,
                             "props": Object {
                               "class": "form-control",
+                              "id": "password-input",
                               "name": "password",
                               "onUpdate:modelValue": [Function],
                               "type": "password",
@@ -799,6 +811,7 @@ VueWrapper {
                           </label>
                           <input
                             class="form-control"
+                            id="password-input"
                             name="password"
                             type="password"
                           />
@@ -839,6 +852,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <button
                               class="btn btn-primary btn-block mb-4"
+                              id="login-button"
                               type="submit"
                             >
                               Login
@@ -847,6 +861,7 @@ VueWrapper {
                             "patchFlag": -1,
                             "props": Object {
                               "class": "btn btn-primary btn-block mb-4",
+                              "id": "login-button",
                               "type": "submit",
                             },
                             "ref": null,
@@ -902,6 +917,7 @@ VueWrapper {
                             "dynamicProps": null,
                             "el": <router-link
                               class="btn btn-light btn-block mb-4"
+                              id="sign-up-link"
                               to="[object Object]"
                             >
                                Sign Up 
@@ -910,6 +926,7 @@ VueWrapper {
                             "patchFlag": 0,
                             "props": Object {
                               "class": "btn btn-light btn-block mb-4",
+                              "id": "sign-up-link",
                               "to": Object {
                                 "name": "PageSignUp",
                               },
@@ -935,12 +952,14 @@ VueWrapper {
                         "el": <div>
                           <button
                             class="btn btn-primary btn-block mb-4"
+                            id="login-button"
                             type="submit"
                           >
                             Login
                           </button>
                           <router-link
                             class="btn btn-light btn-block mb-4"
+                            id="sign-up-link"
                             to="[object Object]"
                           >
                              Sign Up 
@@ -970,6 +989,7 @@ VueWrapper {
                     "el": <form>
                       <h1
                         class="mb-4"
+                        id="login-header"
                       >
                         Login
                       </h1>
@@ -983,6 +1003,7 @@ VueWrapper {
                         </label>
                         <input
                           class="form-control"
+                          id="username-input"
                           name="username"
                           type="text"
                         />
@@ -997,6 +1018,7 @@ VueWrapper {
                         </label>
                         <input
                           class="form-control"
+                          id="password-input"
                           name="password"
                           type="password"
                         />
@@ -1004,12 +1026,14 @@ VueWrapper {
                       <div>
                         <button
                           class="btn btn-primary btn-block mb-4"
+                          id="login-button"
                           type="submit"
                         >
                           Login
                         </button>
                         <router-link
                           class="btn btn-light btn-block mb-4"
+                          id="sign-up-link"
                           to="[object Object]"
                         >
                            Sign Up 
@@ -1048,6 +1072,7 @@ VueWrapper {
                   <form>
                     <h1
                       class="mb-4"
+                      id="login-header"
                     >
                       Login
                     </h1>
@@ -1061,6 +1086,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="username-input"
                         name="username"
                         type="text"
                       />
@@ -1075,6 +1101,7 @@ VueWrapper {
                       </label>
                       <input
                         class="form-control"
+                        id="password-input"
                         name="password"
                         type="password"
                       />
@@ -1082,12 +1109,14 @@ VueWrapper {
                     <div>
                       <button
                         class="btn btn-primary btn-block mb-4"
+                        id="login-button"
                         type="submit"
                       >
                         Login
                       </button>
                       <router-link
                         class="btn btn-light btn-block mb-4"
+                        id="sign-up-link"
                         to="[object Object]"
                       >
                          Sign Up 
@@ -1231,6 +1260,7 @@ VueWrapper {
                 "dynamicProps": null,
                 "el": <input
                   class="form-control"
+                  id="username-input"
                   name="username"
                   type="text"
                 />,
@@ -1238,6 +1268,7 @@ VueWrapper {
                 "patchFlag": 512,
                 "props": Object {
                   "class": "form-control",
+                  "id": "username-input",
                   "name": "username",
                   "onUpdate:modelValue": [Function],
                   "type": "text",
@@ -1288,6 +1319,7 @@ VueWrapper {
                 "dynamicProps": null,
                 "el": <input
                   class="form-control"
+                  id="password-input"
                   name="password"
                   type="password"
                 />,
@@ -1295,6 +1327,7 @@ VueWrapper {
                 "patchFlag": 512,
                 "props": Object {
                   "class": "form-control",
+                  "id": "password-input",
                   "name": "password",
                   "onUpdate:modelValue": [Function],
                   "type": "password",
@@ -1326,6 +1359,7 @@ VueWrapper {
                 <form>
                   <h1
                     class="mb-4"
+                    id="login-header"
                   >
                     Login
                   </h1>
@@ -1339,6 +1373,7 @@ VueWrapper {
                     </label>
                     <input
                       class="form-control"
+                      id="username-input"
                       name="username"
                       type="text"
                     />
@@ -1353,6 +1388,7 @@ VueWrapper {
                     </label>
                     <input
                       class="form-control"
+                      id="password-input"
                       name="password"
                       type="password"
                     />
@@ -1360,12 +1396,14 @@ VueWrapper {
                   <div>
                     <button
                       class="btn btn-primary btn-block mb-4"
+                      id="login-button"
                       type="submit"
                     >
                       Login
                     </button>
                     <router-link
                       class="btn btn-light btn-block mb-4"
+                      id="sign-up-link"
                       to="[object Object]"
                     >
                        Sign Up 
@@ -1432,6 +1470,7 @@ VueWrapper {
             <form>
               <h1
                 class="mb-4"
+                id="login-header"
               >
                 Login
               </h1>
@@ -1445,6 +1484,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="username-input"
                   name="username"
                   type="text"
                 />
@@ -1459,6 +1499,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="password-input"
                   name="password"
                   type="password"
                 />
@@ -1466,12 +1507,14 @@ VueWrapper {
               <div>
                 <button
                   class="btn btn-primary btn-block mb-4"
+                  id="login-button"
                   type="submit"
                 >
                   Login
                 </button>
                 <router-link
                   class="btn btn-light btn-block mb-4"
+                  id="sign-up-link"
                   to="[object Object]"
                 >
                    Sign Up 
@@ -1580,6 +1623,7 @@ VueWrapper {
             <form>
               <h1
                 class="mb-4"
+                id="login-header"
               >
                 Login
               </h1>
@@ -1593,6 +1637,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="username-input"
                   name="username"
                   type="text"
                 />
@@ -1607,6 +1652,7 @@ VueWrapper {
                 </label>
                 <input
                   class="form-control"
+                  id="password-input"
                   name="password"
                   type="password"
                 />
@@ -1614,12 +1660,14 @@ VueWrapper {
               <div>
                 <button
                   class="btn btn-primary btn-block mb-4"
+                  id="login-button"
                   type="submit"
                 >
                   Login
                 </button>
                 <router-link
                   class="btn btn-light btn-block mb-4"
+                  id="sign-up-link"
                   to="[object Object]"
                 >
                    Sign Up 
@@ -1693,6 +1741,7 @@ VueWrapper {
       <form>
         <h1
           class="mb-4"
+          id="login-header"
         >
           Login
         </h1>
@@ -1706,6 +1755,7 @@ VueWrapper {
           </label>
           <input
             class="form-control"
+            id="username-input"
             name="username"
             type="text"
           />
@@ -1720,6 +1770,7 @@ VueWrapper {
           </label>
           <input
             class="form-control"
+            id="password-input"
             name="password"
             type="password"
           />
@@ -1727,12 +1778,14 @@ VueWrapper {
         <div>
           <button
             class="btn btn-primary btn-block mb-4"
+            id="login-button"
             type="submit"
           >
             Login
           </button>
           <router-link
             class="btn btn-light btn-block mb-4"
+            id="sign-up-link"
             to="[object Object]"
           >
              Sign Up 

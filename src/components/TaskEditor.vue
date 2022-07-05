@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label for="editDescription">Task Description</label>
-      <textarea id-"edit-task-description-input" @keyup.enter.prevent="saveTask" v-model="editDescription" cols="30" rows="5" class="form-control"/>
+      <textarea id="edit-task-description-input" @keyup.enter.prevent="saveTask" v-model="editDescription" cols="30" rows="5" class="form-control"/>
     </div>
     <div>
       <button id="submit-edited-task-button" type="submit" class="btn btn-primary">Save Task</button>
