@@ -50,9 +50,7 @@ export default {
     }
   },
   emits: [
-    "saveEditedTask",
-    "updateTaskCompletion",
-    "updateTaskRemoval"
+    "saveEditedTask"
   ],
   methods: {
     editingThisTask (taskId) {

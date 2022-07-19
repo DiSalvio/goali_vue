@@ -617,8 +617,6 @@ VueWrapper {
               "data": [Function],
               "emits": Array [
                 "saveEditedTask",
-                "updateTaskCompletion",
-                "updateTaskRemoval",
               ],
               "methods": Object {
                 "editTask": [Function],
@@ -7435,8 +7433,6 @@ VueWrapper {
                 "data": [Function],
                 "emits": Array [
                   "saveEditedTask",
-                  "updateTaskCompletion",
-                  "updateTaskRemoval",
                 ],
                 "methods": Object {
                   "editTask": [Function],
@@ -7688,8 +7684,6 @@ VueWrapper {
               "data": [Function],
               "emits": Array [
                 "saveEditedTask",
-                "updateTaskCompletion",
-                "updateTaskRemoval",
               ],
               "methods": Object {
                 "editTask": [Function],
@@ -8702,8 +8696,6 @@ VueWrapper {
               "data": [Function],
               "emits": Array [
                 "saveEditedTask",
-                "updateTaskCompletion",
-                "updateTaskRemoval",
               ],
               "methods": Object {
                 "editTask": [Function],
@@ -11884,8 +11876,6 @@ VueWrapper {
                 "data": [Function],
                 "emits": Array [
                   "saveEditedTask",
-                  "updateTaskCompletion",
-                  "updateTaskRemoval",
                 ],
                 "methods": Object {
                   "editTask": [Function],
@@ -12122,8 +12112,6 @@ VueWrapper {
               "data": [Function],
               "emits": Array [
                 "saveEditedTask",
-                "updateTaskCompletion",
-                "updateTaskRemoval",
               ],
               "methods": Object {
                 "editTask": [Function],
