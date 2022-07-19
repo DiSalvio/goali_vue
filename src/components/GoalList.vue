@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      editingGoalId: null
+      editingGoalId: null 
     }
   },
   emits: [ 
