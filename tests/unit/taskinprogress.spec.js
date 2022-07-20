@@ -1,10 +1,10 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import TaskCompleted from '@/components/TaskCompleted.vue'
+import TaskInProgress from '@/components/TaskInProgress.vue'
 
-describe('TaskCompleted.vue', () => {
+describe('TaskInProgress.vue', () => {
   describe('methods', () => {
     it('editTask correctly emits event', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -25,7 +25,7 @@ describe('TaskCompleted.vue', () => {
     })
 
     it('removeTask correctly emits event', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -46,7 +46,7 @@ describe('TaskCompleted.vue', () => {
     })
 
     it('toggleTaskCompletion correctly emits event', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -70,7 +70,7 @@ describe('TaskCompleted.vue', () => {
 
   describe('DOM', () => {
     it('shows task name', () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -84,13 +84,13 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const taskName = wrapper.find("#task-name-completed")
+      const taskName = wrapper.find("#task-name-in-progress")
       expect(taskName.isVisible()).toBe(true)
       expect(taskName.text()).toBe("task 1")
     })
 
-    it('does not show task description', () => {
-      const wrapper = mount(TaskCompleted, {
+    it('shows task description', () => {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -104,12 +104,13 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const taskDescription = wrapper.find("#task-description-completed")
-      expect(taskDescription.exists()).toBe(false)
+      const taskDescription = wrapper.find("#task-description-in-progress")
+      expect(taskDescription.isVisible()).toBe(true)
+      expect(taskDescription.text()).toBe("description 1")
     })
 
     it('shows edit task button', () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -123,12 +124,12 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const editTaskButton = wrapper.find("#edit-task-completed")
+      const editTaskButton = wrapper.find("#edit-task-in-progress")
       expect(editTaskButton.isVisible()).toBe(true)
     })
 
     it('shows remove task button', () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -142,12 +143,12 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const removeTaskButton = wrapper.find("#remove-task-completed")
+      const removeTaskButton = wrapper.find("#remove-task-in-progress")
       expect(removeTaskButton.isVisible()).toBe(true)
     })
 
     it('shows toggle task completion button', () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -161,13 +162,13 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const toggleTaskButton = wrapper.find("#toggle-task-completion-done")
+      const toggleTaskButton = wrapper.find("#toggle-task-completion-in-progress")
       expect(toggleTaskButton.isVisible()).toBe(true)
-      expect(toggleTaskButton.text()).toBe("Done")
+      expect(toggleTaskButton.text()).toBe("In Progress")
     })
 
     it('pressing Edit Task Button runs editTask method', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -181,14 +182,14 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const editTaskButton = wrapper.find("#edit-task-completed")
+      const editTaskButton = wrapper.find("#edit-task-in-progress")
       const editTaskSpy = jest.spyOn(wrapper.vm, 'editTask')
       await editTaskButton.trigger('click')
       expect(editTaskSpy).toHaveBeenCalled()
     })
 
     it('pressing remove task button runs removeTask method', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -202,14 +203,14 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const removeTaskButton = wrapper.find("#remove-task-completed")
+      const removeTaskButton = wrapper.find("#remove-task-in-progress")
       const removeTaskSpy = jest.spyOn(wrapper.vm, 'removeTask')
       await removeTaskButton.trigger('click')
       expect(removeTaskSpy).toHaveBeenCalled()
     })
 
     it('pressing toggle task completion button runs toggleTaskCompletion method', async () => {
-      const wrapper = mount(TaskCompleted, {
+      const wrapper = mount(TaskInProgress, {
         props: {
           task: {
             "id":1,
@@ -223,7 +224,7 @@ describe('TaskCompleted.vue', () => {
           }
         }
       })
-      const toggleTaskButton = wrapper.find("#toggle-task-completion-done")
+      const toggleTaskButton = wrapper.find("#toggle-task-completion-in-progress")
       const toggleTaskSpy = jest.spyOn(wrapper.vm, 'toggleTaskCompletion')
       await toggleTaskButton.trigger('click')
       expect(toggleTaskSpy).toHaveBeenCalled()
