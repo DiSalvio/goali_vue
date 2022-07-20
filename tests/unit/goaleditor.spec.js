@@ -13,7 +13,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
@@ -42,7 +42,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
@@ -80,7 +80,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
@@ -114,7 +114,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
@@ -159,7 +159,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
@@ -200,7 +200,7 @@ describe('GoalEditor.vue', () => {
             "description":"description 1",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
-            "updated":"202022-04-15T07:25:23.269770Z",
+            "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
             "user":6
           }
