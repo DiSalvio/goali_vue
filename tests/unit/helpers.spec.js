@@ -1,4 +1,4 @@
-import { authHeader, urlHelper, updateItemInArray } from '@/helpers/index.js'
+import { authHeader, urlHelper, updateItemInArray, findById } from '@/helpers/index.js'
 
 describe('helper functions', () => {
   describe('urlHelper functions', () => {
@@ -74,6 +74,69 @@ describe('helper functions', () => {
   describe('authHeader', () => {
     it('produces correct token authorization header', () => {
       expect(authHeader('1t2o3k4n5')).toEqual(expect.objectContaining({ headers: { 'Authorization': 'Token 1t2o3k4n5' }}))
+    })
+  })
+
+  describe('findById', () => {
+    it('returns item in resource if it matches passed id', () => {
+      const testGoals = [
+        {
+          "id":1,
+          "name":"goal 1",
+          "description":"description 1",
+          "timestamp":"2022-04-15T06:58:03.382281Z",
+          "completed":false,
+          "updated":"2022-04-15T07:25:23.269770Z",
+          "removed":false,
+          "user":6
+        },
+        {
+          "id":2,
+          "name":"goal 2",
+          "description":"description 2",
+          "timestamp":"2022-04-15T06:58:03.382281Z",
+          "completed":true,
+          "updated":"2022-04-15T07:25:23.269770Z",
+          "removed":false,
+          "user":6
+        }
+      ]
+      expect(findById(testGoals, 2)).toEqual(expect.objectContaining({
+        "id":2,
+        "name":"goal 2",
+        "description":"description 2",
+        "timestamp":"2022-04-15T06:58:03.382281Z",
+        "completed":true,
+        "updated":"2022-04-15T07:25:23.269770Z",
+        "removed":false,
+        "user":6
+      }))
+    })
+
+    it('returns undefined resource does not contain passed id', () => {
+      const testGoals = [
+        {
+          "id":1,
+          "name":"goal 1",
+          "description":"description 1",
+          "timestamp":"2022-04-15T06:58:03.382281Z",
+          "completed":false,
+          "updated":"2022-04-15T07:25:23.269770Z",
+          "removed":false,
+          "user":6
+        },
+        {
+          "id":2,
+          "name":"goal 2",
+          "description":"description 2",
+          "timestamp":"2022-04-15T06:58:03.382281Z",
+          "completed":true,
+          "updated":"2022-04-15T07:25:23.269770Z",
+          "removed":false,
+          "user":6
+        }
+      ]
+      expect(findById(testGoals, 3)).toEqual(undefined)
     })
   })
 })
