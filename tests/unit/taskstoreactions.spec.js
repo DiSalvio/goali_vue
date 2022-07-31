@@ -1,4 +1,4 @@
-import actions from '@/store/goals/actions.js'
+import actions from '@/store/tasks/actions.js'
 import axios from 'axios'
 
 jest.mock('axios')
@@ -11,149 +11,150 @@ const rootState = {
   }
 }
 
-describe('goal store actions', () => {
+describe('task store actions', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  describe('fetchGoals', () => {
-    it('calls get goals API correctly', async () => {
+  describe('fetchGoalTasks', () => {
+    it('calls get goal tasks API correctly', async () => {
       axios.get.mockResolvedValue({data: []})
-      const response = await actions.fetchGoals({ commit, rootState })
-      expect(axios.get).toHaveBeenCalledWith('https://example.com/goals/', 
+      const response = await actions.fetchGoalTasks({ commit, rootState }, { goalId: 1 })
+      expect(axios.get).toHaveBeenCalledWith('https://example.com/goals/1/tasks/', 
         {
           "headers": {"Authorization": "Token 1234"}
         }
       )
     })
 
-    it('commits goals to state if API call succeeds', async () => {
+    it('commits goal tasks to state if API call succeeds', async () => {
       axios.get.mockResolvedValue({data: [
         {
           "id":1,
-          "name":"goal 1",
+          "name":"task 1",
           "description":"description 1",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":true,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         },
         {
           "id":2,
-          "name":"goal 2",
+          "name":"task 2",
           "description":"description 2",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         }
       ]})
-      const response = await actions.fetchGoals({ commit, rootState })
-      expect(commit).toHaveBeenCalledWith('setGoals', [
+      const response = await actions.fetchGoalTasks({ commit, rootState }, { goalId: 1 })
+      expect(commit).toHaveBeenCalledWith('setTasks', [
         {
           "id":1,
-          "name":"goal 1",
+          "name":"task 1",
           "description":"description 1",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":true,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         },
         {
           "id":2,
-          "name":"goal 2",
+          "name":"task 2",
           "description":"description 2",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         }
       ])
     })
 
-    it('does not commit to state if API call fails', async () => {
+    it('does not commit tasks to state if API call fails', async () => {
       axios.get.mockRejectedValue({ 'error': 'Invalid Token' })
-      const response = await actions.fetchGoals({ commit, rootState })
-      expect(commit).not.toHaveBeenCalledWith('setGoals')
+      const response = await actions.fetchGoalTasks({ commit, rootState }, { goalId: 1 })
+      expect(commit).not.toHaveBeenCalledWith('setTasks')
     })
   })
 
-  describe('fetchGoal', () => {
-    it('calls get goal API correctly', async () => {
+  describe('fetchTask', () => {
+    it('calls get task API correctly', async () => {
       axios.get.mockResolvedValue({data: []})
-      await actions.fetchGoal({ dispatch, rootState }, { goalId: 7 })
-      expect(axios.get).toHaveBeenCalledWith('https://example.com/goals/7/', 
+      await actions.fetchTask({ dispatch, rootState }, { goalId: 7, taskId: 1 })
+      expect(axios.get).toHaveBeenCalledWith('https://example.com/goals/7/tasks/1/', 
         {
           "headers": {"Authorization": "Token 1234"}
         }
       )
     })
 
-    it('returns goal if API call succeeds', async () => {
+    it('returns true if API call succeeds', async () => {
       axios.get.mockResolvedValue({
         data: {
-          "id":7,
-          "name":"goal 7",
-          "description":"description 7",
+          "id":1,
+          "name":"task 1",
+          "description":"description 1",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":true,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":7,
           "user":6
         }
       })
-      const response = await actions.fetchGoal({ dispatch, rootState }, { goalId: 7 })
-      expect(response).toEqual(expect.objectContaining({
-        "id":7,
-        "name":"goal 7",
-        "description":"description 7",
-        "timestamp":"2022-04-15T06:58:03.382281Z",
-        "completed":true,
-        "updated":"2022-04-15T07:25:23.269770Z",
-        "removed":false,
-        "user":6
-      }))
+      const response = await actions.fetchTask({ dispatch, rootState }, { goalId: 7, taskId: 1 })
+      expect(response).toEqual(true)
     })
 
-    it('returns null if API does not return goal with that ID', async () => {
-      axios.get.mockRejectedValue({ 'res': 'Object with goal id does not exist' })
-      const response = await actions.fetchGoal({ dispatch, rootState }, { goalId: 7 })
-      expect(response).toBe(null)
+    it('returns false if API does not return task with that ID', async () => {
+      axios.get.mockRejectedValue({ 'res': 'Object with task id does not exist' })
+      const response = await actions.fetchTask({ dispatch, rootState }, { goalId: 7, taskId: 1 })
+      expect(response).toBe(false)
     })
   })
 
-  describe('createGoal', () => {
-    it('calls post goal API correctly', async () => {
+  describe('createTask', () => {
+    it('calls post task API correctly', async () => {
       axios.post.mockResolvedValue({
         data: {
-          "id":7,
-          "name":"new goal",
-          "description":"new description",
+          "id":9,
+          "name":"new task",
+          "description":"new task description",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":2,
           "user":6
         }
       })
-      await actions.createGoal(
+      await actions.createTask(
         { 
           commit, 
           rootState 
         }, 
         { 
-          name: 'new goal', 
-          description: 'new description'
+          newTask: {
+            name: 'new task', 
+            description: 'new task description',
+            goal: 2
+          }
         }
       )
-      expect(axios.post).toHaveBeenCalledWith('https://example.com/goals/', 
+      expect(axios.post).toHaveBeenCalledWith('https://example.com/goals/2/tasks/', 
         {
-          "name": "new goal",
-          "description": "new description",
+          "name": "new task",
+          "description": "new task description",
+          "goal": 2,
           "completed": false,
           "removed": false,
         },
@@ -164,270 +165,292 @@ describe('goal store actions', () => {
     it('commits pushGoal action if API call succeeds', async () => {
       axios.post.mockResolvedValue({
         data: {
-          "id":7,
-          "name":"new goal",
-          "description":"new description",
+          "id":19,
+          "name":"new task",
+          "description":"new task description",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
-          "user":6
+          "goal":5,
+          "user":3
         }
       })
-      const response = await actions.createGoal(
+      const response = await actions.createTask(
         { 
           commit, 
           rootState 
         }, 
         { 
-          name: 'new goal', 
-          description: 'new description'
+          newTask: {
+            name: 'new task', 
+            description: 'new task description',
+            goal: 5
+          }
         }
       )
-      expect(commit).toHaveBeenCalledWith('pushGoal', 
+      expect(commit).toHaveBeenCalledWith('pushTask', 
         {
-          "id":7,
-          "name":"new goal",
-          "description":"new description",
+          "id":19,
+          "name":"new task",
+          "description":"new task description",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
-          "user":6
+          "goal":5,
+          "user":3
         }
       )
       expect(response).toEqual(expect.objectContaining({
-        "id":7,
-        "name":"new goal",
-        "description":"new description",
+        "id":19,
+        "name":"new task",
+        "description":"new task description",
         "timestamp":"2022-04-15T06:58:03.382281Z",
         "completed":false,
         "updated":"2022-04-15T07:25:23.269770Z",
         "removed":false,
-        "user":6
+        "goal":5,
+        "user":3
       }))
     })
 
-    it('returns undefined if createGoal API call fails', async () => {
+    it('returns undefined if createTask API call fails', async () => {
       axios.post.mockRejectedValue({ 'name': 'This field may not be blank' })
-      const response = await actions.createGoal(
+      const response = await actions.createTask(
         { 
           commit, 
           rootState 
         }, 
         { 
-          name: '', 
-          description: 'new description'
+          newTask: {
+            name: '', 
+            description: 'new description',
+            goal: 8
+          }
         }
       )
-      expect(commit).not.toHaveBeenCalledWith('pushGoal')
+      expect(commit).not.toHaveBeenCalledWith('pushTask')
       expect(response).toBe(undefined)
     })
   })
 
-  describe('saveEditedGoal', () => {
-    it('calls put goal API correctly', async () => {
+  describe('saveEditedTask', () => {
+    it('calls put task API correctly', async () => {
       axios.put.mockResolvedValue({
         data: {
-          "id":7,
-          "name":"edited goal 7",
-          "description":"edited description 7",
+          "id":27,
+          "name":"edited task 27",
+          "description":"edited task description 27",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal": 11,
           "user":6
         }
       })
-      await actions.saveEditedGoal(
+      await actions.saveEditedTask(
         { 
           commit, 
           rootState 
         }, 
         {
-          editedGoal: {
-            "id":7,
-            "name":"edited goal 7",
-            "description":"edited description 7",
+          editedTask: {
+            "id":27,
+            "name":"edited task 27",
+            "description":"edited task description 27",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
             "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
+            "goal":11,
             "user":6
           }
         }
       )
-      expect(axios.put).toHaveBeenCalledWith('https://example.com/goals/7/', 
+      expect(axios.put).toHaveBeenCalledWith('https://example.com/goals/11/tasks/27/', 
         {
-          "id":7,
-          "name":"edited goal 7",
-          "description":"edited description 7",
+          "id":27,
+          "name":"edited task 27",
+          "description":"edited task description 27",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":11,
           "user":6
         },
         {"headers": {"Authorization": "Token 1234"}}
       )
     })
 
-    it('commits updateGoal action if API call succeeds', async () => {
+    it('commits updateTask action if API call succeeds', async () => {
       axios.put.mockResolvedValue({
         data: {
-          "id":7,
-          "name":"edited goal 7",
-          "description":"edited description 7",
+          "id":33,
+          "name":"edited task 33",
+          "description":"edited description 33",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":18,
           "user":6
         }
       })
-      const response = await actions.saveEditedGoal(
+      const response = await actions.saveEditedTask(
         { 
           commit, 
           rootState 
         }, 
         {
-          "editedGoal": {
-            "id":7,
-            "name":"edited goal 7",
-            "description":"edited description 7",
+          "editedTask": {
+            "id":33,
+            "name":"edited task 33",
+            "description":"edited description 33",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
             "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
+            "goal":18,
             "user":6
           }
         }
       )
-      expect(commit).toHaveBeenCalledWith('updateGoal', {
+      expect(commit).toHaveBeenCalledWith('updateTask', {
         item: {
-          "id":7,
-          "name":"edited goal 7",
-          "description":"edited description 7",
+          "id":33,
+          "name":"edited task 33",
+          "description":"edited description 33",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":18,
           "user":6
         }
       })
       expect(response).toBe(true)
     })
 
-    it('returns false if saveEditedGoal API call fails', async () => {
+    it('returns false if saveEditedTask API call fails', async () => {
       axios.put.mockRejectedValue({ 'res': 'Object with goal id does not exist' })
-      const response = await actions.saveEditedGoal(
+      const response = await actions.saveEditedTask(
         { 
           commit, 
           rootState 
         }, 
         {
-          "editedGoal": {
+          "editedTask": {
             "id":117,
-            "name":"goal 117",
+            "name":"task 117",
             "description":"description 117",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
             "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
+            "goal": 77,
             "user":6
           }
         }
       )
-      expect(commit).not.toHaveBeenCalledWith('updateGoal')
+      expect(commit).not.toHaveBeenCalledWith('updateTask')
       expect(response).toBe(false)
     })
   })
 
-  describe('upsertGoal', () => {
-    it('commits updateGoal if goal already exists', async () => {
+  describe('upsertTask', () => {
+    it('commits updateTask if task already exists', async () => {
       const state = {
-        goals: [ 
+        tasks: [ 
           {
             "id":8,
-            "name":"goal 8",
+            "name":"task 8",
             "description":"description 8",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
             "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
+            "goal":1,
             "user":6
           }
         ]
       }
-      actions.upsertGoal(
+      actions.upsertTask(
         { 
           state, 
           commit 
         }, 
         {
           "id":8,
-          "name":"goal 8",
+          "name":"task 8",
           "description":"description 8",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         }
       )
-      expect(commit).toHaveBeenCalledWith('updateGoal', {
+      expect(commit).toHaveBeenCalledWith('updateTask', {
         item: {
           "id":8,
-          "name":"goal 8",
+          "name":"task 8",
           "description":"description 8",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         }
       })
     })
 
-    it('commits pushGoal if goal does not already exist', async () => {
+    it('commits pushTask if task does not already exist', async () => {
       const state = {
-        goals: [ 
+        tasks: [ 
           {
             "id":9,
-            "name":"goal 9",
+            "name":"task 9",
             "description":"description 9",
             "timestamp":"2022-04-15T06:58:03.382281Z",
             "completed":false,
             "updated":"2022-04-15T07:25:23.269770Z",
             "removed":false,
+            "goal":1,
             "user":6
           }
         ]
       }
-      await actions.upsertGoal(
+      await actions.upsertTask(
         { 
           state, 
           commit 
         }, 
         {
-          "id":8,
-          "name":"goal 8",
-          "description":"description 8",
+          "id":18,
+          "name":"task 18",
+          "description":"description 18",
           "timestamp":"2022-04-15T06:58:03.382281Z",
           "completed":false,
           "updated":"2022-04-15T07:25:23.269770Z",
           "removed":false,
+          "goal":1,
           "user":6
         }
       )
-      expect(commit).toHaveBeenCalledWith('pushGoal', {
-        "id":8,
-        "name":"goal 8",
-        "description":"description 8",
+      expect(commit).toHaveBeenCalledWith('pushTask', {
+        "id":18,
+        "name":"task 18",
+        "description":"description 18",
         "timestamp":"2022-04-15T06:58:03.382281Z",
         "completed":false,
         "updated":"2022-04-15T07:25:23.269770Z",
         "removed":false,
+        "goal":1,
         "user":6
       })
     })
